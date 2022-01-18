@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesTopicsTable extends Migration
+class CreatePageTopicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePagesTopicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages_topics', function (Blueprint $table) {
+        Schema::create('page_topic', function (Blueprint $table) {
             $table->id();
             $table->foreignId('page_id')->constrained();
             $table->foreignId('topic_id')->constrained();
@@ -27,6 +27,6 @@ class CreatePagesTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages_topics');
+        Schema::dropIfExists('page_topic');
     }
 }
