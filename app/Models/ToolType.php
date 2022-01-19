@@ -14,4 +14,9 @@ class ToolType extends Model
     protected $fillable = [
         'title',
     ];
+
+    public function tools()
+    {
+        return $this->hadMany(Tool::class, 'tool_type_id');
+    }
 }
