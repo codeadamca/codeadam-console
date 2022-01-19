@@ -20,5 +20,10 @@ class Topic extends Model
         'background',
         'image',
     ];
+
+    public function pages()
+    {
+        return $this->hadMany(Page::class, 'topic_id');
+    }
     
 }
