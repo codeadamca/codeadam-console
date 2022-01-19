@@ -10,4 +10,15 @@ class Topic extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'icon',
+        'url',
+        'teaching',
+        'background',
+        'image',
+    ];
+    
 }

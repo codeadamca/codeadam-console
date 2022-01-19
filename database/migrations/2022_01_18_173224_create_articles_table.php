@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('url')->nullable();
             $table->text('resources')->nullable();
             $table->string('instagram_id')->nullable();
             $table->string('twitter_id')->nullable();
@@ -26,7 +26,7 @@ class CreateArticlesTable extends Migration
             $table->foreignIdFor(ArticleType::class);
             $table->enum('home', ['Yes','No'])->default('No');
             $table->string('image')->nullable();
-            $table->timestamp('published_at')->useCurrent();
+            $table->date('published_at')->useCurrent();
             $table->timestamps();
         });
     }

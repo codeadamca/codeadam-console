@@ -72,22 +72,202 @@ class DatabaseSeeder extends Seeder
                 $typeId = $type[0]->id;
             }
 
-            $base64_image = $record->photo;
-            @list($type, $file_data) = explode(';', $base64_image);
-            @list(, $file_data) = explode(',', $file_data);
-
-            Storage::put('image.tmp', base64_decode($file_data));
-                        
-            $path = Storage::putFile('tools', new File('storage/app/public/image.tmp'));
-
             $r = new Tool();
+
+            if($record->photo)
+            {
+                $base64_image = $record->photo;
+                @list($type, $file_data) = explode(';', $base64_image);
+                @list(, $file_data) = explode(',', $file_data);
+                Storage::put('image.tmp', base64_decode($file_data));
+                $path = Storage::putFile('tools', new File('storage/app/public/image.tmp'));
+                $r->image = $path;
+            }
+
             $r->title = $record->name;
             $r->url = $record->url;
-            $r->tool_type_id = $typeId;
-            if($path) $r->image = $path;
+            $r->tool_type_id = $typeId;            
             $r->save(); 
 
-        }        
+        }    
+        
+        // **************************************************
+        // Evaluations
+        $result = DB::connection('mysql2')->table("evaluations")->get();
+
+        foreach($result as $record)
+        {
+
+            $r = new Evaluation();
+            $r->content = $record->text;
+            $r->save(); 
+
+        }  
+
+        // **************************************************
+        // Social
+        $result = DB::connection('mysql2')->table("social")->get();
+
+        foreach($result as $record)
+        {
+
+            $r = new Social();
+            
+            if($record->photo)
+            {
+                $base64_image = $record->photo;
+                @list($type, $file_data) = explode(';', $base64_image);
+                @list(, $file_data) = explode(',', $file_data);
+                Storage::put('image.tmp', base64_decode($file_data));                        
+                $path = Storage::putFile('socials', new File('storage/app/public/image.tmp'));
+                $r->image = $path;
+            }
+
+            $r->title = $record->name;
+            $r->url = $record->url;
+            $r->home = $record->home;
+            $r->header = $record->header;
+            $r->save(); 
+
+        } 
+
+        // **************************************************
+        // Topics
+        $result = DB::connection('mysql2')->table("topics")->get();
+
+        foreach($result as $record)
+        {
+
+            $r = new Topic();
+            
+            if($record->photo)
+            {
+                $base64_image = $record->photo;
+                @list($type, $file_data) = explode(';', $base64_image);
+                @list(, $file_data) = explode(',', $file_data);
+                Storage::put('image.tmp', base64_decode($file_data));                        
+                $path = Storage::putFile('topics', new File('storage/app/public/image.tmp'));
+                $r->image = $path;
+            }
+            
+            $r->id = $record->id;
+            $r->title = $record->name;
+            $r->slug = $record->tag;
+            $r->url = $record->url;
+            $r->icon = $record->icon;
+            $r->teaching = $record->teaching;
+            $r->background = $record->background;
+            $r->save(); 
+
+        } 
+
+        // **************************************************
+        // Users
+        $result = DB::connection('mysql2')->table("users")->get();
+
+        foreach($result as $record)
+        {
+
+            $r = new User();
+            $r->first = $record->first;
+            $r->last = $record->last;
+            $r->email = $record->email;
+            $r->password = 'password';
+            $r->save(); 
+
+        } 
+
+        // **************************************************
+        // Articles
+        $result = DB::connection('mysql2')->table("articles")->get();
+
+        foreach($result as $record)
+        {
+
+            $article = ArticleType::where('title', $record->type)->get();
+
+            if($article->count() == 0)
+            {
+                $articleType = new ArticleType();
+                $articleType->title = $record->type;
+                $articleId = $articleType->save();
+            }
+            else
+            {
+                $articleId = $article[0]->id;
+            }
+
+            $r = new Article();
+
+            if($record->photo)
+            {
+                $base64_image = $record->photo;
+                @list($type, $file_data) = explode(';', $base64_image);
+                @list(, $file_data) = explode(',', $file_data);
+                Storage::put('image.tmp', base64_decode($file_data));
+                $path = Storage::putFile('articles', new File('storage/app/public/image.tmp'));
+                $r->image = $path;
+            }
+            
+            $r->title = $record->title;
+            $r->content = $record->content;
+            $r->instagram_id = $record->instagramId;
+            $r->twitter_id = $record->twitterId;
+            $r->soundcloud_id = $record->soundcloudId;
+            $r->resources = $record->resources;
+            $r->url = $record->url;
+            $r->article_type_id = $articleId;
+            $r->published_at = date('Y-m-j', strtotime($record->date));
+            $r->home = $record->home;
+            $r->save(); 
+
+        }  
+
+        // **************************************************
+        // Pages
+        $result = DB::connection('mysql2')->table("pages")->get();
+
+        foreach($result as $record)
+        {
+
+            $r = new Page();
+
+            if($record->photo)
+            {
+                $base64_image = $record->photo;
+                @list($type, $file_data) = explode(';', $base64_image);
+                @list(, $file_data) = explode(',', $file_data);
+                Storage::put('image.tmp', base64_decode($file_data));
+                $path = Storage::putFile('pages', new File('storage/app/public/image.tmp'));
+                $r->image = $path;
+            }
+            
+            $r->id = $record->id;
+            $r->title = $record->title;
+            $r->content = $record->content;
+            $r->slug = $record->url;
+            $r->tinkercad_id = $record->tinkercadId;
+            $r->arduino_id = $record->arduinoId;
+            $r->github_id = $record->githubId;
+            $r->youtube_id = $record->youtubeId;
+            $r->topic_id = $record->topicId;
+            $r->published_at = date('Y-m-j', strtotime($record->date));
+            $r->save(); 
+
+        }  
+
+        // **************************************************
+        // Topic Pages
+        $result = DB::connection('mysql2')->table("pageTopicLinks")->get();
+
+        foreach($result as $record)
+        {
+
+            $r = Page::find($record->pageId);
+            $r->topics()->attach($record->topicId);
+
+        }
 
     }
+   
 }

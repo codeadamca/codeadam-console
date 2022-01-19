@@ -21,7 +21,6 @@ class CreateSocialsTable extends Migration
             $table->enum('about', ['Yes','No'])->default('No');
             $table->enum('header', ['Yes','No'])->default('No');
             $table->string('image')->nullable();
-            $table->timestamps();
         });
     }
 
