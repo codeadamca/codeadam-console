@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ArticleType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,8 +23,7 @@ class CreateArticlesTable extends Migration
             $table->string('instagram_id')->nullable();
             $table->string('twitter_id')->nullable();
             $table->string('soundcloud_id')->nullable();
-            $table->foreignId('type_id');
-            $table->foreignId('user_id');
+            $table->foreignIdFor(ArticleType::class);
             $table->enum('home', ['Yes','No'])->default('No');
             $table->string('image')->nullable();
             $table->timestamp('published_at')->useCurrent();

@@ -22,7 +22,6 @@ class CreateTopicsTable extends Migration
             $table->enum('teaching', ['Yes','No'])->default('No');
             $table->enum('background', ['Light','Dark'])->default('Light');
             $table->string('image')->nullable();
-            $table->timestamps();
         });
     }
 
