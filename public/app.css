@@ -1,0 +1,25 @@
+
+.ca-container-small {
+    max-width: 600px;
+    margin: auto;
+}
+.ca-container-large {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.w3-orange {
+    background-color: #eb741d !important;
+    color: #fff !important;
+}
+.w3-red {
+    background-color: #eb062c !important;
+    color: #fff !important;
+}
+.w3-text-orange {
+    color: #eb741d !important;
+}
+.w3-text-red {
+    color: #eb062c !important;
+}
+
