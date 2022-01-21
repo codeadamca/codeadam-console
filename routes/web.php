@@ -2,6 +2,7 @@
 
 use App\Models\Project;
 use App\Http\Controllers\ConsoleController;
+use App\Http\Controllers\EvaluationsController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,10 @@ Route::post('/users/add', [UsersController::class, 'add'])->middleware('auth');
 Route::get('/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware('auth');
 Route::post('/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware('auth');
 Route::get('/users/delete/{user:id}', [UsersController::class, 'delete'])->where('user', '[0-9]+')->middleware('auth');
+
+Route::get('/evaluations/list', [EvaluationsController::class, 'list'])->middleware('auth');
+Route::get('/evaluations/add', [EvaluationsController::class, 'addForm'])->middleware('auth');
+Route::post('/evaluations/add', [EvaluationsController::class, 'add'])->middleware('auth');
+Route::get('/evaluations/edit/{evaluation:id}', [EvaluationsController::class, 'editForm'])->where('evaluation', '[0-9]+')->middleware('auth');
+Route::post('/evaluations/edit/{evaluation:id}', [EvaluationsController::class, 'edit'])->where('evaluation', '[0-9]+')->middleware('auth');
+Route::get('/evaluations/delete/{evaluation:id}', [EvaluationsController::class, 'delete'])->where('evaluation', '[0-9]+')->middleware('auth');

@@ -99,6 +99,7 @@ class DatabaseSeeder extends Seeder
         {
 
             $r = new Evaluation();
+            $r->title = 'New Evaluation';
             $r->content = $record->text;
             $r->save(); 
 

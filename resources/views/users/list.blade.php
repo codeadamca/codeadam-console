@@ -41,7 +41,7 @@
     </table>
 
     <div class="w3-center">
-        <a href="/users/add" class="w3-button w3-orange">New User</a>
+        <a href="/users/add" class="w3-button w3-orange">Add User</a>
     </div>
 
 </section>
