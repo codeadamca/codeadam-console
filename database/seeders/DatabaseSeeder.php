@@ -5,8 +5,10 @@ namespace Database\Seeders;
 use App\Models\Article;
 use App\Models\ArticleType;
 use App\Models\Evaluation;
+use App\Models\Meme;
 use App\Models\Page;
 use App\Models\Social;
+use App\Models\Tag;
 use App\Models\Tool;
 use App\Models\ToolType;
 use App\Models\Topic;
@@ -43,12 +45,15 @@ class DatabaseSeeder extends Seeder
         ToolType::query()->delete();
         Topic::query()->delete();
         User::query()->delete();
+        Meme::query()->delete();
+        Tag::query()->delete();
 
         // Remove any files from previous seeding
         Storage::deleteDirectory('articles');
         Storage::deleteDirectory('socials');
         Storage::deleteDirectory('tools');
         Storage::deleteDirectory('topics');
+        Storage::deleteDirectory('memes');
         
         // Seeing this database will import previous codeadam.ca content from the codeadam1 database
 
@@ -266,6 +271,56 @@ class DatabaseSeeder extends Seeder
 
             $r = Page::find($record->pageId);
             $r->topics()->attach($record->topicId);
+
+        }
+
+        // **************************************************
+        // Tags
+        $tags = ['php', 'stackoverflow', 'html', 'javascript', 'coding', 'css', 'debugging', 'design', 'uiux', 'ai'];
+
+        foreach($tags as $tag)
+        {
+            $r = new Tag();
+            $r->title = $tag;
+            $r->save();
+        }
+
+        // **************************************************
+        // Memes
+        $memes =[
+            [
+                'title' => 'Baby Mobile',
+                'image' => 'https://preview.redd.it/gq3r9np0v1d81.jpg?width=640&crop=smart&auto=webp&s=a7c9fc4697f6dbbb6d1004b5b8dda48254fec75b',
+                'tags' => ['uiux', 'design', 'debugging']
+            ],[
+                'title' => 'Sims AI',
+                'image' => 'https://external-preview.redd.it/lCd6J51RxAciVjLu62FGMKLWmULhtgGJnHzUyrnkAvI.jpg?width=640&crop=smart&auto=webp&s=6ad95257e47597a7e4126fd4a228733df5e9c9c6',
+                'tags' => ['coding', 'ai']
+            ]
+        ];
+
+        foreach($memes as $meme)
+        {
+            $r = new Meme();
+            $r->title = $meme['title'];
+
+            Storage::put('image.tmp', file_get_contents($meme['image']));
+            $path = Storage::putFile('memes', new File('storage/app/public/image.tmp'));
+            $r->image = $path;
+
+            $r->save();
+
+            $mid = $r->id;
+
+            foreach($meme['tags'] as $tag)
+            {
+                $tid = Tag::where('title', $tag)->first()->id;
+
+                $r = Meme::find($mid);
+                $r->tags()->attach($tid);
+            }
+
+
 
         }
 

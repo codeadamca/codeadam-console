@@ -31,4 +31,5 @@ class Page extends Model
     {
         return $this->belongsToMany(Topic::class);
     }
+    
 }
