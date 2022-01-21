@@ -6,6 +6,7 @@
 
         <title>CodeAdam Website Admin</title>
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="{{url('app.css')}}">
 
@@ -16,7 +17,7 @@
     </head>
     <body class="w3-text-dark-grey">
 
-        <header class="w3-padding w3-center w3-border-bottom w3-margin">
+        <header class="w3-padding-32 w3-center w3-border-bottom w3-margin-bottom">
 
             <h1 class="w3-text-red">CodeAdam Website Admin</h1>
 
@@ -25,23 +26,29 @@
                     You are logged in as {{auth()->user()->first}} {{auth()->user()->last}}
                 <div>
                 <i class="fas fa-tachometer-alt"></i> <a href="/dashboard">Dashboard</a> | 
-                <i class="fas fa-search"></i> <a href="/">Website Home Page</a> | 
+                <i class="fas fa-search"></i> <a href="https://codeadam.ca/">Website Home Page</a> | 
                 <i class="fas fa-sign-out-alt"></i> <a href="/logout">Log Out</a> 
             @endif
 
         </header>
 
         @if (session()->has('message'))
-            <div class="w3-padding w3-margin-top w3-margin-bottom">
+            <div class="w3-padding w3-margin">
                 <div class="w3-red w3-center w3-padding">{{session()->get('message')}}</div>
             </div>
         @endif
+        
+        <main class="w3-margin">
 
-        @yield ('content')
+            @yield ('content')
 
-        <footer class="w3-padding w3-container w3-center w3-border-top w3-margin">
+        </main>
 
-            
+        <footer class="w3-padding-32 w3-container w3-center w3-border-top w3-margin-top">
+
+            <a href="https://codeadam.ca/">
+                <img src="https://codeadam.ca/images/code-block.png" width="75">
+            </a>
 
         </footer>
 

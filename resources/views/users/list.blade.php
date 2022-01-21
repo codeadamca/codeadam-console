@@ -16,8 +16,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Created</th>
-            <th></th>
-            <th></th>
+            <th class="ca-col-icon"></th>
+            <th class="ca-col-icon"></th>
         </tr>
         <?php foreach($users as $user): ?>
             <tr>

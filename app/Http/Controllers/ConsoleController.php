@@ -39,13 +39,14 @@ class ConsoleController extends Controller
     public function dashboard()
     {
         $links = [
-            ['icon' => 'fas fa-user', 'text' => 'Manage Users', 'route' => '/users/list'],
-            ['icon' => 'fas fa-columns', 'text' => 'Manage Topics', 'route' => '/topics/list'],
-            ['icon' => 'fas fa-share-alt-square', 'text' => 'Manage Social', 'route' => '/socials/list'],
-            ['icon' => 'fas fa-tools', 'text' => 'Manage Tools', 'route' => '/tools/list'],
-            ['icon' => 'fas fa-newspaper', 'text' => 'Manage Articles', 'route' => '/articles/list'],
-            ['icon' => 'fas fa-quote-left', 'text' => 'Manage Evaluations', 'route' => '/evaluations/list'],
-            ['icon' => 'fas fa-chalkboard', 'text' => 'Manage Pages', 'route' => '/pages/list'],
+            ['icon' => 'fas fa-user', 'text' => 'Users', 'route' => '/users/list'],
+            ['icon' => 'fas fa-columns', 'text' => 'Topics', 'route' => '/topics/list'],
+            ['icon' => 'fas fa-share-alt-square', 'text' => 'Social', 'route' => '/socials/list'],
+            ['icon' => 'fas fa-tools', 'text' => 'Tools', 'route' => '/tools/list'],
+            ['icon' => 'fas fa-newspaper', 'text' => 'Articles', 'route' => '/articles/list'],
+            ['icon' => 'fas fa-quote-left', 'text' => 'Evaluations', 'route' => '/evaluations/list'],
+            ['icon' => 'fas fa-chalkboard', 'text' => 'Pages', 'route' => '/pages/list'],
+            ['icon' => 'fas fa-image', 'text' => 'Memes', 'route' => '/memes/list'],
             ['icon' => 'fas fa-sign-out-alt', 'text' => 'Logout', 'route' => '/logout'],
         ];
 

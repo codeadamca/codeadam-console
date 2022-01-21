@@ -1,4 +1,8 @@
 
+body, h1, h2, h3, h4, h5, h6, input, textarea, option {
+    font-family: 'Lora', serif !important;
+}
+
 .ca-container-small {
     max-width: 600px;
     margin: auto;
@@ -23,3 +27,13 @@
     color: #eb062c !important;
 }
 
+.ca-col-icon {
+    width: 35px;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+}
