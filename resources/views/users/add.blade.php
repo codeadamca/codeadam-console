@@ -12,7 +12,7 @@
         Add User
     </div>
 
-    <form method="post" action="/users/add" novalidate class="w3-margin-bottom">
+    <form method="post" action="/users/add" novalidate class="w3-margin-bottom" autocomplete="off">
 
         {{csrf_field()}}
 

@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <form method="post" action="/memes/image/{{$meme->id}}" novalidate class="w3-margin-bottom" enctype="multipart/form-data">
+    <form method="post" action="/memes/image/{{$meme->id}}" novalidate class="w3-margin-bottom" enctype="multipart/form-data" autocomplete="off">
 
         {{csrf_field()}}
 

@@ -12,7 +12,7 @@
         Edit Evaluation: {{$evaluation->title}}
     </div>
 
-    <form method="post" action="/evaluations/edit/{{$evaluation->id}}" novalidate class="w3-margin-bottom">
+    <form method="post" action="/evaluations/edit/{{$evaluation->id}}" novalidate class="w3-margin-bottom" autocomplete="off">
 
         <?= csrf_field() ?>
 

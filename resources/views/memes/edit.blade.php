@@ -12,7 +12,7 @@
         Edit Meme: {{$meme->title}}
     </div>
 
-    <form method="post" action="/memes/edit/{{$meme->id}}" novalidate class="w3-margin-bottom">
+    <form method="post" action="/memes/edit/{{$meme->id}}" novalidate class="w3-margin-bottom" autocomplete="off">
 
         <?= csrf_field() ?>
 

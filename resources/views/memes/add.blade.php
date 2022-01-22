@@ -12,7 +12,7 @@
         Add Meme
     </div>
 
-    <form method="post" action="/memes/add" novalidate class="w3-margin-bottom">
+    <form method="post" action="/memes/add" novalidate class="w3-margin-bottom" autocomplete="off">
 
         {{csrf_field()}}
 

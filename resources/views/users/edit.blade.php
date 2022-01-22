@@ -12,7 +12,7 @@
         Edit User: {{$user->first}} {{$user->last}}
     </div>
 
-    <form method="post" action="/users/edit/{{$user->id}}" novalidate class="w3-margin-bottom">
+    <form method="post" action="/users/edit/{{$user->id}}" novalidate class="w3-margin-bottom" autocomplete="off">
 
         <?= csrf_field() ?>
 
