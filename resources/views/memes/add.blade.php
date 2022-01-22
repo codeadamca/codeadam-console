@@ -20,9 +20,9 @@
             <label for="title">Title:</label>
             <input type="text" name="title" id="title" value="{{old('title')}}" required class="w3-input w3-border">
             
-            @if ($errors->first('title'))
-                <span class="w3-text-red">{{$errors->first('title')}}</span>
-            @endif
+            @error ('title')
+                <small class="w3-text-red">{{$message}}</small>
+            @enderror
         </div>
 
         <div class="w3-margin-bottom">
@@ -35,9 +35,9 @@
                     </option>
                 @endforeach
             </select>
-            @if ($errors->first('tag_id'))
-                <span class="w3-text-red">{{$errors->first('tag_id')}}</span>
-            @endif
+            @error ('tag_id')
+                <small class="w3-text-red">{{$message}}</small>
+            @enderror
         </div>
 
         <div class="w3-center">

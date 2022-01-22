@@ -26,9 +26,9 @@
             <label for="image">Image:</label>
             <input type="file" name="image" id="image" value="{{old('image')}}" required class="w3-input w3-border">
             
-            @if ($errors->first('image'))
-                <span class="w3-text-red">{{$errors->first('image')}}</span>
-            @endif
+            @error ('image')
+                <small class="w3-text-red">{{$message}}</small>
+            @enderror
         </div>
 
         <div class="w3-center">

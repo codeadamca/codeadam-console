@@ -20,18 +20,18 @@
             <label for="title">Title:</label>
             <input type="text" name="title" id="title" value="{{old('title', $evaluation->title)}}" required class="w3-input w3-border">
             
-            @if ($errors->first('title'))
-                <span class="w3-text-red">{{$errors->first('title')}}</span>
-            @endif
+            @error ('title')
+                <small class="w3-text-red">{{$message}}</small>
+            @enderror
         </div>
 
         <div class="w3-margin-bottom">
             <label for="content">Content:</label>
             <textarea type="text" name="content" id="content" required class="w3-input w3-border">{{old('content', $evaluation->content)}}</textarea>
             
-            @if ($errors->first('content'))
-                <span class="w3-text-red">{{$errors->first('content')}}</span>
-            @endif
+            @error ('content')
+                <small class="w3-text-red">{{$message}}</small>
+            @enderror
         </div>
 
         <div class="w3-center">

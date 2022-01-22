@@ -20,36 +20,36 @@
             <label for="first">First Name:</label>
             <input type="text" name="first" id="first" value="{{old('first', $user->first)}}" required class="w3-input w3-border">
             
-            @if ($errors->first('first'))
-                <span class="w3-text-red">{{$errors->first('first')}}</span>
-            @endif
+            @error ('first')
+                <small class="w3-text-red">{{$message}}</small>
+            @enderror
         </div>
 
         <div class="w3-margin-bottom">
             <label for="last">Last Name:</label>
             <input type="text" name="last" id="last" value="{{old('last', $user->last)}}" required class="w3-input w3-border">
             
-            @if ($errors->first('last'))
-                <span class="w3-text-red">{{$errors->first('last')}}</span>
-            @endif
+            @error ('last')
+                <small class="w3-text-red">{{$message}}</small>
+            @enderror
         </div>
 
         <div class="w3-margin-bottom">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" value="{{old('email', $user->email)}}" class="w3-input w3-border">
 
-            @if ($errors->first('email'))
-                <span class="w3-text-red">{{$errors->first('email')}}</span>
-            @endif
+            @error ('email')
+                <small class="w3-text-red">{{$message}}</small>
+            @enderror
         </div>
 
         <div class="w3-margin-bottom">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" class="w3-input w3-border">
 
-            @if ($errors->first('password'))
-                <span class="w3-text-red">{{$errors->first('password')}}</span>
-            @endif
+            @error ('password')
+                <small class="w3-text-red">{{$messsage}}</small>
+            @enderror
         </div>
 
         <div class="w3-center">
