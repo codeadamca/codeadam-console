@@ -4,7 +4,7 @@
 
 <section class="w3-padding ca-container-large">
 
-    <h2 class="w3-text-orange w3-center">Manage Evaluations</h2>
+    @include ('layout.title', ['title' => 'Manage Evaluations'])
 
     <div class="w3-text-grey w3-small w3-margin-bottom">
         <a href="/dashboard">Dashboard</a> / 
