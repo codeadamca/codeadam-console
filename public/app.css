@@ -2,6 +2,9 @@
 body, h1, h2, h3, h4, h5, h6, input, textarea, option {
     font-family: 'Lora', serif !important;
 }
+td {
+    vertical-align: middle !important;
+}
 
 .ca-container-small {
     max-width: 600px;
@@ -29,6 +32,9 @@ body, h1, h2, h3, h4, h5, h6, input, textarea, option {
 
 .ca-col-icon {
     width: 35px;
+}
+.ca-col-image {
+    width: 84px;
 }
 
 a:link,

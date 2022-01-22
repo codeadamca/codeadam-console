@@ -3,6 +3,7 @@
 use App\Models\Project;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\EvaluationsController;
+use App\Http\Controllers\MemesController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,12 @@ Route::post('/evaluations/add', [EvaluationsController::class, 'add'])->middlewa
 Route::get('/evaluations/edit/{evaluation:id}', [EvaluationsController::class, 'editForm'])->where('evaluation', '[0-9]+')->middleware('auth');
 Route::post('/evaluations/edit/{evaluation:id}', [EvaluationsController::class, 'edit'])->where('evaluation', '[0-9]+')->middleware('auth');
 Route::get('/evaluations/delete/{evaluation:id}', [EvaluationsController::class, 'delete'])->where('evaluation', '[0-9]+')->middleware('auth');
+
+Route::get('/memes/list', [MemesController::class, 'list'])->middleware('auth');
+Route::get('/memes/add', [MemesController::class, 'addForm'])->middleware('auth');
+Route::post('/memes/add', [MemesController::class, 'add'])->middleware('auth');
+Route::get('/memes/edit/{meme:id}', [MemesController::class, 'editForm'])->where('meme', '[0-9]+')->middleware('auth');
+Route::post('/memes/edit/{meme:id}', [MemesController::class, 'edit'])->where('meme', '[0-9]+')->middleware('auth');
+Route::get('/memes/delete/{meme:id}', [MemesController::class, 'delete'])->where('meme', '[0-9]+')->middleware('auth');
+Route::get('/memes/image/{meme:id}', [MemesController::class, 'imageForm'])->where('meme', '[0-9]+')->middleware('auth');
+Route::post('/memes/image/{meme:id}', [MemesController::class, 'image'])->where('meme', '[0-9]+')->middleware('auth');
