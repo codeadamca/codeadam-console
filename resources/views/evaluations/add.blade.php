@@ -14,7 +14,7 @@
 
     <form method="post" action="/evaluations/add" novalidate class="w3-margin-bottom" autocomplete="off">
 
-        {{csrf_field()}}
+        @csrf
 
         <div class="w3-margin-bottom">
             <label for="title">Title:</label>

@@ -40,7 +40,7 @@ class Topic extends Model
     
     public function backgrounds()
     {
-        return ['Dark', 'LIght'];
+        return ['Dark', 'Light'];
     }
     
 }

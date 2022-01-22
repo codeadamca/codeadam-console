@@ -6,7 +6,7 @@
 
     <form method="post" action="/" novalidate>
 
-        <?= csrf_field() ?>
+        @csrf
 
         <div class="w3-margin-bottom">
             <label for="email">Email Address:</label>

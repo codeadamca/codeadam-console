@@ -20,7 +20,7 @@
 
     <form method="post" action="/memes/image/{{$meme->id}}" novalidate class="w3-margin-bottom" enctype="multipart/form-data" autocomplete="off">
 
-        {{csrf_field()}}
+        @csrf
 
         <div class="w3-margin-bottom">
             <label for="image">Image:</label>
