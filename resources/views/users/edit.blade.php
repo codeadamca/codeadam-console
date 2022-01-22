@@ -6,11 +6,7 @@
 
     @include ('layout.title', ['title' => 'Edit User'])
 
-    <div class="w3-text-grey w3-small w3-margin-bottom">
-        <a href="/dashboard">Dashboard</a> / 
-        <a href="/users/list">Manage Users</a> / 
-        Edit User: {{$user->first}} {{$user->last}}
-    </div>
+    @include ('layout.breadcrumbs', ['links' => ['Manage Users' => '/users/list'], 'title' => 'Edit User: '.$user->first.' '.$user->last])
 
     <form method="post" action="/users/edit/{{$user->id}}" novalidate class="w3-margin-bottom" autocomplete="off">
 

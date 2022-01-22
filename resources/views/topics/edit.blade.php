@@ -6,11 +6,7 @@
 
     @include ('layout.title', ['title' => 'Edit Topic'])
 
-    <div class="w3-text-grey w3-small w3-margin-bottom">
-        <a href="/dashboard">Dashboard</a> / 
-        <a href="/topics/list">Manage Topics</a> / 
-        Edit Topic: {{$topic->title}}
-    </div>
+    @include ('layout.breadcrumbs', ['links' => ['Manage Topics' => '/topics/list'], 'title' => 'Edit Topic: '.$topic->title])
 
     <form method="post" action="/topics/edit/{{$topic->id}}" novalidate class="w3-margin-bottom" autocomplete="off">
 

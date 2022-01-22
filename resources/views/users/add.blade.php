@@ -6,11 +6,7 @@
 
     @include ('layout.title', ['title' => 'Add User'])
 
-    <div class="w3-text-grey w3-small w3-margin-bottom">
-        <a href="/dashboard">Dashboard</a> / 
-        <a href="/users/list">Manage Users</a> / 
-        Add User
-    </div>
+    @include ('layout.breadcrumbs', ['links' => ['Manage Users' => '/users/list'], 'title' => 'Add User'])
 
     <form method="post" action="/users/add" novalidate class="w3-margin-bottom" autocomplete="off">
 

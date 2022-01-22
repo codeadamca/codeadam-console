@@ -6,11 +6,7 @@
 
     @include ('layout.title', ['title' => 'Add Evaluation'])
 
-    <div class="w3-text-grey w3-small w3-margin-bottom">
-        <a href="/dashboard">Dashboard</a> / 
-        <a href="/evaluations/list">Manage Evaluations</a> / 
-        Add Evaluation
-    </div>
+    @include ('layout.breadcrumbs', ['links' => ['Manage Evalutions' => '/evaluations/list'], 'title' => 'Add Evaluation'])
 
     <form method="post" action="/evaluations/add" novalidate class="w3-margin-bottom" autocomplete="off">
 

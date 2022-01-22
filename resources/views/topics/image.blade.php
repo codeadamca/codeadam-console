@@ -6,11 +6,7 @@
 
     @include ('layout.title', ['title' => 'Topic Image'])
 
-    <div class="w3-text-grey w3-small w3-margin-bottom">
-        <a href="/dashboard">Dashboard</a> / 
-        <a href="/topics/list">Manage Topics</a> / 
-        Topic Image: {{$topic->title}}
-    </div>
+    @include ('layout.breadcrumbs', ['links' => ['Manage Topics' => '/topics/list'], 'title' => 'Topic Image: '.$topic->title])
 
     @if ($topic->image)
         <div class="w3-center w3-light-grey w3-padding w3-border w3-margin-bottom">

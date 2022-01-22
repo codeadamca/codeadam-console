@@ -6,11 +6,7 @@
 
     @include ('layout.title', ['title' => 'Edit Meme'])
 
-    <div class="w3-text-grey w3-small w3-margin-bottom">
-        <a href="/dashboard">Dashboard</a> / 
-        <a href="/memes/list">Manage Memes</a> / 
-        Edit Meme: {{$meme->title}}
-    </div>
+    @include ('layout.breadcrumbs', ['links' => ['Manage Memes' => '/memes/list'], 'title' => 'Edit Meme: '.$meme->title])
 
     <form method="post" action="/memes/edit/{{$meme->id}}" novalidate class="w3-margin-bottom" autocomplete="off">
 

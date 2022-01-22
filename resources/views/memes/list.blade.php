@@ -6,10 +6,7 @@
 
     @include ('layout.title', ['title' => 'Manage Memes'])
 
-    <div class="w3-text-grey w3-small w3-margin-bottom">
-        <a href="/dashboard">Dashboard</a> / 
-        Manage Memes
-    </div>
+    @include ('layout.breadcrumbs', ['title' => 'Manage Memes'])
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
