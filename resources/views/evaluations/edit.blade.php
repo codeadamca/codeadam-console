@@ -12,27 +12,11 @@
 
         @csrf
 
-        <div class="w3-margin-bottom">
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title" value="{{old('title', $evaluation->title)}}" required class="w3-input w3-border">
-            
-            @error ('title')
-                <small class="w3-text-red">{{$message}}</small>
-            @enderror
-        </div>
+        @include ('layout.forms.text', ['name' => 'title', 'value' => $evaluation->title])
 
-        <div class="w3-margin-bottom">
-            <label for="content">Content:</label>
-            <textarea type="text" name="content" id="content" required class="w3-input w3-border">{{old('content', $evaluation->content)}}</textarea>
-            
-            @error ('content')
-                <small class="w3-text-red">{{$message}}</small>
-            @enderror
-        </div>
+        @include ('layout.forms.textarea', ['name' => 'content', 'value' => $evaluation->content])
 
-        <div class="w3-center">
-            <button type="submit" class="w3-button w3-orange">Edit Evaluation</button>
-        </div>
+        @include ('layout.forms.button', ['label' => 'Edit Evaluation'])
 
     </form>
 
