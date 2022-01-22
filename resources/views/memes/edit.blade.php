@@ -16,7 +16,7 @@
 
         @include ('layout.forms.select', ['name' => 'tag_id', 'label' => 'Tags', 'options' => $tags, 'type' => 'multiple', 'selected' => $meme->tags()->pluck('tag_id')->toArray()])
 
-        @include ('layout.forms.button', ['label' => 'Edit MEme'])
+        @include ('layout.forms.button', ['label' => 'Edit Meme'])
 
     </form>
 
