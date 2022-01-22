@@ -21,7 +21,7 @@
             <input type="text" name="title" id="title" value="{{old('title', $meme->title)}}" required class="w3-input w3-border">
             
             @error ('title')
-                <span class="w3-text-red">{{$message}}</span>
+                <small class="w3-text-red">{{$message}}</small>
             @enderror
         </div>
         
@@ -36,7 +36,7 @@
                 @endforeach
             </select>
             @error ('tag_id')
-                <span class="w3-text-red">{{$message}}</span>
+                <small class="w3-text-red">{{$message}}</small>
             @enderror
         </div>
 

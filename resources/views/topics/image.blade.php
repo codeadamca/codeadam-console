@@ -4,21 +4,21 @@
 
 <section class="w3-padding ca-container-small">
 
-    <h2 class="w3-text-orange w3-center">Meme Image</h2>
+    <h2 class="w3-text-orange w3-center">Topic Image</h2>
 
     <div class="w3-text-grey w3-small w3-margin-bottom">
         <a href="/dashboard">Dashboard</a> / 
-        <a href="/memes/list">Manage Memes</a> / 
-        Meme Image: {{$meme->title}}
+        <a href="/topics/list">Manage Topics</a> / 
+        Topic Image: {{$topic->title}}
     </div>
 
-    @if ($meme->image)
+    @if ($topic->image)
         <div class="w3-center w3-light-grey w3-padding w3-border w3-margin-bottom">
-            <img src="{{asset('storage/'.$meme->image)}}" width="400">
+            <img src="{{asset('storage/'.$topic->image)}}" width="400">
         </div>
     @endif
 
-    <form method="post" action="/memes/image/{{$meme->id}}" novalidate class="w3-margin-bottom" enctype="multipart/form-data" autocomplete="off">
+    <form method="post" action="/topics/image/{{$topic->id}}" novalidate class="w3-margin-bottom" enctype="multipart/form-data" autocomplete="off">
 
         {{csrf_field()}}
 

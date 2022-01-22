@@ -15,10 +15,8 @@ class Tag extends Model
         'title',
     ];
 
-    /*
     public function memes()
     {
         return $this->belongsToMany(Meme::class);
     }
-    */
 }

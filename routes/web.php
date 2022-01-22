@@ -5,6 +5,7 @@ use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\EvaluationsController;
 use App\Http\Controllers\MemesController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,12 @@ Route::post('/memes/edit/{meme:id}', [MemesController::class, 'edit'])->where('m
 Route::get('/memes/delete/{meme:id}', [MemesController::class, 'delete'])->where('meme', '[0-9]+')->middleware('auth');
 Route::get('/memes/image/{meme:id}', [MemesController::class, 'imageForm'])->where('meme', '[0-9]+')->middleware('auth');
 Route::post('/memes/image/{meme:id}', [MemesController::class, 'image'])->where('meme', '[0-9]+')->middleware('auth');
+
+Route::get('/topics/list', [TopicsController::class, 'list'])->middleware('auth');
+Route::get('/topics/add', [TopicsController::class, 'addForm'])->middleware('auth');
+Route::post('/topics/add', [TopicsController::class, 'add'])->middleware('auth');
+Route::get('/topics/edit/{topic:id}', [TopicsController::class, 'editForm'])->where('topic', '[0-9]+')->middleware('auth');
+Route::post('/topics/edit/{topic:id}', [TopicsController::class, 'edit'])->where('topic', '[0-9]+')->middleware('auth');
+Route::get('/topics/delete/{topic:id}', [TopicsController::class, 'delete'])->where('topic', '[0-9]+')->middleware('auth');
+Route::get('/topics/image/{topic:id}', [TopicsController::class, 'imageForm'])->where('topic', '[0-9]+')->middleware('auth');
+Route::post('/topics/image/{topic:id}', [TopicsController::class, 'image'])->where('topic', '[0-9]+')->middleware('auth');

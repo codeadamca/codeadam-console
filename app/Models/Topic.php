@@ -21,9 +21,26 @@ class Topic extends Model
         'image',
     ];
 
+    /*
     public function pages()
     {
         return $this->hadMany(Page::class, 'topic_id');
+    }
+    */
+
+    public function pages()
+    {
+        return $this->belongsToMany(Page::class);
+    }
+
+    public function teachings()
+    {
+        return ['Yes', 'No'];
+    }
+    
+    public function backgrounds()
+    {
+        return ['Dark', 'LIght'];
     }
     
 }
