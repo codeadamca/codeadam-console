@@ -53,10 +53,8 @@
         <?php endforeach; ?>
     </table>
 
-    <div class="w3-center">
-        <a href="/memes/add" class="w3-button w3-orange">Add Meme</a>
-    </div>
-
+    @include ('layout.forms.button', ['label' => 'Add Meme', 'href' => '/memes/add'])
+    
 </section>
 
 @endsection

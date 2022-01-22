@@ -37,9 +37,7 @@
         <?php endforeach; ?>
     </table>
 
-    <div class="w3-center">
-        <a href="/users/add" class="w3-button w3-orange">Add User</a>
-    </div>
+    @include ('layout.forms.button', ['label' => 'Add User', 'href' => '/users/add'])
 
 </section>
 

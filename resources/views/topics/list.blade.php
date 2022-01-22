@@ -65,9 +65,7 @@
         <?php endforeach; ?>
     </table>
 
-    <div class="w3-center">
-        <a href="/topics/add" class="w3-button w3-orange">Add Topic</a>
-    </div>
+    @include ('layout.forms.button', ['label' => 'Add Topic', 'href' => '/topics/add'])
 
 </section>
 
