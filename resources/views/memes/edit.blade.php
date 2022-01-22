@@ -12,33 +12,11 @@
 
         @csrf
 
-        <div class="w3-margin-bottom">
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title" value="{{old('title', $meme->title)}}" required class="w3-input w3-border">
-            
-            @error ('title')
-                <small class="w3-text-red">{{$message}}</small>
-            @enderror
-        </div>
-        
-        <div class="w3-margin-bottom">
-            <label for="tag_id">Tags:</label>
-            <select name="tag_id[]" id="tag_id" required multiple size="7" class="w3-input w3-border">
-                @foreach($tags as $tag)
-                    <option value="{{$tag->id}}"
-                        {{(is_array(old('tag_id', $meme->tags()->pluck('tag_id')->toArray())) && in_array($tag->id,old('tag_id', $meme->tags()->pluck('tag_id')->toArray()))) ? 'selected' : ''}}>
-                        {{$tag->title}}
-                    </option>
-                @endforeach
-            </select>
-            @error ('tag_id')
-                <small class="w3-text-red">{{$message}}</small>
-            @enderror
-        </div>
+        @include ('layout.forms.text', ['name' => 'title', 'value' => $meme->title])
 
-        <div class="w3-center">
-            <button type="submit" class="w3-button w3-orange">Edit Meme</button>
-        </div>
+        @include ('layout.forms.select', ['name' => 'tag_id', 'label' => 'Tags', 'options' => $tags, 'type' => 'multiple', 'selected' => $meme->tags()->pluck('tag_id')->toArray()])
+
+        @include ('layout.forms.button', ['label' => 'Edit MEme'])
 
     </form>
 

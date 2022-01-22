@@ -20,9 +20,9 @@
 
         @include ('layout.forms.text', ['name' => 'icon', 'value' => $topic->icon, 'label' => 'Font Awesome Icon'])
         
-        @include ('layout.forms.select', ['name' => 'teaching', 'label' => 'Display on Teaching Page', 'options' => $teachings, 'value' => $topic->teaching])
+        @include ('layout.forms.select', ['name' => 'teaching', 'label' => 'Display on Teaching Page', 'options' => $teachings, 'selected' => $topic->teaching])
 
-        @include ('layout.forms.select', ['name' => 'background', 'label' => 'Banner Background', 'options' => $backgrounds, 'value' => $topic->background])
+        @include ('layout.forms.select', ['name' => 'background', 'label' => 'Banner Background', 'options' => $backgrounds, 'selected' => $topic->background])
 
         @include ('layout.forms.button', ['label' => 'Edit Topic'])
 

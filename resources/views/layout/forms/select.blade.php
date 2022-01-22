@@ -1,24 +1,31 @@
 
 <div class="w3-margin-bottom">
-    <label for="{{$name}}">{{$label ?? ucwords($name)}}:</label>
+    <label for="{{$name}}">{{$label ?? ucwords($name)}}:</label>    
 
-    @if ($type ?? 'enum' == 'enum')
+    @if (($type ?? false) == 'table')
+
+
+    @elseif (($type ?? false) == 'multiple')
+        
+        <select name="tag_id[]" id="tag_id" required multiple size="7" class="w3-input w3-border">
+            @foreach($options as $option)
+                <option value="{{$option->id}}"
+                    {{(is_array(old('tag_id', $selected ?? false)) && in_array($option->id,old('tag_id', $selected ?? false))) ? 'selected' : ''}}>
+                    {{$option->title}}
+                </option>
+            @endforeach
+        </select>
+          
+    @else 
 
         <select name="{{$name}}" id="{{$name}}" required class="w3-input w3-border">
-            @foreach ($options as $id => $option)
+            @foreach ($options as $option)
                 <option value="{{$option}}"
-                    {{$option == old($name, $value ?? false) ? 'selected' : ''}}>
+                    {{$option == old($name, $selected ?? false) ? 'selected' : ''}}>
                     {{$option}}
                 </option>
             @endforeach
-        </select>        
-
-    @elseif ($type == 'table')
-
-
-    @elseif ($type == 'multiple')
-
-        
+        </select>   
 
     @endif
 
