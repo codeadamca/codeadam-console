@@ -65,3 +65,12 @@ Route::post('/topics/edit/{topic:id}', [TopicsController::class, 'edit'])->where
 Route::get('/topics/delete/{topic:id}', [TopicsController::class, 'delete'])->where('topic', '[0-9]+')->middleware('auth');
 Route::get('/topics/image/{topic:id}', [TopicsController::class, 'imageForm'])->where('topic', '[0-9]+')->middleware('auth');
 Route::post('/topics/image/{topic:id}', [TopicsController::class, 'image'])->where('topic', '[0-9]+')->middleware('auth');
+
+Route::get('/socials/list', [SocialsController::class, 'list'])->middleware('auth');
+Route::get('/socials/add', [SocialsController::class, 'addForm'])->middleware('auth');
+Route::post('/socials/add', [SocialsController::class, 'add'])->middleware('auth');
+Route::get('/socials/edit/{social:id}', [SocialsController::class, 'editForm'])->where('social', '[0-9]+')->middleware('auth');
+Route::post('/socials/edit/{social:id}', [SocialsController::class, 'edit'])->where('social', '[0-9]+')->middleware('auth');
+Route::get('/socials/delete/{social:id}', [SocialsController::class, 'delete'])->where('social', '[0-9]+')->middleware('auth');
+Route::get('/socials/image/{social:id}', [SocialsController::class, 'imageForm'])->where('social', '[0-9]+')->middleware('auth');
+Route::post('/socials/image/{social:id}', [SocialsController::class, 'image'])->where('social', '[0-9]+')->middleware('auth');
