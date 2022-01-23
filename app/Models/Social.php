@@ -14,9 +14,25 @@ class Social extends Model
     protected $fillable = [
         'title',
         'url',
+        'icon',
         'home',
         'about',
         'header',
         'image',
     ];
+
+    public function homes()
+    {
+        return ['Yes', 'No'];
+    }
+    
+    public function abouts()
+    {
+        return ['Yes', 'No'];
+    }
+
+    public function headers()
+    {
+        return ['Yes', 'No'];
+    }
 }

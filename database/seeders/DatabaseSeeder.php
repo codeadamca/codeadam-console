@@ -112,6 +112,19 @@ class DatabaseSeeder extends Seeder
 
         // **************************************************
         // Social
+        $icons = [
+            'Facebook' => 'fab fa-facebook',
+            'YouTube' => 'fab fa-youtube',
+            'Twitter' => 'fab fa-twitter',
+            'LinkedIn' => 'fab fa-linkedin',
+            'Instagram' => 'fab fa-instagram',
+            'GitHub' => 'fab fa-github',
+            'Stack Overflow' => 'fab fa-stack-overflow',
+            'Twitch' => 'fab fa-twitch',
+            'Flickr' => 'fab fa-flickr',
+        ];
+
+
         $result = DB::connection('mysql2')->table("social")->get();
 
         foreach($result as $record)
@@ -127,6 +140,11 @@ class DatabaseSeeder extends Seeder
                 Storage::put('image.tmp', base64_decode($file_data));                        
                 $path = Storage::putFile('socials', new File('storage/app/public/image.tmp'));
                 $r->image = $path;
+            }
+
+            if(array_key_exists($record->name, $icons))
+            {
+                $r->icon = $icons[$record->name];
             }
 
             $r->title = $record->name;

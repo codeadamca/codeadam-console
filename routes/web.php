@@ -5,6 +5,7 @@ use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\EvaluationsController;
 use App\Http\Controllers\MemesController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\SocialsController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;

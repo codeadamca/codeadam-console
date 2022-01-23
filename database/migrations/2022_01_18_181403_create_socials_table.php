@@ -17,6 +17,7 @@ class CreateSocialsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('url')->nullable();
+            $table->string('icon')->nullable();
             $table->enum('home', ['Yes','No'])->default('No');
             $table->enum('about', ['Yes','No'])->default('No');
             $table->enum('header', ['Yes','No'])->default('No');
