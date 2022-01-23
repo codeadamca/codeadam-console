@@ -6,6 +6,7 @@ use App\Http\Controllers\EvaluationsController;
 use App\Http\Controllers\MemesController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\SocialsController;
+use App\Http\Controllers\ToolsController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -75,3 +76,12 @@ Route::post('/socials/edit/{social:id}', [SocialsController::class, 'edit'])->wh
 Route::get('/socials/delete/{social:id}', [SocialsController::class, 'delete'])->where('social', '[0-9]+')->middleware('auth');
 Route::get('/socials/image/{social:id}', [SocialsController::class, 'imageForm'])->where('social', '[0-9]+')->middleware('auth');
 Route::post('/socials/image/{social:id}', [SocialsController::class, 'image'])->where('social', '[0-9]+')->middleware('auth');
+
+Route::get('/tools/list', [ToolsController::class, 'list'])->middleware('auth');
+Route::get('/tools/add', [ToolsController::class, 'addForm'])->middleware('auth');
+Route::post('/tools/add', [ToolsController::class, 'add'])->middleware('auth');
+Route::get('/tools/edit/{tool:id}', [ToolsController::class, 'editForm'])->where('tool', '[0-9]+')->middleware('auth');
+Route::post('/tools/edit/{tool:id}', [ToolsController::class, 'edit'])->where('tool', '[0-9]+')->middleware('auth');
+Route::get('/tools/delete/{tool:id}', [ToolsController::class, 'delete'])->where('tool', '[0-9]+')->middleware('auth');
+Route::get('/tools/image/{tool:id}', [ToolsController::class, 'imageForm'])->where('tool', '[0-9]+')->middleware('auth');
+Route::post('/tools/image/{tool:id}', [ToolsController::class, 'image'])->where('tool', '[0-9]+')->middleware('auth');

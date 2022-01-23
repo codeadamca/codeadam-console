@@ -13,13 +13,12 @@ class Tool extends Model
     protected $fillable = [
         'title',
         'url',
-        'slug',
         'tool_type_id',
         'image',
     ];
 
-    public function type()
+    public function tool_type()
     {
-        return $this->belongsTo(ToolType::class, 'type_id');
+        return $this->belongsTo(ToolType::class);
     }
 }
