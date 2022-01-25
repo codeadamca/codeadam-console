@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
 
     public function list()

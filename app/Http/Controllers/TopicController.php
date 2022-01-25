@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Page;
 use App\Models\Topic;
 
-class TopicsController extends Controller
+class TopicController extends Controller
 {
 
     public function list()

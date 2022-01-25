@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Meme;
 use App\Models\Tag;
 
-class MemesController extends Controller
+class MemeController extends Controller
 {
 
     public function list()

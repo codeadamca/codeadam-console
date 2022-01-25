@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\Evaluation;
 
-class EvaluationsController extends Controller
+class EvaluationController extends Controller
 {
 
     public function list()

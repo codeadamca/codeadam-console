@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Models\Social;
 
-class SocialsController extends Controller
+class SocialController extends Controller
 {
     public function list()
     {

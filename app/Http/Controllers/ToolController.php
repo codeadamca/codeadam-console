@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Tool;
 use App\Models\ToolType;
 
-class ToolsController extends Controller
+class ToolController extends Controller
 {
     public function list()
     {
