@@ -14,15 +14,23 @@
 
         @include ('layout.forms.text', ['name' => 'title'])
 
+        @include ('layout.forms.textarea', ['name' => 'content'])
+
+        @include ('layout.forms.text', ['name' => 'instagram_id', 'label' => 'Instagram ID'])
+
+        @include ('layout.forms.text', ['name' => 'twitter_id', 'label' => 'Twitter ID'])
+
+        @include ('layout.forms.text', ['name' => 'soundcloud_id', 'label' => 'Soundcloud ID'])
+
         @include ('layout.forms.text', ['name' => 'url', 'label' => 'URL'])
 
-        @include ('layout.forms.text', ['name' => 'slug'])
+        @include ('layout.forms.text', ['name' => 'published_at', 'label' => 'Date', 'type' => 'date'])
 
-        @include ('layout.forms.text', ['name' => 'icon', 'label' => 'Font Awesome Icon'])
+        @include ('layout.forms.select', ['name' => 'home', 'label' => 'Display on Home Page', 'options' => $homes])
 
-        @include ('layout.forms.select', ['name' => 'teaching', 'label' => 'Display on Teaching Page', 'options' => $teachings])
+        @include ('layout.forms.textarea', ['name' => 'resources'])
 
-        @include ('layout.forms.select', ['name' => 'background', 'label' => 'Banner Background', 'options' => $backgrounds])
+        @include ('layout.forms.select', ['name' => 'article_type_id', 'label' => 'Type', 'options' => $article_types, 'type' => 'table'])
 
         @include ('layout.forms.button', ['label' => 'Add Article'])
 

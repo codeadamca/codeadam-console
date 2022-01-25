@@ -4,27 +4,35 @@
 
 <section class="w3-padding ca-container-small">
 
-    @include ('layout.title', ['title' => 'Edit Topic'])
+    @include ('layout.title', ['title' => 'Edit Article'])
 
-    @include ('layout.breadcrumbs', ['links' => ['Manage Topics' => '/topics/list'], 'title' => 'Edit Topic: '.$topic->title])
+    @include ('layout.breadcrumbs', ['links' => ['Manage Articles' => '/articles/list'], 'title' => 'Edit Article: '.$article->title])
 
-    <form method="post" action="/topics/edit/{{$topic->id}}" novalidate class="w3-margin-bottom" autocomplete="off">
+    <form method="post" action="/articles/edit/{{$article->id}}" novalidate class="w3-margin-bottom" autocomplete="off">
 
         @csrf
 
-        @include ('layout.forms.text', ['name' => 'title', 'value' => $topic->title])
+        @include ('layout.forms.text', ['name' => 'title', 'value' => $article->title])
 
-        @include ('layout.forms.text', ['name' => 'url', 'value' => $topic->url, 'label' => 'URL'])
+        @include ('layout.forms.textarea', ['name' => 'content', 'value' => $article->content])
+
+        @include ('layout.forms.text', ['name' => 'instagram_id', 'value' => $article->instagram_id])
+
+        @include ('layout.forms.text', ['name' => 'twitter_id', 'value' => $article->twitter_id])
+
+        @include ('layout.forms.text', ['name' => 'soundcloud_id', 'value' => $article->soundcloud_id])
+
+        @include ('layout.forms.text', ['name' => 'url', 'value' => $article->url, 'label' => 'URL'])
         
-        @include ('layout.forms.text', ['name' => 'slug', 'value' => $topic->slug])
-
-        @include ('layout.forms.text', ['name' => 'icon', 'value' => $topic->icon, 'label' => 'Font Awesome Icon'])
+        @include ('layout.forms.text', ['name' => 'published_at', 'label' => 'Date', 'type' => 'date', 'value' => $article->published_at])
         
-        @include ('layout.forms.select', ['name' => 'teaching', 'label' => 'Display on Teaching Page', 'options' => $teachings, 'selected' => $topic->teaching])
+        @include ('layout.forms.select', ['name' => 'home', 'label' => 'Display on Home Page', 'options' => $homes, 'selected' => $article->teaching])
 
-        @include ('layout.forms.select', ['name' => 'background', 'label' => 'Banner Background', 'options' => $backgrounds, 'selected' => $topic->background])
+        @include ('layout.forms.textarea', ['name' => 'resources', 'value' => $article->resources])
 
-        @include ('layout.forms.button', ['label' => 'Edit Topic'])
+        @include ('layout.forms.select', ['name' => 'article_type_id', 'label' => 'Type', 'options' => $article_types, 'type' => 'table', 'article_topic_id' => $article->article_topic_id])
+
+        @include ('layout.forms.button', ['label' => 'Edit Article'])
 
     </form>
 

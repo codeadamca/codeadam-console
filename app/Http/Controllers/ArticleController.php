@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Models\Article;
+use App\Models\ArticleType;
 
 class ArticleController extends Controller
 {
@@ -24,6 +25,7 @@ class ArticleController extends Controller
 
         return view('articles.add', [
             'homes'=> Article::homes(),
+            'article_types' => ArticleType::all(),
         ]);
 
     }
@@ -34,12 +36,13 @@ class ArticleController extends Controller
         $attributes = request()->validate([
             'title' => 'required',
             'content' => 'required',
-            'url' => 'required|url',
+            'url' => 'nullable',
             'resources' => 'nullable',
             'instagram_id' => 'nullable',
             'twitter_id' => 'nullable',
             'soundcloud_id' => 'nullable',
             'article_type_id' => 'required',
+            'published_at' => 'required',
             'home' => 'required',
         ]);
 
@@ -51,28 +54,30 @@ class ArticleController extends Controller
 
     }
 
-    public function editForm(Article $topic)
+    public function editForm(Article $article)
     {
-
+        
         return view('articles.edit', [
             'article' => $article,
             'homes'=> Article::homes(),
+            'article_types' => ArticleType::all(),
         ]);
 
     }
 
-    public function edit(Article $topic)
+    public function edit(Article $article)
     {
 
         $attributes = request()->validate([
             'title' => 'required',
             'content' => 'required',
-            'url' => 'required|url',
+            'url' => 'nullable',
             'resources' => 'nullable',
             'instagram_id' => 'nullable',
             'twitter_id' => 'nullable',
             'soundcloud_id' => 'nullable',
             'article_type_id' => 'required',
+            'published_at' => 'required',
             'home' => 'required',
         ]);
 
@@ -88,7 +93,6 @@ class ArticleController extends Controller
         
         Storage::delete($article->image);
         
-        // $article->pages()->detach();
         $article->delete();
 
         return redirect('/articles/list')
@@ -98,8 +102,10 @@ class ArticleController extends Controller
 
     public function imageForm(Article $article)
     {
+
         return view('articles.image', [
             'article' => $article,
+            'type' => 'articles'
         ]);
     }
 
@@ -119,5 +125,18 @@ class ArticleController extends Controller
         
         return redirect('/articles/list')
             ->with('message', 'Article image has been edited!');
+    }
+
+    public function deleteImage(Article $article)
+    {
+
+        Storage::delete($article->image);
+
+        $article->image = "";
+        $article->save();
+
+        return redirect('/articles/list')
+            ->with('message', 'Article image has been deleted!');
+
     }
 }

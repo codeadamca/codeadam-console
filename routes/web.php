@@ -90,8 +90,9 @@ Route::post('/tools/image/{tool:id}', [ToolController::class, 'image'])->where('
 Route::get('/articles/list', [ArticleController::class, 'list'])->middleware('auth');
 Route::get('/articles/add', [ArticleController::class, 'addForm'])->middleware('auth');
 Route::post('/articles/add', [ArticleController::class, 'add'])->middleware('auth');
-Route::get('/articles/edit/{tool:id}', [ArticleController::class, 'editForm'])->where('article', '[0-9]+')->middleware('auth');
-Route::post('/articles/edit/{tool:id}', [ArticleController::class, 'edit'])->where('article', '[0-9]+')->middleware('auth');
-Route::get('/articles/delete/{tool:id}', [ArticleController::class, 'delete'])->where('article', '[0-9]+')->middleware('auth');
-Route::get('/articles/image/{tool:id}', [ArticleController::class, 'imageForm'])->where('article', '[0-9]+')->middleware('auth');
-Route::post('/articles/image/{tool:id}', [ArticleController::class, 'image'])->where('article', '[0-9]+')->middleware('auth');
+Route::get('/articles/edit/{article:id}', [ArticleController::class, 'editForm'])->where('article', '[0-9]+')->middleware('auth');
+Route::post('/articles/edit/{article:id}', [ArticleController::class, 'edit'])->where('article', '[0-9]+')->middleware('auth');
+Route::get('/articles/delete/{article:id}', [ArticleController::class, 'delete'])->where('article', '[0-9]+')->middleware('auth');
+Route::get('/articles/delete/image/{article:id}', [ArticleController::class, 'deleteImage'])->where('article', '[0-9]+')->middleware('auth');
+Route::get('/articles/image/{article:id}', [ArticleController::class, 'imageForm'])->where('article', '[0-9]+')->middleware('auth');
+Route::post('/articles/image/{article:id}', [ArticleController::class, 'image'])->where('article', '[0-9]+')->middleware('auth');
