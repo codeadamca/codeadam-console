@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Project;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\MemeController;
@@ -85,3 +86,12 @@ Route::post('/tools/edit/{tool:id}', [ToolController::class, 'edit'])->where('to
 Route::get('/tools/delete/{tool:id}', [ToolController::class, 'delete'])->where('tool', '[0-9]+')->middleware('auth');
 Route::get('/tools/image/{tool:id}', [ToolController::class, 'imageForm'])->where('tool', '[0-9]+')->middleware('auth');
 Route::post('/tools/image/{tool:id}', [ToolController::class, 'image'])->where('tool', '[0-9]+')->middleware('auth');
+
+Route::get('/articles/list', [ArticleController::class, 'list'])->middleware('auth');
+Route::get('/articles/add', [ArticleController::class, 'addForm'])->middleware('auth');
+Route::post('/articles/add', [ArticleController::class, 'add'])->middleware('auth');
+Route::get('/articles/edit/{tool:id}', [ArticleController::class, 'editForm'])->where('article', '[0-9]+')->middleware('auth');
+Route::post('/articles/edit/{tool:id}', [ArticleController::class, 'edit'])->where('article', '[0-9]+')->middleware('auth');
+Route::get('/articles/delete/{tool:id}', [ArticleController::class, 'delete'])->where('article', '[0-9]+')->middleware('auth');
+Route::get('/articles/image/{tool:id}', [ArticleController::class, 'imageForm'])->where('article', '[0-9]+')->middleware('auth');
+Route::post('/articles/image/{tool:id}', [ArticleController::class, 'image'])->where('article', '[0-9]+')->middleware('auth');
