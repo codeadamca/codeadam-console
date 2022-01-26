@@ -6,7 +6,14 @@
 
     @include ('layout.title', ['title' => 'Manage Tools'])
 
-    @include ('layout.breadcrumbs', ['title' => 'Manage Tools'])
+    <div>
+        <div class="w3-twothird">
+        @include ('layout.breadcrumbs', ['title' => 'Manage Tools'])
+        </div>
+        <div class="w3-third w3-right-align w3-small ">
+            <a href="/tools/types/list">Manage Tool Types</a>
+        </div>
+    </div>
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">

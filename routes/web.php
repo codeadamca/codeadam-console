@@ -10,6 +10,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ToolController;
+use App\Http\Controllers\ToolTypeController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 
@@ -103,6 +104,13 @@ Route::get('/tools/delete/{tool:id}', [ToolController::class, 'delete'])->where(
 Route::get('/tools/delete/image/{tool:id}', [ToolController::class, 'deleteImage'])->where('tool', '[0-9]+')->middleware('auth');
 Route::get('/tools/image/{tool:id}', [ToolController::class, 'imageForm'])->where('tool', '[0-9]+')->middleware('auth');
 Route::post('/tools/image/{tool:id}', [ToolController::class, 'image'])->where('tool', '[0-9]+')->middleware('auth');
+
+Route::get('/tools/types/list', [ToolTypeController::class, 'list'])->middleware('auth');
+Route::get('/tools/types/add', [ToolTypeController::class, 'addForm'])->middleware('auth');
+Route::post('/tools/types/add', [ToolTypeController::class, 'add'])->middleware('auth');
+Route::get('/tools/types/edit/{toolType:id}', [ToolTypeController::class, 'editForm'])->where('toolType', '[0-9]+')->middleware('auth');
+Route::post('/tools/types/edit/{toolType:id}', [ToolTypeController::class, 'edit'])->where('toolType', '[0-9]+')->middleware('auth');
+Route::get('/tools/types/delete/{toolType:id}', [ToolTypeController::class, 'delete'])->where('toolType', '[0-9]+')->middleware('auth');
 
 Route::get('/articles/list', [ArticleController::class, 'list'])->middleware('auth');
 Route::get('/articles/add', [ArticleController::class, 'addForm'])->middleware('auth');

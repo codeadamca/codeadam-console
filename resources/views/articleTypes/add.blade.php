@@ -8,7 +8,7 @@
 
     @include ('layout.breadcrumbs', ['links' => ['Manage Articles' => '/articles/list', 'Manage Article Types' => '/articles/types/list'], 'title' => 'Add Article Type'])
 
-    <form method="post" action="/memes/tags/add" novalidate class="w3-margin-bottom" autocomplete="off">
+    <form method="post" action="/articles/types/add" novalidate class="w3-margin-bottom" autocomplete="off">
 
         @csrf
 

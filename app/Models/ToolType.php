@@ -17,6 +17,6 @@ class ToolType extends Model
 
     public function tools()
     {
-        return $this->hadMany(Tool::class, 'tool_type_id');
+        return $this->hasMany(Tool::class, 'tool_type_id');
     }
 }
