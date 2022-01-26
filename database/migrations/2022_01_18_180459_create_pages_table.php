@@ -24,7 +24,7 @@ class CreatePagesTable extends Migration
             $table->string('youtube_id')->nullable();
             $table->foreignId('topic_id')->constrained();
             $table->string('image')->nullable();
-            $table->timestamp('published_at')->useCurrent();
+            $table->date('published_at')->useCurrent();
             $table->timestamps();
         });
     }

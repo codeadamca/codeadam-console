@@ -288,7 +288,7 @@ class DatabaseSeeder extends Seeder
         {
 
             $r = Page::find($record->pageId);
-            $r->topics()->attach($record->topicId);
+            $r->manyTopics()->attach($record->topicId);
 
         }
 
@@ -335,7 +335,7 @@ class DatabaseSeeder extends Seeder
                 $tid = Tag::where('title', $tag)->first()->id;
 
                 $r = Meme::find($mid);
-                $r->tags()->attach($tid);
+                $r->manyTags()->attach($tid);
             }
 
 

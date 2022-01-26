@@ -30,6 +30,11 @@ class Topic extends Model
 
     public function pages()
     {
+        return $this->hasMany(Page::class);
+    }
+
+    public function manyPages()
+    {
         return $this->belongsToMany(Page::class);
     }
 

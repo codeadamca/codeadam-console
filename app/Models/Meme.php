@@ -14,7 +14,7 @@ class Meme extends Model
         'image',
     ];
 
-    public function tags()
+    public function manyTags()
     {
         return $this->belongsToMany(Tag::class);
     }

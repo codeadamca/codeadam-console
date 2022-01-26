@@ -35,16 +35,16 @@ class MemeController extends Controller
 
         $attributes = request()->validate([
             'title' => 'required',
-            'tag_id' => 'required',
+            'tags' => 'required',
         ]);
 
         $meme = new Meme();
         $meme->title = $attributes['title'];
         $meme->save();
 
-        foreach($attributes['tag_id'] as $tag)
+        foreach($attributes['tags'] as $tag)
         {
-            $meme->tags()->attach($tag);
+            $meme->manyTags()->attach($tag);
         }
 
         return redirect('/memes/list')
@@ -67,17 +67,17 @@ class MemeController extends Controller
 
         $attributes = request()->validate([
             'title' => 'required',
-            'tag_id' => 'required',
+            'tags' => 'required',
         ]);
 
         $meme->title = $attributes['title'];
         $meme->save();
 
-        $meme->tags()->detach();
+        $meme->manyTags()->detach();
 
-        foreach($attributes['tag_id'] as $tag)
+        foreach($attributes['tags'] as $tag)
         {
-            $meme->tags()->attach($tag);
+            $meme->manyTags()->attach($tag);
         }
 
         return redirect('/memes/list')
@@ -88,7 +88,7 @@ class MemeController extends Controller
     public function delete(Meme $meme)
     {
         
-        $meme->tags()->detach();
+        $meme->manyTags()->detach();
         $meme->delete();
 
         return redirect('/memes/list')

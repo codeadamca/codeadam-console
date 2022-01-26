@@ -66,7 +66,7 @@ class UserController extends Controller
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users')->ignore($user->id),
+                Rule::unique('user')->ignore($user->id),
             ],
             'password' => 'nullable',
         ]);

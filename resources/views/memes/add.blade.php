@@ -14,7 +14,7 @@
 
         @include ('layout.forms.text', ['name' => 'title'])
 
-        @include ('layout.forms.select', ['name' => 'tag_id', 'label' => 'Tags', 'options' => $tags, 'type' => 'multiple'])
+        @include ('layout.forms.select', ['name' => 'tags', 'label' => 'Tags', 'options' => $tags, 'type' => 'multiple'])
 
         @include ('layout.forms.button', ['label' => 'Add Meme'])
 

@@ -24,10 +24,10 @@ class Page extends Model
 
     public function topic()
     {
-        return $this->belongsTo(Topic::class, 'topic_id');
+        return $this->belongsTo(Topic::class);
     }
-
-    public function topics()
+    
+    public function manyTopics()
     {
         return $this->belongsToMany(Topic::class);
     }
