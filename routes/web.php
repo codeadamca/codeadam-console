@@ -8,10 +8,13 @@ use App\Http\Controllers\MemeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+use App\Models\Tool;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +64,13 @@ Route::get('/memes/delete/{meme:id}', [MemeController::class, 'delete'])->where(
 Route::get('/memes/delete/image/{meme:id}', [MemeController::class, 'deleteImage'])->where('meme', '[0-9]+')->middleware('auth');
 Route::get('/memes/image/{meme:id}', [MemeController::class, 'imageForm'])->where('meme', '[0-9]+')->middleware('auth');
 Route::post('/memes/image/{meme:id}', [MemeController::class, 'image'])->where('meme', '[0-9]+')->middleware('auth');
+
+Route::get('/memes/tags/list', [TagController::class, 'list'])->middleware('auth');
+Route::get('/memes/tags/add', [TagController::class, 'addForm'])->middleware('auth');
+Route::post('/memes/tags/add', [TagController::class, 'add'])->middleware('auth');
+Route::get('/memes/tags/edit/{tag:id}', [TagController::class, 'editForm'])->where('tag', '[0-9]+')->middleware('auth');
+Route::post('/memes/tags/edit/{tag:id}', [TagController::class, 'edit'])->where('tag', '[0-9]+')->middleware('auth');
+Route::get('/memes/tags/delete/{tag:id}', [TagController::class, 'delete'])->where('tag', '[0-9]+')->middleware('auth');
 
 Route::get('/topics/list', [TopicController::class, 'list'])->middleware('auth');
 Route::get('/topics/add', [TopicController::class, 'addForm'])->middleware('auth');

@@ -4,57 +4,54 @@
 
 <section class="w3-padding ca-container-large">
 
-    @include ('layout.title', ['title' => 'Manage Memes'])
+    @include ('layout.title', ['title' => 'Manage Social Assets'])
 
-    <div class="w3-container">
-        <div class="w3-twothird">
-            @include ('layout.breadcrumbs', ['title' => 'Manage Memes'])
-        </div>
-        <div class="w3-third w3-right-align w3-small ">
-            <a href="/memes/tags/list">Manage Meme Tags</a>
-        </div>
-    </div>
-
-    <a href="">Manage Meme Tags</a>
+    @include ('layout.breadcrumbs', ['title' => 'Manage Social Assets'])
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
             <th class="ca-col-image"></th>
+            <th class="ca-col-image"></th>
             <th>Title</th>
+            <th>URL</th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
         </tr>
-        <?php foreach($memes as $meme): ?>
+        <?php foreach($socials as $social): ?>
             <tr>
                 <td>
-                    @if ($meme->image)
+                    @if ($social->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">
-                            <img src="{{asset('storage/'.$meme->image)}}" width="50">
+                            <img src="{{asset('storage/'.$social->image)}}" width="50">
                         </div>
                     @endif
                 </td>
-                <td>
-                    {{$meme->title}}
-                    @if ($meme->manyTags()->count())
-                        <br>
-                        <small>
-                            {{implode(', ', $meme->manyTags()->pluck('tags.title')->toArray())}}
-                        </small>
+                <td class="w3-center">
+                    @if ($social->icon)
+                        <i class="{{$social->icon}} fa-2x"></i>
                     @endif
                 </td>
                 <td>
-                    <a href="/memes/image/{{$meme->id}}">
+                    {{$social->title}}
+                </td>
+                <td>
+                    @if ($social->url)
+                        <a href="{{$social->url}}">{{$social->url}}</a>
+                    @endif
+                </td>
+                <td>
+                    <a href="/socials/image/{{$social->id}}">
                         <i class="fas fa-camera"></i> 
                     </a>
                 </td>
                 <td>
-                    <a href="/memes/edit/{{$meme->id}}">
+                    <a href="/socials/edit/{{$social->id}}">
                         <i class="fas fa-edit"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="/memes/delete/{{$meme->id}}">
+                    <a href="/socials/delete/{{$social->id}}">
                         <i class="fas fa-trash-alt mute"></i>
                     </a>
                 </td>
@@ -62,8 +59,8 @@
         <?php endforeach; ?>
     </table>
 
-    @include ('layout.forms.button', ['label' => 'Add Meme', 'href' => '/memes/add'])
-    
+    @include ('layout.forms.button', ['label' => 'Add Social Asset', 'href' => '/socials/add'])
+
 </section>
 
 @endsection
