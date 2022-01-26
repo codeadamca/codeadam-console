@@ -118,4 +118,17 @@ class TopicController extends Controller
         return redirect('/topics/list')
             ->with('message', 'Topic image has been edited!');
     }
+
+    public function deleteImage(Topic $topic)
+    {
+
+        Storage::delete($topic->image);
+
+        $topic->image = "";
+        $topic->save();
+
+        return redirect('/topics/list')
+            ->with('message', 'Topic image has been deleted!');
+
+    }
 }

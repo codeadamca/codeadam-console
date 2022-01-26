@@ -8,7 +8,7 @@
 
     @include ('layout.breadcrumbs', ['links' => ['Manage Articles' => '/articles/list'], 'title' => 'Article Image: '.$article->title])
 
-    @include ('layout.elements.image', ['image' => $article->image, 'width' => 400, 'id' => $article->id])
+    @include ('layout.elements.image', ['image' => $article->image, 'width' => 400, 'id' => $article->id, 'type' => 'articles'])
 
     <form method="post" action="/articles/image/{{$article->id}}" novalidate class="w3-margin-bottom" enctype="multipart/form-data" autocomplete="off">
 

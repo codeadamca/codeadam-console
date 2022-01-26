@@ -105,7 +105,6 @@ class ArticleController extends Controller
 
         return view('articles.image', [
             'article' => $article,
-            'type' => 'articles'
         ]);
     }
 

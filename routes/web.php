@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\MemeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ToolController;
@@ -57,6 +58,7 @@ Route::post('/memes/add', [MemeController::class, 'add'])->middleware('auth');
 Route::get('/memes/edit/{meme:id}', [MemeController::class, 'editForm'])->where('meme', '[0-9]+')->middleware('auth');
 Route::post('/memes/edit/{meme:id}', [MemeController::class, 'edit'])->where('meme', '[0-9]+')->middleware('auth');
 Route::get('/memes/delete/{meme:id}', [MemeController::class, 'delete'])->where('meme', '[0-9]+')->middleware('auth');
+Route::get('/memes/delete/image/{meme:id}', [MemeController::class, 'deleteImage'])->where('meme', '[0-9]+')->middleware('auth');
 Route::get('/memes/image/{meme:id}', [MemeController::class, 'imageForm'])->where('meme', '[0-9]+')->middleware('auth');
 Route::post('/memes/image/{meme:id}', [MemeController::class, 'image'])->where('meme', '[0-9]+')->middleware('auth');
 
@@ -66,6 +68,7 @@ Route::post('/topics/add', [TopicController::class, 'add'])->middleware('auth');
 Route::get('/topics/edit/{topic:id}', [TopicController::class, 'editForm'])->where('topic', '[0-9]+')->middleware('auth');
 Route::post('/topics/edit/{topic:id}', [TopicController::class, 'edit'])->where('topic', '[0-9]+')->middleware('auth');
 Route::get('/topics/delete/{topic:id}', [TopicController::class, 'delete'])->where('topic', '[0-9]+')->middleware('auth');
+Route::get('/topics/delete/image/{topic:id}', [TopicController::class, 'deleteImage'])->where('topic', '[0-9]+')->middleware('auth');
 Route::get('/topics/image/{topic:id}', [TopicController::class, 'imageForm'])->where('topic', '[0-9]+')->middleware('auth');
 Route::post('/topics/image/{topic:id}', [TopicController::class, 'image'])->where('topic', '[0-9]+')->middleware('auth');
 
@@ -75,6 +78,7 @@ Route::post('/socials/add', [SocialController::class, 'add'])->middleware('auth'
 Route::get('/socials/edit/{social:id}', [SocialController::class, 'editForm'])->where('social', '[0-9]+')->middleware('auth');
 Route::post('/socials/edit/{social:id}', [SocialController::class, 'edit'])->where('social', '[0-9]+')->middleware('auth');
 Route::get('/socials/delete/{social:id}', [SocialController::class, 'delete'])->where('social', '[0-9]+')->middleware('auth');
+Route::get('/socials/delete/image/{social:id}', [SocialController::class, 'deleteImage'])->where('social', '[0-9]+')->middleware('auth');
 Route::get('/socials/image/{social:id}', [SocialController::class, 'imageForm'])->where('social', '[0-9]+')->middleware('auth');
 Route::post('/socials/image/{social:id}', [SocialController::class, 'image'])->where('social', '[0-9]+')->middleware('auth');
 
@@ -84,6 +88,7 @@ Route::post('/tools/add', [ToolController::class, 'add'])->middleware('auth');
 Route::get('/tools/edit/{tool:id}', [ToolController::class, 'editForm'])->where('tool', '[0-9]+')->middleware('auth');
 Route::post('/tools/edit/{tool:id}', [ToolController::class, 'edit'])->where('tool', '[0-9]+')->middleware('auth');
 Route::get('/tools/delete/{tool:id}', [ToolController::class, 'delete'])->where('tool', '[0-9]+')->middleware('auth');
+Route::get('/tools/delete/image/{tool:id}', [ToolController::class, 'deleteImage'])->where('tool', '[0-9]+')->middleware('auth');
 Route::get('/tools/image/{tool:id}', [ToolController::class, 'imageForm'])->where('tool', '[0-9]+')->middleware('auth');
 Route::post('/tools/image/{tool:id}', [ToolController::class, 'image'])->where('tool', '[0-9]+')->middleware('auth');
 
@@ -96,3 +101,13 @@ Route::get('/articles/delete/{article:id}', [ArticleController::class, 'delete']
 Route::get('/articles/delete/image/{article:id}', [ArticleController::class, 'deleteImage'])->where('article', '[0-9]+')->middleware('auth');
 Route::get('/articles/image/{article:id}', [ArticleController::class, 'imageForm'])->where('article', '[0-9]+')->middleware('auth');
 Route::post('/articles/image/{article:id}', [ArticleController::class, 'image'])->where('article', '[0-9]+')->middleware('auth');
+
+Route::get('/pages/list', [PageController::class, 'list'])->middleware('auth');
+Route::get('/pages/add', [PageController::class, 'addForm'])->middleware('auth');
+Route::post('/pages/add', [PageController::class, 'add'])->middleware('auth');
+Route::get('/pages/edit/{page:id}', [PageController::class, 'editForm'])->where('page', '[0-9]+')->middleware('auth');
+Route::post('/pages/edit/{page:id}', [PageController::class, 'edit'])->where('page', '[0-9]+')->middleware('auth');
+Route::get('/pages/delete/{page:id}', [PageController::class, 'delete'])->where('page', '[0-9]+')->middleware('auth');
+Route::get('/pages/delete/image/{page:id}', [PageController::class, 'deleteImage'])->where('page', '[0-9]+')->middleware('auth');
+Route::get('/pages/image/{page:id}', [PageController::class, 'imageForm'])->where('page', '[0-9]+')->middleware('auth');
+Route::post('/pages/image/{page:id}', [PageController::class, 'image'])->where('page', '[0-9]+')->middleware('auth');

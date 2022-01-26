@@ -7,7 +7,7 @@
             <div class="w3-padding">
                 <small>
                     <i class="fas fa-trash-alt"></i>
-                    <a href="/{{$type}}/delete/image/{{$article->id}}">Delete Image</a>
+                    <a href="/{{$type}}/delete/image/{{$id}}">Delete Image</a>
                 </small>
             </div>
         @endif

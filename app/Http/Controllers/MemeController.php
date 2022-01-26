@@ -120,5 +120,18 @@ class MemeController extends Controller
         return redirect('/memes/list')
             ->with('message', 'Meme image has been edited!');
     }
+
+    public function deleteImage(Meme $meme)
+    {
+
+        Storage::delete($meme->image);
+
+        $meme->image = "";
+        $meme->save();
+
+        return redirect('/memes/list')
+            ->with('message', 'Meme image has been deleted!');
+
+    }
     
 }

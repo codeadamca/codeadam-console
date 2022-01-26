@@ -106,4 +106,17 @@ class ToolController extends Controller
         return redirect('/tools/list')
             ->with('message', 'Tool image has been edited!');
     }
+
+    public function deleteImage(Tool $tool)
+    {
+
+        Storage::delete($tool->image);
+
+        $tool->image = "";
+        $tool->save();
+
+        return redirect('/tools/list')
+            ->with('message', 'Tool image has been deleted!');
+
+    }
 }

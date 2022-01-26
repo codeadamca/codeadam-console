@@ -117,4 +117,17 @@ class SocialController extends Controller
         return redirect('/socials/list')
             ->with('message', 'Social Asset image has been edited!');
     }
+
+    public function deleteImage(Social $social)
+    {
+
+        Storage::delete($social->image);
+
+        $social->image = "";
+        $social->save();
+
+        return redirect('/socials/list')
+            ->with('message', 'Social image has been deleted!');
+
+    }
 }
