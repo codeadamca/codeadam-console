@@ -17,6 +17,6 @@ class ArticleType extends Model
 
     public function articles()
     {
-        return $this->hadMany(Article::class, 'article_type_id');
+        return $this->hasMany(Article::class, 'article_type_id');
     }
 }

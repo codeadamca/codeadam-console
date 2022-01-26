@@ -4,32 +4,32 @@
 
 <section class="w3-padding ca-container-large">
 
-    @include ('layout.title', ['title' => 'Manage Meme Tags'])
+    @include ('layout.title', ['title' => 'Manage Article Tags'])
 
-    @include ('layout.breadcrumbs', ['title' => 'Add Meme Tag', 'links' => ['Manage Memes' => '/memes/list']])
+    @include ('layout.breadcrumbs', ['title' => 'Manage Article Types', 'links' => ['Manage Articles' => '/articles/list']])
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
             <th>Title</th>
-            <th class="w3-center">Memes</th>
+            <th class="w3-center">Articles</th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
         </tr>
-        <?php foreach($tags as $tag): ?>
+        <?php foreach($articleTypes as $articleType): ?>
             <tr>
                 <td>
-                    {{$tag->title}}
+                    {{$articleType->title}}
                 </td>
                 <td class="w3-center">
-                    {{$tag->memes()->count()}}
+                    {{$articleType->articles()->count()}}
                 </td>
                 <td>
-                    <a href="/memes/tags/edit/{{$tag->id}}">
+                    <a href="/articles/types/edit/{{$articleType->id}}">
                         <i class="fas fa-edit"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="/memes/tags/delete/{{$tag->id}}">
+                    <a href="/articles/types/delete/{{$articleType->id}}">
                         <i class="fas fa-trash-alt mute"></i>
                     </a>
                 </td>
@@ -37,7 +37,7 @@
         <?php endforeach; ?>
     </table>
 
-    @include ('layout.forms.button', ['label' => 'Add Meme Tag', 'href' => '/memes/tags/add'])
+    @include ('layout.forms.button', ['label' => 'Add Article Type', 'href' => '/articles/types/add'])
 
 </section>
 

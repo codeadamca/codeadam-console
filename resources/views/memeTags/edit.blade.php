@@ -14,7 +14,7 @@
 
         @include ('layout.forms.text', ['name' => 'title', 'value' => $tag->title])
 
-        @include ('layout.forms.button', ['label' => 'Edit Evaluation'])
+        @include ('layout.forms.button', ['label' => 'Edit Meme Tag'])
 
     </form>
 

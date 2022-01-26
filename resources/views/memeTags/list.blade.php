@@ -6,7 +6,7 @@
 
     @include ('layout.title', ['title' => 'Manage Meme Tags'])
 
-    @include ('layout.breadcrumbs', ['title' => 'Add Meme Tag', 'links' => ['Manage Memes' => '/memes/list']])
+    @include ('layout.breadcrumbs', ['title' => 'Manage Meme Tags', 'links' => ['Manage Memes' => '/memes/list']])
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">

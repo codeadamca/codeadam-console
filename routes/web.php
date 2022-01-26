@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Project;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleTypeController;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\MemeController;
@@ -12,8 +12,10 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Project;
 use App\Models\Tool;
 
 /*
@@ -111,6 +113,13 @@ Route::get('/articles/delete/{article:id}', [ArticleController::class, 'delete']
 Route::get('/articles/delete/image/{article:id}', [ArticleController::class, 'deleteImage'])->where('article', '[0-9]+')->middleware('auth');
 Route::get('/articles/image/{article:id}', [ArticleController::class, 'imageForm'])->where('article', '[0-9]+')->middleware('auth');
 Route::post('/articles/image/{article:id}', [ArticleController::class, 'image'])->where('article', '[0-9]+')->middleware('auth');
+
+Route::get('/articles/types/list', [ArticleTypeController::class, 'list'])->middleware('auth');
+Route::get('/articles/types/add', [ArticleTypeController::class, 'addForm'])->middleware('auth');
+Route::post('/articles/types/add', [ArticleTypeController::class, 'add'])->middleware('auth');
+Route::get('/articles/types/edit/{articleType:id}', [ArticleTypeController::class, 'editForm'])->where('articleType', '[0-9]+')->middleware('auth');
+Route::post('/articles/types/edit/{articleType:id}', [ArticleTypeController::class, 'edit'])->where('articleType', '[0-9]+')->middleware('auth');
+Route::get('/articles/types/delete/{articleType:id}', [ArticleTypeController::class, 'delete'])->where('articleType', '[0-9]+')->middleware('auth');
 
 Route::get('/pages/list', [PageController::class, 'list'])->middleware('auth');
 Route::get('/pages/add', [PageController::class, 'addForm'])->middleware('auth');
