@@ -16,9 +16,6 @@ use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
 
-use App\Models\Project;
-use App\Models\Tool;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes    
