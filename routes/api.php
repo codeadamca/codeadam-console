@@ -28,11 +28,11 @@ Route::get('/articles/{filter?}/{value?}', function ($filter, $value) {
 
     if ($filter == 'type' and $value) 
     {
-        $articles = Article::where('article_type_id', $value)->orderBy('title')->get();
+        $articles = Article::where('article_type_id', $value)->orderBy('published_at')->get();
     }
     elseif ($filter and $value)
     {
-        $articles = Article::where($filter, $value)->orderBy('title')->get();
+        $articles = Article::where($filter, $value)->orderBy('published_at')->get();
     }
     else
     {
