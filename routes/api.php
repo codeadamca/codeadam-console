@@ -101,17 +101,40 @@ Route::get('/pages/topic/{topic?}', function (Topic $topic) {
         {
             $pages[$key]->image = env('APP_URL') . 'storage/' . $pages[$key]->image;
         }
+
+        $pages[$key]->topics = $page->manyTopics()->get();
+        foreach($pages[$key]->topics as $key2 => $topic)
+        {
+            $pages[$key]->topics[$key2]->image = env('APP_URL') . 'storage/' . $pages[$key]->topics[$key2]->image;
+        }
+
     }
 
     return $pages;
 
 });
 
-Route::get('/pages/profile/{page?}', function (Page $page) {
+Route::get('/pages/profile/{slug}', function ($slug) {
+
+    $page = Page::where('id', $slug)->orWhere('slug', $slug)->firstOrFail();
 
     if ($page->image)
     {
         $page->image = env('APP_URL') . 'storage/' . $page->image;
+    }
+
+    $page->topic = $page->topic()->first();
+    
+
+    if ($page->topic->image)
+    {
+        $page->topic->image = env('APP_URL') . 'storage/' . $page->topic->image;
+    }
+
+    $page->topics = $page->manyTopics()->get();
+    foreach($page->topics as $key => $topic)
+    {
+        $page->topics[$key]->image = env('APP_URL') . 'storage/' . $page->topics[$key]->image;
     }
 
     return $page;
