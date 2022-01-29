@@ -173,6 +173,15 @@ class DatabaseSeeder extends Seeder
                 $path = Storage::putFile('topics', new File('storage/app/public/image.tmp'));
                 $r->image = $path;
             }
+
+
+            $url = 'https://codeadam.ca/learning/images/background-'.$record->tag.'.jpg';
+            if($file_data = @file_get_contents($url))
+            {
+                Storage::put('image.tmp', $file_data);   
+                $path = Storage::putFile('topics', new File('storage/app/public/image.tmp'));
+                $r->banner = $path;
+            }
             
             $r->id = $record->id;
             $r->title = $record->name;
