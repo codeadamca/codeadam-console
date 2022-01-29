@@ -86,6 +86,7 @@ class TopicController extends Controller
     {
         
         Storage::delete($topic->image);
+        Storage::delete($topic->banner);
         
         $topic->pages()->detach();
         $topic->delete();
@@ -130,6 +131,44 @@ class TopicController extends Controller
 
         return redirect('/topics/list')
             ->with('message', 'Topic image has been deleted!');
+
+    }
+
+    public function bannerForm(Topic $topic)
+    {
+        return view('topics.banner', [
+            'topic' => $topic,
+        ]);
+    }
+
+    public function banner(Topic $topic)
+    {
+
+        $attributes = request()->validate([
+            'banner' => 'required|image',
+        ]);
+
+        Storage::delete($topic->banner);
+        
+        $path = request()->file('banner')->store('topicBanners');
+
+        $topic->banner = $path;
+        $topic->save();
+        
+        return redirect('/topics/list')
+            ->with('message', 'Topic banner has been edited!');
+    }
+
+    public function deleteBanner(Topic $topic)
+    {
+
+        Storage::delete($topic->banner);
+
+        $topic->banner = "";
+        $topic->save();
+
+        return redirect('/topics/list')
+            ->with('message', 'Topic banner has been deleted!');
 
     }
 }

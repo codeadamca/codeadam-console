@@ -81,6 +81,9 @@ Route::get('/topics/delete/{topic:id}', [TopicController::class, 'delete'])->whe
 Route::get('/topics/delete/image/{topic:id}', [TopicController::class, 'deleteImage'])->where('topic', '[0-9]+')->middleware('auth');
 Route::get('/topics/image/{topic:id}', [TopicController::class, 'imageForm'])->where('topic', '[0-9]+')->middleware('auth');
 Route::post('/topics/image/{topic:id}', [TopicController::class, 'image'])->where('topic', '[0-9]+')->middleware('auth');
+Route::get('/topics/delete/banner/{topic:id}', [TopicController::class, 'deleteBanner'])->where('topic', '[0-9]+')->middleware('auth');
+Route::get('/topics/banner/{topic:id}', [TopicController::class, 'bannerForm'])->where('topic', '[0-9]+')->middleware('auth');
+Route::post('/topics/banner/{topic:id}', [TopicController::class, 'banner'])->where('topic', '[0-9]+')->middleware('auth');
 
 Route::get('/socials/list', [SocialController::class, 'list'])->middleware('auth');
 Route::get('/socials/add', [SocialController::class, 'addForm'])->middleware('auth');

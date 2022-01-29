@@ -12,9 +12,11 @@
         <tr class="w3-dark-grey">
             <th class="ca-col-image"></th>
             <th class="ca-col-image"></th>
+            <th class="ca-col-image"></th>
             <th>Title</th>
             <th>URL</th>
             <th>Tag</th>
+            <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
@@ -25,6 +27,13 @@
                     @if ($topic->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">
                             <img src="{{asset('storage/'.$topic->image)}}" width="50">
+                        </div>
+                    @endif
+                </td>
+                <td>
+                    @if ($topic->banner)
+                        <div class="w3-center w3-light-grey w3-padding w3-border">
+                            <img src="{{asset('storage/'.$topic->banner)}}" width="50">
                         </div>
                     @endif
                 </td>
@@ -49,6 +58,11 @@
                 <td>
                     <a href="/topics/image/{{$topic->id}}">
                         <i class="fas fa-camera"></i> 
+                    </a>
+                </td>
+                <td>
+                    <a href="/topics/banner/{{$topic->id}}">
+                        <i class="fas fa-image"></i> 
                     </a>
                 </td>
                 <td>
