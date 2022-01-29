@@ -21,7 +21,7 @@
                     {{$tag->title}}
                 </td>
                 <td class="w3-center">
-                    {{$tag->memes()->count()}}
+                    {{$tag->manyMemes()->count()}}
                 </td>
                 <td>
                     <a href="/memes/tags/edit/{{$tag->id}}">

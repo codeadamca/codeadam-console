@@ -14,7 +14,7 @@
 
         @include ('layout.forms.text', ['name' => 'title', 'value' => $meme->title])
 
-        @include ('layout.forms.select', ['name' => 'tags', 'label' => 'Tags', 'options' => $tags, 'type' => 'multiple', 'selected' => $meme->manyTags()->pluck('tag_id')->toArray()])
+        @include ('layout.forms.checkbox', ['name' => 'tags', 'label' => 'Tags', 'options' => $tags, 'type' => 'multiple', 'selected' => $meme->manyTags()->pluck('tag_id')->toArray()])
 
         @include ('layout.forms.button', ['label' => 'Edit Meme'])
 

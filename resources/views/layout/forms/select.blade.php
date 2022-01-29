@@ -13,10 +13,8 @@
             @endforeach
         </select>   
 
-
     @elseif (($type ?? false) == 'multiple')
         
-
         <select name="{{$name}}[]" id="{{$name}}" required multiple size="7" class="w3-input w3-border">
             @foreach($options as $option)
                 <option value="{{$option->id}}"

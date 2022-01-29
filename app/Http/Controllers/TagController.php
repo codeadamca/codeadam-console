@@ -70,6 +70,7 @@ class TagController extends Controller
     public function delete(Tag $tag)
     {
         
+        $tag->manyMemes()->detach();
         $tag->delete();
 
         return redirect('/memes/tags/list')
