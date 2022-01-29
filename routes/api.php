@@ -28,11 +28,11 @@ Route::get('/articles/{filter?}/{value?}', function ($filter, $value) {
 
     if ($filter == 'type' and $value) 
     {
-        $articles = Article::where('article_type_id', $value)->orderBy('published_at')->get();
+        $articles = Article::where('article_type_id', $value)->orderBy('published_at', 'DESC')->get();
     }
     elseif ($filter and $value)
     {
-        $articles = Article::where($filter, $value)->orderBy('published_at')->get();
+        $articles = Article::where($filter, $value)->orderBy('published_at', 'DESC')->get();
     }
     else
     {
@@ -93,7 +93,7 @@ Route::get('/memes/tag/{tag?}', function (Tag $tag) {
 
 Route::get('/pages/topic/{topic?}', function (Topic $topic) {
 
-    $pages = Page::where('topic_id', $topic->id)->orderBy('published_at')->get();
+    $pages = Page::where('topic_id', $topic->id)->orderBy('published_at', 'DESC')->get();
 
     foreach($pages as $key => $page)
     {
