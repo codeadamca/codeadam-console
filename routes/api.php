@@ -172,7 +172,14 @@ Route::get('/topics/{filter?}/{value?}', function ($filter = null, $value = null
 
     if ($filter and $value)
     {
-        $topics = Topic::where($filter, $value)->orderBy('title')->get();
+        if ($filter == 'pages')
+        {
+            $topics = Topic::whereHas('pages')->orderBy('title')->get();
+        }
+        else
+        {
+            $topics = Topic::where($filter, $value)->orderBy('title')->get();
+        }
     }
     else 
     {
@@ -190,7 +197,7 @@ Route::get('/topics/{filter?}/{value?}', function ($filter = null, $value = null
 
     return $topics;
 
-})->where('filter', 'teaching|background')->where('value', 'yes|no|light|dark');
+})->where('filter', 'pages|teaching|background')->where('value', 'yes|no|light|dark');
 
 Route::get('/topics/page/{page?}', function (Page $page) {
 
