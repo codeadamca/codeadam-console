@@ -36,7 +36,7 @@ class ArticleController extends Controller
 
         $attributes = request()->validate([
             'title' => 'required',
-            'content' => 'required',
+            'content' => 'nullable',
             'url' => 'nullable',
             'resources' => 'nullable',
             'instagram_id' => 'nullable',
@@ -71,7 +71,7 @@ class ArticleController extends Controller
 
         $attributes = request()->validate([
             'title' => 'required',
-            'content' => 'required',
+            'content' => 'nullable',
             'url' => 'nullable',
             'resources' => 'nullable',
             'instagram_id' => 'nullable',
