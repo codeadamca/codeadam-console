@@ -125,16 +125,26 @@ Route::get('/pages/profile/{slug}', function ($slug) {
 
     $page->topic = $page->topic()->first();
     
-
     if ($page->topic->image)
     {
         $page->topic->image = env('APP_URL') . 'storage/' . $page->topic->image;
+    }
+    if ($page->topic->banner)
+    {
+        $page->topic->banner = env('APP_URL') . 'storage/' . $page->topic->banner;
     }
 
     $page->topics = $page->manyTopics()->get();
     foreach($page->topics as $key => $topic)
     {
-        $page->topics[$key]->image = env('APP_URL') . 'storage/' . $page->topics[$key]->image;
+        if ($page->topics[$key]->image)
+        {
+            $page->topics[$key]->image = env('APP_URL') . 'storage/' . $page->topics[$key]->image;
+        }
+        if ($page->topics[$key]->banner)
+        {
+            $page->topics[$key]->banner = env('APP_URL') . 'storage/' . $page->topics[$key]->banner;
+        }
     }
 
     return $page;

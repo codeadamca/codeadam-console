@@ -150,6 +150,7 @@ class DatabaseSeeder extends Seeder
             $r->title = $record->name;
             $r->url = $record->url;
             $r->home = $record->home;
+            $r->about = $record->about;
             $r->header = $record->header;
             $r->save(); 
 
@@ -174,12 +175,11 @@ class DatabaseSeeder extends Seeder
                 $r->image = $path;
             }
 
-
             $url = 'https://codeadam.ca/learning/images/background-'.$record->tag.'.jpg';
             if($file_data = @file_get_contents($url))
             {
                 Storage::put('image.tmp', $file_data);   
-                $path = Storage::putFile('topics', new File('storage/app/public/image.tmp'));
+                $path = Storage::putFile('topicBanners', new File('storage/app/public/image.tmp'));
                 $r->banner = $path;
             }
             
