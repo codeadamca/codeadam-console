@@ -10,12 +10,14 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
+            <th></th>
             <th class="ca-col-image"></th>
             <th class="ca-col-image"></th>
             <th class="ca-col-image"></th>
             <th>Title</th>
             <th>URL</th>
-            <th>Tag</th>
+            <th>Slug</th>
+            <th>Pages</th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
@@ -23,6 +25,9 @@
         </tr>
         <?php foreach($topics as $topic): ?>
             <tr>
+                <td>
+                    {{$topic->id}}
+                </td>
                 <td>
                     @if ($topic->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">
@@ -44,6 +49,17 @@
                 </td>
                 <td>
                     {{$topic->title}}
+                    <br>
+                    <small>
+                        @if ($topic->background == 'Dark')
+                            <i class="fas fa-image"></i>
+                        @else
+                            <i class="far fa-image"></i>
+                        @endif
+                        @if ($topic->teaching == 'Yes')
+                        <i class="fas fa-laptop-code"></i>
+                        @endif
+                    </small>
                 </td>
                 <td>
                     @if ($topic->url)
@@ -54,6 +70,9 @@
                     @if ($topic->slug)
                         {{$topic->slug}}
                     @endif
+                </td>
+                <td>
+                    {{$topic->pages()->get()->count()}}
                 </td>
                 <td>
                     <a href="/topics/image/{{$topic->id}}">

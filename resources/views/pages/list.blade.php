@@ -6,7 +6,14 @@
 
     @include ('layout.title', ['title' => 'Manage Pages'])
 
-    @include ('layout.breadcrumbs', ['title' => 'Manage Pages'])
+    <div>
+        <div class="w3-twothird">
+            @include ('layout.breadcrumbs', ['title' => 'Manage Pages'])
+        </div>
+        <div class="w3-third w3-right-align w3-small ">
+            <a href="/topics/list">Manage Topics</a>
+        </div>
+    </div>
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
