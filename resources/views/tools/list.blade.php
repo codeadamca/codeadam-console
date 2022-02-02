@@ -17,8 +17,10 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
+            <th></th>
             <th class="ca-col-image"></th>
             <th>Title</th>
+            <th>Type</th>
             <th>URL</th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
@@ -26,6 +28,9 @@
         </tr>
         <?php foreach($tools as $tool): ?>
             <tr>
+                <td>
+                    {{$tool->id}}
+                </td>
                 <td>
                     @if ($tool->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">
@@ -35,6 +40,9 @@
                 </td>
                 <td>
                     {{$tool->title}}
+                </td>
+                <td>
+                    {{$tool->type->title}}
                 </td>
                 <td>
                     @if ($tool->url)

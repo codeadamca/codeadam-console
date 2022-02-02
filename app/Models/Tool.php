@@ -18,8 +18,8 @@ class Tool extends Model
         'image',
     ];
 
-    public function tool_type()
+    public function type()
     {
-        return $this->belongsTo(ToolType::class);
+        return $this->belongsTo(ToolType::class, 'tool_type_id');
     }
 }

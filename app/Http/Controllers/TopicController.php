@@ -17,7 +17,7 @@ class TopicController extends Controller
     {
 
         return view('topics.list', [
-            'topics' => Topic::all()
+            'topics' => Topic::orderBy('title')->get()
         ]);
 
     }
