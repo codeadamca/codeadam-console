@@ -17,9 +17,10 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
+            <th></th>
+            <th class="ca-col-image"></th>
             <th class="ca-col-image"></th>
             <th>Title</th>
-            <th>Topic</th>
             <th>Slug</th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
@@ -28,6 +29,9 @@
         <?php foreach($pages as $page): ?>
             <tr>
                 <td>
+                    {{$page->id}}
+                </td>
+                <td>
                     @if ($page->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">
                             <img src="{{asset('storage/'.$page->image)}}" width="50">
@@ -35,15 +39,34 @@
                     @endif
                 </td>
                 <td>
-                    {{$page->title}}
-                </td>
-                <td>
                     @if ($page->topic()->first()->image)
                         <img src="{{asset('storage/'.$page->topic()->first()->image)}}" width="50">
                     @endif
                 </td>
                 <td>
-                    {{$page->slug}}
+                    {{$page->title}}
+                    <small>
+                        <br>
+                        {{date('F jS, Y', strtotime($page->published_at))}}
+                        <br>
+                        @if ($page->tinkercad_id)
+                            <i class="fas fa-th"></i>
+                        @endif
+                        @if ($page->arduino_id)
+                            <i class="fas fa-infinity"></i>
+                        @endif
+                        @if ($page->youtube_id)
+                            <i class="fab fa-youtube"></i>
+                        @endif
+                        @if ($page->github_id)
+                            <i class="fab fa-github"></i>
+                        @endif                        
+                    </small>
+                </td>
+                <td>
+                    <a href="https://codeadam.ca/learning/{{$page->slug}}">
+                        {{$page->slug}}
+                    </a>
                 </td>
                 <td>
                     <a href="/pages/image/{{$page->id}}">

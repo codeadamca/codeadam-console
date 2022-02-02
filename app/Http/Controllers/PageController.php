@@ -16,7 +16,7 @@ class PageController extends Controller
     {
 
         return view('pages.list', [
-            'pages' => Page::all()
+            'pages' => Page::orderBy('published_at', 'DESC')->get()
         ]);
 
     }

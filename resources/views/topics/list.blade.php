@@ -49,8 +49,8 @@
                 </td>
                 <td>
                     {{$topic->title}}
-                    <br>
                     <small>
+                        <br>
                         @if ($topic->background == 'Dark')
                             <i class="fas fa-image"></i>
                         @else
