@@ -14,6 +14,8 @@ class Meme extends Model
         'image',
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'displayed_at'];
+
     public function manyTags()
     {
         return $this->belongsToMany(Tag::class);

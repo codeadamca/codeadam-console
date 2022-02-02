@@ -19,6 +19,7 @@
         <tr class="w3-dark-grey">
             <th class="ca-col-image"></th>
             <th>Title</th>
+            <th>Last Displayed</th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
@@ -40,6 +41,9 @@
                             {{implode(', ', $meme->manyTags()->pluck('tags.title')->toArray())}}
                         </small>
                     @endif
+                </td>
+                <td>
+                    {{$meme->displayed_at->diffForHumans()}}
                 </td>
                 <td>
                     <a href="/memes/image/{{$meme->id}}">

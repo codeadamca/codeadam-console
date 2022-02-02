@@ -330,6 +330,7 @@ class DatabaseSeeder extends Seeder
         {
             $r = new Meme();
             $r->title = $meme['title'];
+            $r->displayed_at = now();
 
             Storage::put('image.tmp', file_get_contents($meme['image']));
             $path = Storage::putFile('memes', new File('storage/app/public/image.tmp'));
