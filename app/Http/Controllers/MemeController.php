@@ -17,7 +17,7 @@ class MemeController extends Controller
     {
 
         return view('memes.list', [
-            'memes' => Meme::all()
+            'memes' => Meme::orderBy('title')->get()
         ]);
 
     }

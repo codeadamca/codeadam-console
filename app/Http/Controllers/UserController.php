@@ -15,7 +15,7 @@ class UserController extends Controller
     {
 
         return view('users.list', [
-            'users' => User::all()
+            'users' => User::orderBy('last')->get()
         ]);
 
     }

@@ -15,7 +15,7 @@ class ToolTypeController extends Controller
     {
 
         return view('toolTypes.list', [
-            'toolTypes' => ToolType::all()
+            'toolTypes' => ToolType::orderBy('title')->get()
         ]);
 
     }

@@ -15,7 +15,7 @@ class TagController extends Controller
     {
 
         return view('memeTags.list', [
-            'tags' => Tag::all()
+            'tags' => Tag::orderBy('title')->get()
         ]);
 
     }

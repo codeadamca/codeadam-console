@@ -15,7 +15,7 @@ class ArticleTypeController extends Controller
     {
 
         return view('articleTypes.list', [
-            'articleTypes' => ArticleType::all()
+            'articleTypes' => ArticleType::orderBy('title')->get()
         ]);
 
     }

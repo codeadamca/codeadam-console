@@ -15,7 +15,7 @@ class EvaluationController extends Controller
     {
 
         return view('evaluations.list', [
-            'evaluations' => Evaluation::all()
+            'evaluations' => Evaluation::orderBy('title')->get()
         ]);
 
     }
