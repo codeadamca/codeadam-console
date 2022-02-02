@@ -17,15 +17,19 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
+            <th></th>
             <th class="ca-col-image"></th>
             <th>Title</th>
-            <th>URL</th>
+            <th>Type</th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
         </tr>
         <?php foreach($articles as $article): ?>
             <tr>
+                <td>
+                    {{$article->id}}
+                </td> 
                 <td>
                     @if ($article->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">
@@ -35,11 +39,29 @@
                 </td>
                 <td>
                     {{$article->title}}
+                    <small>
+                        <br>
+                        {{date('F jS, Y', strtotime($article->published_at))}}
+                        <br>
+                        @if ($article->instagram_id)
+                            <i class="fab fa-instagram"></i>
+                        @endif
+                        @if ($article->twitter_id)
+                            <i class="fab fa-twitter"></i>
+                        @endif
+                        @if ($article->soundcloud_id)
+                            <i class="fab fa-soundcloud"></i>
+                        @endif
+                        @if ($article->home == 'Yes')
+                            <i class="fas fa-home"></i>
+                        @endif                        
+                        @if ($article->url)
+                            <a href="{{$article->url}}"><i class="fas fa-link"></i></a>
+                        @endif
+                    </small>
                 </td>
                 <td>
-                    @if ($article->url)
-                        <a href="{{$article->url}}">{{$article->url}}</a>
-                    @endif
+                    {{$article->type->title}}
                 </td>
                 <td>
                     <a href="/articles/image/{{$article->id}}">

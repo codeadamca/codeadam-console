@@ -16,7 +16,7 @@ class ArticleController extends Controller
     {
 
         return view('articles.list', [
-            'articles' => Article::all()
+            'articles' => Article::orderBy('published_at', 'DESC')->get()
         ]);
 
     }

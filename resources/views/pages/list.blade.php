@@ -39,8 +39,8 @@
                     @endif
                 </td>
                 <td>
-                    @if ($page->topic()->first()->image)
-                        <img src="{{asset('storage/'.$page->topic()->first()->image)}}" width="50">
+                    @if ($page->topic->image)
+                        <img src="{{asset('storage/'.$page->topic->image)}}" width="50">
                     @endif
                 </td>
                 <td>

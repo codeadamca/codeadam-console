@@ -27,7 +27,7 @@ class Article extends Model
 
     public function type()
     {
-        return $this->belongsTo(ArticleType::class, 'type_id');
+        return $this->belongsTo(ArticleType::class, 'article_type_id');
     }
 
     public function homes()
