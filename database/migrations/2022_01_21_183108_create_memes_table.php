@@ -17,6 +17,7 @@ class CreateMemesTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('image')->nullable();
+            $table->date('displayed_at')->useCurrent();
             $table->timestamps();
         });
     }
