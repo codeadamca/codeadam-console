@@ -10,6 +10,7 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
+            <th></th>
             <th class="ca-col-image"></th>
             <th class="ca-col-image"></th>
             <th>Title</th>
@@ -20,6 +21,9 @@
         </tr>
         <?php foreach($socials as $social): ?>
             <tr>
+                <td>
+                    {{$social->id}}
+                </td>
                 <td>
                     @if ($social->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">
@@ -34,6 +38,18 @@
                 </td>
                 <td>
                     {{$social->title}}
+                    <small>
+                        <br>
+                        @if ($social->home == "Yes")
+                            <i class="fas fa-home"></i>
+                        @endif
+                        @if ($social->about == "Yes")
+                            <i class="fas fa-user"></i>
+                        @endif
+                        @if ($social->header)
+                            <i class="fas fa-heading"></i>
+                        @endif
+                    </small>
                 </td>
                 <td>
                     @if ($social->url)

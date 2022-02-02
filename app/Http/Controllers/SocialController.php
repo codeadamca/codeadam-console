@@ -15,7 +15,7 @@ class SocialController extends Controller
     {
 
         return view('socials.list', [
-            'socials' => Social::all()
+            'socials' => Social::orderBy('title')->get()
         ]);
 
     }
