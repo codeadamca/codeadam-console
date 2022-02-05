@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/logout', [ConsoleController::class, 'logout'])->middleware('auth');
-Route::get('/', [ConsoleController::class, 'loginForm'])->middleware('guest');
+Route::get('/', [ConsoleController::class, 'loginForm'])->middleware('guest')->name('login');
 Route::post('/', [ConsoleController::class, 'login'])->middleware('guest');
 Route::get('/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
 

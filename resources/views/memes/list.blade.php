@@ -17,6 +17,7 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
+            <th class="ca-col-icon"></th>
             <th class="ca-col-image"></th>
             <th>Title</th>
             <th>Last Displayed</th>
@@ -26,6 +27,9 @@
         </tr>
         <?php foreach($memes as $meme): ?>
             <tr>
+                <td>
+                    {{$meme->id}}
+                </td>
                 <td>
                     @if ($meme->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">

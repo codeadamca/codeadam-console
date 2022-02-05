@@ -10,12 +10,16 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
+            <th class="ca-col-icon"></th>
             <th>Content</th>
             <th class="ca-col-icon"></th>
             <th class="ca-col-icon"></th>
         </tr>
         <?php foreach($evaluations as $evaluation): ?>
             <tr>
+                <td>
+                    {{$evaluation->id}}
+                </td>
                 <td>
                     {{$evaluation->title}}
                     <br>

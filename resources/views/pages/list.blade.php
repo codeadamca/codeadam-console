@@ -17,7 +17,7 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
-            <th></th>
+            <th class="ca-col-icon"></th>
             <th class="ca-col-image"></th>
             <th class="ca-col-image"></th>
             <th>Title</th>

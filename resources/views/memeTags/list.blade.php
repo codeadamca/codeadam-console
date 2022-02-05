@@ -10,6 +10,7 @@
 
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
+            <th class="ca-col-icon"></th>
             <th>Title</th>
             <th class="w3-center">Memes</th>
             <th class="ca-col-icon"></th>
@@ -17,6 +18,9 @@
         </tr>
         <?php foreach($tags as $tag): ?>
             <tr>
+                <td>
+                    {{$tag->id}}
+                </td>
                 <td>
                     {{$tag->title}}
                 </td>
