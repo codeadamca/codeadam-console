@@ -28,7 +28,7 @@
         
         @include ('layout.forms.text', ['name' => 'published_at', 'label' => 'Date', 'type' => 'date', 'value' => $page->published_at])
 
-        @include ('layout.forms.select', ['name' => 'topic_id', 'label' => 'Primary Topic', 'options' => $page_topics, 'type' => 'table', 'topic_id' => $page->page_topic_id])
+        @include ('layout.forms.select', ['name' => 'topic_id', 'label' => 'Primary Topic', 'options' => $page_topics, 'type' => 'table', 'selected' => $page->topic_id])
 
         @include ('layout.forms.select', ['name' => 'topics', 'label' => 'Other Related Topics', 'options' => $page_topics, 'type' => 'multiple', 'selected' => $page->manyTopics()->pluck('topic_id')->toArray()])
 
