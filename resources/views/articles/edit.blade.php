@@ -16,11 +16,11 @@
 
         @include ('layout.forms.textarea', ['name' => 'content', 'value' => $article->content])
 
-        @include ('layout.forms.text', ['name' => 'instagram_id', 'value' => $article->instagram_id])
+        @include ('layout.forms.text', ['name' => 'instagram_id', 'value' => $article->instagram_id, 'label' => 'Instagram ID'])
 
-        @include ('layout.forms.text', ['name' => 'twitter_id', 'value' => $article->twitter_id])
+        @include ('layout.forms.text', ['name' => 'twitter_id', 'value' => $article->twitter_id, 'label' => 'Twitter ID'])
 
-        @include ('layout.forms.text', ['name' => 'soundcloud_id', 'value' => $article->soundcloud_id])
+        @include ('layout.forms.text', ['name' => 'soundcloud_id', 'value' => $article->soundcloud_id, 'label' => 'Soundcloud ID'])
 
         @include ('layout.forms.text', ['name' => 'url', 'value' => $article->url, 'label' => 'URL'])
         
