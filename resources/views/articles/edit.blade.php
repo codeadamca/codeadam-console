@@ -26,11 +26,11 @@
         
         @include ('layout.forms.text', ['name' => 'published_at', 'label' => 'Date', 'type' => 'date', 'value' => $article->published_at])
         
-        @include ('layout.forms.select', ['name' => 'home', 'label' => 'Display on Home Page', 'options' => $homes, 'selected' => $article->teaching])
+        @include ('layout.forms.select', ['name' => 'home', 'label' => 'Display on Home Page', 'options' => $homes, 'selected' => $article->home])
 
         @include ('layout.forms.textarea', ['name' => 'resources', 'value' => $article->resources])
 
-        @include ('layout.forms.select', ['name' => 'article_type_id', 'label' => 'Type', 'options' => $article_types, 'type' => 'table', 'article_topic_id' => $article->article_topic_id])
+        @include ('layout.forms.select', ['name' => 'article_type_id', 'label' => 'Type', 'options' => $article_types, 'type' => 'table', 'selected' => $article->article_type_id])
 
         @include ('layout.forms.button', ['label' => 'Edit Article'])
 

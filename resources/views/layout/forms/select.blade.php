@@ -3,7 +3,7 @@
     <label for="{{$name}}">{{$label ?? ucwords($name)}}:</label>    
 
     @if (($type ?? false) == 'table')
-
+    
         <select name="{{$name}}" id="{{$name}}" required class="w3-input w3-border">
             @foreach ($options as $option)
                 <option value="{{$option->id}}"
