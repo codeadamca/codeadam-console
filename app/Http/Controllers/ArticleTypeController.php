@@ -47,7 +47,7 @@ class ArticleTypeController extends Controller
     {
 
         return view('articleTypes.edit', [
-            'type' => $articleType,
+            'articleType' => $articleType,
         ]);
 
     }
