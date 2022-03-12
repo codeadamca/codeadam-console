@@ -13,6 +13,8 @@ use App\Models\Tool;
 use App\Models\ToolType;
 use App\Models\Topic;
 
+use Carbon\Carbon;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -81,7 +83,7 @@ Route::get('/tags', function () {
 
 Route::get('/memes/tag/{tag?}', function (Tag $tag) {
 
-    $memes = $tag->manyMemes()->get();
+    $memes = $tag->manyMemes()->orderBy('displayed_at')->get();
 
     foreach($memes as $key => $meme)
     {
@@ -92,6 +94,16 @@ Route::get('/memes/tag/{tag?}', function (Tag $tag) {
     }
 
     return $memes;
+
+})->where('type', '[0-9]+');
+
+
+Route::get('/memes/displayed/{meme?}', function (Meme $meme) {
+
+    $meme->displayed_at = Carbon::now();
+    $meme->save();
+ 
+    return $meme;
 
 })->where('type', '[0-9]+');
 
