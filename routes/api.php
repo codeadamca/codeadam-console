@@ -72,6 +72,12 @@ Route::get('/evaluations', function () {
 });
 
 
+Route::get('/tags', function () {
+
+    return Tag::orderBy('title')->get();
+
+});
+
 
 Route::get('/memes/tag/{tag?}', function (Tag $tag) {
 
@@ -93,7 +99,7 @@ Route::get('/memes/tag/{tag?}', function (Tag $tag) {
 
 Route::get('/pages/topic/{topic?}', function (Topic $topic) {
 
-    $pages = Page::where('topic_id', $topic->id)->orderBy('published_at', 'DESC')->get();
+    $pages = Page::where('topic_id', $topic->id)->orderBy('published_at', 'ASC')->get();
 
     foreach($pages as $key => $page)
     {
