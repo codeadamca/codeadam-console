@@ -39,6 +39,7 @@ class ConsoleController extends Controller
     public function dashboard()
     {
         $links = [
+            ['icon' => 'fas fa-file', 'text' => 'Sample Assignments', 'route' => '/assignments/list'],
             ['icon' => 'fas fa-columns', 'text' => 'Topics', 'route' => '/topics/list'],
             ['icon' => 'fas fa-newspaper', 'text' => 'Articles', 'route' => '/articles/list'],
             ['icon' => 'fas fa-chalkboard', 'text' => 'Pages', 'route' => '/pages/list'],
