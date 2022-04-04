@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleTypeController;
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\MemeController;
@@ -138,3 +139,13 @@ Route::get('/pages/delete/{page:id}', [PageController::class, 'delete'])->where(
 Route::get('/pages/delete/image/{page:id}', [PageController::class, 'deleteImage'])->where('page', '[0-9]+')->middleware('auth');
 Route::get('/pages/image/{page:id}', [PageController::class, 'imageForm'])->where('page', '[0-9]+')->middleware('auth');
 Route::post('/pages/image/{page:id}', [PageController::class, 'image'])->where('page', '[0-9]+')->middleware('auth');
+
+Route::get('/assignments/list', [AssignmentController::class, 'list'])->middleware('auth');
+Route::get('/assignments/add', [AssignmentController::class, 'addForm'])->middleware('auth');
+Route::post('/assignments/add', [AssignmentController::class, 'add'])->middleware('auth');
+Route::get('/assignments/edit/{assignment:id}', [AssignmentController::class, 'editForm'])->where('assignment', '[0-9]+')->middleware('auth');
+Route::post('/assignments/edit/{assignment:id}', [AssignmentController::class, 'edit'])->where('assignment', '[0-9]+')->middleware('auth');
+Route::get('/assignments/delete/{assignment:id}', [AssignmentController::class, 'delete'])->where('assignment', '[0-9]+')->middleware('auth');
+Route::get('/assignments/delete/image/{assignment:id}', [AssignmentController::class, 'deleteImage'])->where('assignment', '[0-9]+')->middleware('auth');
+Route::get('/assignments/image/{assignment:id}', [AssignmentController::class, 'imageForm'])->where('assignment', '[0-9]+')->middleware('auth');
+Route::post('/assignments/image/{assignment:id}', [AssignmentController::class, 'image'])->where('assignment', '[0-9]+')->middleware('auth');
