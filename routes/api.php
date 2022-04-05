@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Article;
+use App\Models\Assignment;
 use App\Models\Evaluation;
 use App\Models\Meme;
 use App\Models\Page;
@@ -263,5 +264,21 @@ Route::get('/topics/page/{page?}', function (Page $page) {
     }
 
     return $topics;
+
+});
+
+Route::get('/assignments', function () {
+
+    $assignments = Assignment::all();
+
+    foreach($assignments as $key => $assignment)
+    {
+        if ($assignments[$key]->image)
+        {
+            $assignments[$key]->image = env('APP_URL') . 'storage/' . $assignments[$key]->image;
+        }
+    }
+
+    return $assignments;
 
 });
