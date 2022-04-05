@@ -17,6 +17,7 @@ class CreateAssignmentsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('url')->nullable();
+            $table->string('github_id')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

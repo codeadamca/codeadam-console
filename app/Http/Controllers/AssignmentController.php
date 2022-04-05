@@ -34,11 +34,13 @@ class AssignmentController extends Controller
         $attributes = request()->validate([
             'title' => 'required',
             'url' => 'required|url',
+            'github_id' => 'nullable',
         ]);
 
         $assignment = new Assignment();
         $assignment->title = $attributes['title'];
         $assignment->url = $attributes['url'];
+        $assignment->github_id = $attributes['github_id'];
         $assignment->save();
 
         return redirect('/assignments/list')
@@ -61,10 +63,12 @@ class AssignmentController extends Controller
         $attributes = request()->validate([
             'title' => 'required',
             'url' => 'required|url',
+            'github_id' => 'nullable',
         ]);
 
         $assignment->title = $attributes['title'];
         $assignment->url = $attributes['url'];
+        $assignment->github_id = $attributes['github_id'];
         $assignment->save();
 
         return redirect('/assignments/list')

@@ -12,6 +12,7 @@ class Assignment extends Model
     protected $fillable = [
         'title',
         'url',
+        'github_id',
         'image',
     ];
 
