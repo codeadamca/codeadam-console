@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 use App\Models\Assignment;
@@ -32,9 +33,10 @@ class AssignmentController extends Controller
 
         $attributes = request()->validate([
             'title' => 'required',
+            'url' => 'required|url',
         ]);
 
-        $assignment = new Evaluation();
+        $assignment = new Assignment();
         $assignment->title = $attributes['title'];
         $assignment->url = $attributes['url'];
         $assignment->save();
