@@ -38,6 +38,12 @@
                     <br>
                     <small>
                         <a href="{{$assignment->url}}">{{$assignment->url}}</a>
+                        <br>
+                        {{date('F jS, Y', strtotime($assignment->created_at))}}
+                        <br>
+                        @if ($assignment->github_id)
+                            <i class="fab fa-github"></i>
+                        @endif    
                     </small>
                 </td>
                 <td>
