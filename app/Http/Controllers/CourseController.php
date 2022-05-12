@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 use App\Models\Course;
+use App\Models\Topic;
 
 class CourseController extends Controller
 {
@@ -23,7 +24,9 @@ class CourseController extends Controller
     public function addForm()
     {
 
-        return view('courses.add');
+        return view('courses.add', [
+            'course_topics' => Topic::all(),
+        ]);
 
     }
     
@@ -35,14 +38,19 @@ class CourseController extends Controller
             'code' => 'required',
             'url' => 'required|url',
             'description' => 'nullable',
+            'topics' => 'nullable',
         ]);
 
         $course = new Course();
-        $course->name = $attributes['name'];
-        $course->code = $attributes['code'];
-        $course->url = $attributes['url'];
-        $course->description = $attributes['description'];
-        $course->save();
+        $course = Course::find($course->create($attributes)->id);
+
+        if(isset($attributes['topics']))
+        {
+            foreach($attributes['topics'] as $topic)
+            {
+                $course->manyTopics()->attach($topic);
+            }        
+        }
 
         return redirect('/courses/list')
             ->with('message', 'Course has been added!');
@@ -54,6 +62,7 @@ class CourseController extends Controller
 
         return view('courses.edit', [
             'course' => $course,
+            'course_topics' => Topic::all(),
         ]);
 
     }
@@ -66,13 +75,20 @@ class CourseController extends Controller
             'code' => 'required',
             'url' => 'required|url',
             'description' => 'nullable',
+            'topics' => 'nullable',
         ]);
 
-        $course->name = $attributes['name'];
-        $course->code = $attributes['code'];
-        $course->url = $attributes['url'];
-        $course->description = $attributes['description'];
-        $course->save();
+        $course->update($attributes);
+
+        $course->manyTopics()->detach();
+
+        if(isset($attributes['topics']))
+        {
+            foreach($attributes['topics'] as $topic)
+            {
+                $course->manyTopics()->attach($topic);
+            }  
+        }
 
         return redirect('/courses/list')
             ->with('message', 'Course has been edited!');
