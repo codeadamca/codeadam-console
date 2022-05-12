@@ -12,8 +12,6 @@
 
         @csrf
 
-        @csrf
-
         @include ('layout.forms.text', ['name' => 'name', 'value' => $course->name])
 
         @include ('layout.forms.text', ['name' => 'code', 'value' => $course->code])
