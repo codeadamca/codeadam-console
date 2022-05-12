@@ -149,3 +149,10 @@ Route::get('/assignments/delete/{assignment:id}', [AssignmentController::class, 
 Route::get('/assignments/delete/image/{assignment:id}', [AssignmentController::class, 'deleteImage'])->where('assignment', '[0-9]+')->middleware('auth');
 Route::get('/assignments/image/{assignment:id}', [AssignmentController::class, 'imageForm'])->where('assignment', '[0-9]+')->middleware('auth');
 Route::post('/assignments/image/{assignment:id}', [AssignmentController::class, 'image'])->where('assignment', '[0-9]+')->middleware('auth');
+
+Route::get('/courses/list', [CourseController::class, 'list'])->middleware('auth');
+Route::get('/courses/add', [CourseController::class, 'addForm'])->middleware('auth');
+Route::post('/courses/add', [CourseController::class, 'add'])->middleware('auth');
+Route::get('/courses/edit/{course:id}', [CourseController::class, 'editForm'])->where('course', '[0-9]+')->middleware('auth');
+Route::post('/courses/edit/{course:id}', [CourseController::class, 'edit'])->where('course', '[0-9]+')->middleware('auth');
+Route::get('/courses/delete/{course:id}', [CourseController::class, 'delete'])->where('course', '[0-9]+')->middleware('auth');
