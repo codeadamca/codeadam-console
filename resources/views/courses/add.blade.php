@@ -20,6 +20,8 @@
 
         @include ('layout.forms.text', ['name' => 'description'])
 
+        @include ('layout.forms.select', ['name' => 'topics', 'label' => 'Related Topics', 'options' => $course_topics, 'type' => 'multiple'])
+
         @include ('layout.forms.button', ['label' => 'Add Course'])
 
     </form>

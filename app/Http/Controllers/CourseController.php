@@ -98,6 +98,7 @@ class CourseController extends Controller
     public function delete(Course $course)
     {
         
+        $course->manyTopics()->detach();
         $course->delete();
 
         return redirect('/courses/list')
