@@ -15,4 +15,9 @@ class Course extends Model
         'url',
         'description',
     ];
+
+    public function manyTopics()
+    {
+        return $this->belongsToMany(Topic::class);
+    }
 }

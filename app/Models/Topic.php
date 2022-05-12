@@ -47,5 +47,10 @@ class Topic extends Model
     {
         return ['Dark', 'Light'];
     }
+
+    public function manyCourses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
     
 }

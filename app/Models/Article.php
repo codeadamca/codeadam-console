@@ -30,7 +30,7 @@ class Article extends Model
         return $this->belongsTo(ArticleType::class, 'article_type_id');
     }
 
-    public function homes()
+    public static function homes()
     {
         return ['Yes', 'No'];
     }

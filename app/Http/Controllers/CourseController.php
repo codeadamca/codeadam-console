@@ -14,7 +14,7 @@ class CourseController extends Controller
     public function list()
     {
 
-        return view('course.list', [
+        return view('courses.list', [
             'courses' => Course::orderBy('name')->get()
         ]);
 
@@ -23,7 +23,7 @@ class CourseController extends Controller
     public function addForm()
     {
 
-        return view('course.add');
+        return view('courses.add');
 
     }
     
@@ -33,7 +33,7 @@ class CourseController extends Controller
         $attributes = request()->validate([
             'name' => 'required',
             'code' => 'required',
-            'url' => 'required',
+            'url' => 'required|url',
             'description' => 'nullable',
         ]);
 
@@ -52,7 +52,7 @@ class CourseController extends Controller
     public function editForm(Course $course)
     {
 
-        return view('course.edit', [
+        return view('courses.edit', [
             'course' => $course,
         ]);
 
@@ -64,7 +64,7 @@ class CourseController extends Controller
         $attributes = request()->validate([
             'name' => 'required',
             'code' => 'required',
-            'url' => 'required',
+            'url' => 'required|url',
             'description' => 'nullable',
         ]);
 
