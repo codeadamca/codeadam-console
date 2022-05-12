@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Article;
 use App\Models\Assignment;
+use App\Models\Course;
 use App\Models\Evaluation;
 use App\Models\Meme;
 use App\Models\Page;
@@ -280,5 +281,23 @@ Route::get('/assignments', function () {
     }
 
     return $assignments;
+
+});
+
+Route::get('/courses', function () {
+
+    $courses = Course::orderBy('name', 'ASC')->get();
+
+    foreach($courses as $key => $course)
+    {
+        $courses[$key]->topics = $course->manyTopics()->get();
+        foreach($courses[$key]->topics as $key2 => $topic)
+        {
+            $courses[$key]->topics[$key2]->image = env('APP_URL') . 'storage/' . $courses[$key]->topics[$key2]->image;
+        }
+
+    }
+
+    return $courses;
 
 });

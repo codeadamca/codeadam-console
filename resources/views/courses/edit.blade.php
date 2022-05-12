@@ -22,6 +22,8 @@
 
         @include ('layout.forms.text', ['name' => 'description', 'value' => $course->description])
 
+        @include ('layout.forms.select', ['name' => 'topics', 'label' => 'Related Topics', 'options' => $course_topics, 'type' => 'multiple', 'selected' => $course->manyTopics()->pluck('topic_id')->toArray()])
+
         @include ('layout.forms.button', ['label' => 'Edit Course'])
 
     </form>
