@@ -14,9 +14,9 @@
 
         @include ('layout.forms.text', ['name' => 'title'])
 
-        @include ('layout.forms.text', ['name' => 'url'])
+        @include ('layout.forms.text', ['name' => 'url', 'label' => 'URL'])
 
-        @include ('layout.forms.text', ['name' => 'github_id'])
+        @include ('layout.forms.text', ['name' => 'github_id', 'label' => 'GitHub ID'])
 
         @include ('layout.forms.button', ['label' => 'Add Assignment'])
 

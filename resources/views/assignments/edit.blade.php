@@ -14,9 +14,9 @@
 
         @include ('layout.forms.text', ['name' => 'title', 'value' => $assignment->title])
 
-        @include ('layout.forms.text', ['name' => 'url', 'value' => $assignment->url])
+        @include ('layout.forms.text', ['name' => 'url', 'label' => 'URL', 'value' => $assignment->url])
 
-        @include ('layout.forms.text', ['name' => 'github_id', 'value' => $assignment->github_id])
+        @include ('layout.forms.text', ['name' => 'github_id', 'label' => 'GitHub ID', 'value' => $assignment->github_id])
 
         @include ('layout.forms.button', ['label' => 'Edit Assignment'])
 
