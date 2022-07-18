@@ -1,4 +1,4 @@
-# codeadam-php-cms-laravel
+# The Laravel CMS for codeadam.ca
 
 This repository is a simple PHP CMS using Laravel used tp manage my personal portfolio.
 
