@@ -160,3 +160,4 @@ Route::post('/courses/edit/{course:id}', [CourseController::class, 'edit'])->whe
 Route::get('/courses/delete/{course:id}', [CourseController::class, 'delete'])->where('course', '[0-9]+')->middleware('auth');
 
 Route::get('/contributions/list', [ContributionController::class, 'list'])->middleware('auth');
+Route::get('/contributions/delete/{contribution:id}', [ContributionController::class, 'delete'])->where('contribution', '[0-9]+')->middleware('auth');
