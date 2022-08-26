@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleTypeController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\MemeController;
 use App\Http\Controllers\PageController;
