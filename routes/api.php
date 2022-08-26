@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Article;
 use App\Models\Assignment;
 use App\Models\Course;
+use App\Models\Contribution;
 use App\Models\Evaluation;
 use App\Models\Meme;
 use App\Models\Page;
@@ -308,8 +309,30 @@ Route::get('/contributions', function () {
 
 });
 
-Route::get('/contributions/store', function () {
+Route::post('/contributions/store', function () {
 
-    return array();
+    if(!request()->exists('username') or !request()->exists('referer'))
+    {
+        return array('status' => 'error');
+    }
+
+    $check = Contribution::where('username', request()->post('username'))->count();
+
+    if($check > 0)
+    {
+        $contribution = Contribution::where('username', request()->post('username'))->first();
+        $contribution->count ++;
+    }
+    else
+    {
+        $contribution = new Contribution();
+        $contribution->count = 1;
+        $contribution->username = request()->post('username');
+    }
+
+    $contribution->referer = request()->post('referer');
+    $contribution->save();
+
+    return $contribution->toArray();
 
 });
