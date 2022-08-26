@@ -158,3 +158,5 @@ Route::post('/courses/add', [CourseController::class, 'add'])->middleware('auth'
 Route::get('/courses/edit/{course:id}', [CourseController::class, 'editForm'])->where('course', '[0-9]+')->middleware('auth');
 Route::post('/courses/edit/{course:id}', [CourseController::class, 'edit'])->where('course', '[0-9]+')->middleware('auth');
 Route::get('/courses/delete/{course:id}', [CourseController::class, 'delete'])->where('course', '[0-9]+')->middleware('auth');
+
+Route::get('/contributions/list', [ContributionController::class, 'list'])->middleware('auth');
