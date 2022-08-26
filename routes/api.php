@@ -301,3 +301,15 @@ Route::get('/courses', function () {
     return $courses;
 
 });
+
+Route::get('/contributions', function () {
+
+    return array();
+
+});
+
+Route::get('/contributions/store', function () {
+
+    return array();
+
+});
