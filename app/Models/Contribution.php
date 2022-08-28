@@ -9,7 +9,7 @@ class Contribution extends Model
 {
 
     protected $fillable = [
-        'username',
+        'github',
         'referer',
         'count',
     ];

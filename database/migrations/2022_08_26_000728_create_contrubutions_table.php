@@ -15,7 +15,7 @@ class CreateContrubutionsTable extends Migration
     {
         Schema::create('contrubutions', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->nullable();
+            $table->string('github')->nullable();
             $table->string('referer')->nullable();
             $table->integer('count')->default(0);
             $table->timestamps();

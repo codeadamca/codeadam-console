@@ -311,23 +311,23 @@ Route::get('/contributions', function () {
 
 Route::post('/contributions/store', function () {
 
-    if(!request()->exists('username') or !request()->exists('referer'))
+    if(!request()->exists('github') or !request()->exists('referer'))
     {
         return array('status' => 'error');
     }
 
-    $check = Contribution::where('username', request()->post('username'))->count();
+    $check = Contribution::where('github', request()->post('github'))->count();
 
     if($check > 0)
     {
-        $contribution = Contribution::where('username', request()->post('username'))->first();
+        $contribution = Contribution::where('github', request()->post('github'))->first();
         $contribution->count ++;
     }
     else
     {
         $contribution = new Contribution();
         $contribution->count = 1;
-        $contribution->username = request()->post('username');
+        $contribution->github = request()->post('github');
     }
 
     $contribution->referer = request()->post('referer');

@@ -16,7 +16,7 @@ class ContributionController extends Controller
     {
 
         return view('contributions.list', [
-            'contributions' => Contribution::orderBy('username', 'ASC')->get()
+            'contributions' => Contribution::orderBy('github', 'ASC')->get()
         ]);
 
     }

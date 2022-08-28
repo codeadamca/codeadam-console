@@ -12,7 +12,7 @@
         <tr class="w3-dark-grey">
             <th class="ca-col-icon"></th>
             <th class="ca-col-image"></th>
-            <th>Username</th>
+            <th>GitHub</th>
             <th class="w3-center">Count</th>
             <th>Last Displayed</th>
             <th class="ca-col-icon"></th>
@@ -24,12 +24,12 @@
                 </td>
                 <td>
                     <div class="w3-center w3-light-grey w3-padding w3-border">
-                        <img src="https://avatars.githubusercontent.com/{{$contribution->username}}" width="50">
+                        <img src="https://avatars.githubusercontent.com/{{$contribution->github}}" width="50">
                     </div>
                 </td>
                 <td>
-                    <a href="https://github.com/{{$contribution->username}}">
-                        {{$contribution->username}}
+                    <a href="https://github.com/{{$contribution->github}}">
+                        {{$contribution->github}}
                     </a>
                     <br>
                     <small>
