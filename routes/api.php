@@ -29,6 +29,12 @@ use Carbon\Carbon;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| CodeAdam API Calls
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/articles/{filter?}/{value?}', function ($filter, $value) {
 
     if ($filter == 'type' and $value) 
@@ -309,7 +315,49 @@ Route::get('/contributions', function () {
 
 });
 
+/*
+|--------------------------------------------------------------------------
+| GitHub Contributions API Calls
+|--------------------------------------------------------------------------
+*/
+
 Route::post('/contributions/store', function () {
+
+    if(!request()->exists('github') or !request()->exists('referer'))
+    {
+        return array('status' => 'error');
+    }
+
+    $check = Contribution::where('github', request()->post('github'))->count();
+
+    if($check > 0)
+    {
+        $contribution = Contribution::where('github', request()->post('github'))->first();
+        $contribution->count ++;
+    }
+    else
+    {
+        $contribution = new Contribution();
+        $contribution->count = 1;
+        $contribution->github = request()->post('github');
+    }
+
+    $contribution->referer = request()->post('referer');
+    $contribution->save();
+
+    return $contribution->toArray();
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| LiveCode API Calls
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/livecode/path', function () {
+
+    dd('here');
 
     if(!request()->exists('github') or !request()->exists('referer'))
     {
