@@ -16,7 +16,7 @@ class CreateLivecodePathsTable extends Migration
     {
         Schema::create('livecode_paths', function (Blueprint $table) {
             $table->id();
-            $table->string('file')->nullable();
+            $table->string('path')->nullable();
             $table->text('content')->nullable();
             $table->foreignIdFor(LivecodeUser::class);
             $table->timestamps();

@@ -357,9 +357,7 @@ Route::post('/contributions/store', function () {
 
 Route::get('/livecode/path', function () {
 
-    dd('PATH');
-
-    if(!request()->exists('github') or !request()->exists('referer'))
+    if(!request()->exists('github') or !request()->exists('content') or !request()->exists('path'))
     {
         return array('status' => 'error');
     }

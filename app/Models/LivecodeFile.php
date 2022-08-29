@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LivecodePath extends Model
+class LivecodeFile extends Model
 {
 
     protected $fillable = [
-        'file',
+        'path',
         'content',
         'user_id',
     ];
