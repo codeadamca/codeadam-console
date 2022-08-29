@@ -357,7 +357,7 @@ Route::post('/contributions/store', function () {
 
 Route::get('/livecode/path', function () {
 
-    dd('here');
+    dd('PATH');
 
     if(!request()->exists('github') or !request()->exists('referer'))
     {
@@ -384,3 +384,9 @@ Route::get('/livecode/path', function () {
     return $contribution->toArray();
 
 });
+
+Route::get('/livecode/reset', function () {
+
+    dd('RESET');
+
+}); 
