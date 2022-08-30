@@ -311,12 +311,6 @@ Route::get('/courses', function () {
 
 });
 
-Route::get('/contributions', function () {
-
-    return array();
-
-});
-
 /*
 |--------------------------------------------------------------------------
 | GitHub Contributions API Calls
@@ -356,6 +350,19 @@ Route::post('/contributions/store', function () {
 | LiveCode API Calls
 |--------------------------------------------------------------------------
 */
+
+Route::get('/livecode/users', function () {
+
+    $users = LivecodeUser::all();
+
+    foreach($users as $key => $user)
+    {
+        $users[$key]->files = $user->files()->count();
+    }
+
+    return $users;
+
+});
 
 Route::post('/livecode/save', function () {
 

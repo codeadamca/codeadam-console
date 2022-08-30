@@ -15,4 +15,9 @@ class LivecodeUser extends Model
 
     protected $dates = ['created_at', 'updated_at'];
 
+    public function files()
+    {
+        return $this->hasMany(LivecodeFile::class, 'livecode_user_id');
+    }
+
 }
