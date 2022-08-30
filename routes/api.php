@@ -380,7 +380,7 @@ Route::get('/livecode/save', function () {
     {
         $user = LivecodeUser::where('github', request()->get('github'))->first();
         $user->count ++;
-        $user->github = request()->get('display');
+        $user->display = request()->get('display');
         $user->save();
 
         $user_id = $user->id;
@@ -390,7 +390,7 @@ Route::get('/livecode/save', function () {
         $user = new LivecodeUser();
         $user->count = 1;
         $user->github = request()->get('github');
-        $user->github = request()->get('display');
+        $user->display = request()->get('display');
         $user->save();
 
         $user_id = $user->id;
