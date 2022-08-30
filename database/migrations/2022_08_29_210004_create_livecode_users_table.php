@@ -16,6 +16,7 @@ class CreateLivecodeUsersTable extends Migration
         Schema::create('livecode_users', function (Blueprint $table) {
             $table->id();
             $table->string('github')->nullable();
+            $table->string('display')->nullable();
             $table->integer('count')->default(0);
             $table->timestamps();
         });
