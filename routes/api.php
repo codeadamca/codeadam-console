@@ -8,6 +8,8 @@ use App\Models\Assignment;
 use App\Models\Course;
 use App\Models\Contribution;
 use App\Models\Evaluation;
+use App\Models\LivecodeUser;
+use App\Models\LivecodeFile;
 use App\Models\Meme;
 use App\Models\Page;
 use App\Models\Social;
@@ -355,36 +357,80 @@ Route::post('/contributions/store', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/livecode/path', function () {
+Route::post('/livecode/save', function () {
 
     if(!request()->exists('github') or !request()->exists('content') or !request()->exists('path'))
     {
         return array('status' => 'error');
     }
 
-    $check = Contribution::where('github', request()->post('github'))->count();
+    $check = LivecodeUser::where('github', request()->post('github'))->count();
 
     if($check > 0)
     {
-        $contribution = Contribution::where('github', request()->post('github'))->first();
-        $contribution->count ++;
+        $user = LivecodeUser::where('github', request()->post('github'))->first();
+        $user->count ++;
+        $user->save();
+
+        $user_id = $user->id;
+    }
+    elseif(request()->post('github'))
+    {
+        $user = new LivecodeUser();
+        $user->count = 1;
+        $user->github = request()->post('github');
+        $user->save();
+
+        $user_id = $user->id;
     }
     else
     {
-        $contribution = new Contribution();
-        $contribution->count = 1;
-        $contribution->github = request()->post('github');
+        $user_id = 0;
     }
 
-    $contribution->referer = request()->post('referer');
-    $contribution->save();
+    $check = LivecodeFile::where('path', request()->post('path'))
+        ->where('livecode_user_id', $user_id )
+        ->count();
 
-    return $contribution->toArray();
+    if($check > 0)
+    {
+        $file = LivecodeFile::where('path', request()->post('path'))
+            ->where('livecode_user_id', $user_id )
+            ->first();
+    }
+    else
+    {
+        $file = new LivecodeFile();
+        $file->livecode_user_id = $user_id;
+        $file->path = request()->post('path');
+    }
+
+    $file->content = request()->post('content');
+    $file->save();
+
+    return array('status' => 'complete');
 
 });
 
-Route::get('/livecode/reset', function () {
+Route::post('/livecode/reset', function () {
 
-    dd('RESET');
+    $check = LivecodeUser::where('github', request()->post('github'))->count();
+
+    if($check > 0)
+    {
+        $user = LivecodeUser::where('github', request()->post('github'))->first();
+        $user->count ++;
+        $user->save();
+
+        $user_id = $user->id;
+    }
+    else
+    {
+        $user_id = 0;
+    }
+
+    LivecodeFile::where('livecode_user_id', $user_id)->delete();
+
+    return array('status' => 'complete');
 
 }); 
