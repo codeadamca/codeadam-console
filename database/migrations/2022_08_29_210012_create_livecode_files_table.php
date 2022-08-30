@@ -14,7 +14,7 @@ class CreateLivecodeFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('livecode_paths', function (Blueprint $table) {
+        Schema::create('livecode_files', function (Blueprint $table) {
             $table->id();
             $table->string('path')->nullable();
             $table->text('content')->nullable();
@@ -30,6 +30,6 @@ class CreateLivecodeFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('livecode_paths');
+        Schema::dropIfExists('livecode_files');
     }
 }

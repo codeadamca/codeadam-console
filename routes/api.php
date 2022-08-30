@@ -364,19 +364,23 @@ Route::get('/livecode/users', function () {
 
 });
 
-Route::post('/livecode/save', function () {
+Route::get('/livecode/save', function () {
 
-    if(!request()->exists('github') or !request()->exists('content') or !request()->exists('path'))
+    if(!request()->exists('github') or 
+        !request()->exists('display') or 
+        !request()->exists('content') or 
+        !request()->exists('path'))
     {
         return array('status' => 'error');
     }
 
-    $check = LivecodeUser::where('github', request()->post('github'))->count();
+    $check = LivecodeUser::where('github', request()->get('github'))->count();
 
     if($check > 0)
     {
-        $user = LivecodeUser::where('github', request()->post('github'))->first();
+        $user = LivecodeUser::where('github', request()->get('github'))->first();
         $user->count ++;
+        $user->github = request()->get('display');
         $user->save();
 
         $user_id = $user->id;
@@ -385,7 +389,8 @@ Route::post('/livecode/save', function () {
     {
         $user = new LivecodeUser();
         $user->count = 1;
-        $user->github = request()->post('github');
+        $user->github = request()->get('github');
+        $user->github = request()->get('display');
         $user->save();
 
         $user_id = $user->id;
@@ -395,13 +400,13 @@ Route::post('/livecode/save', function () {
         $user_id = 0;
     }
 
-    $check = LivecodeFile::where('path', request()->post('path'))
+    $check = LivecodeFile::where('path', request()->get('path'))
         ->where('livecode_user_id', $user_id )
         ->count();
 
     if($check > 0)
     {
-        $file = LivecodeFile::where('path', request()->post('path'))
+        $file = LivecodeFile::where('path', request()->get('path'))
             ->where('livecode_user_id', $user_id )
             ->first();
     }
@@ -409,23 +414,23 @@ Route::post('/livecode/save', function () {
     {
         $file = new LivecodeFile();
         $file->livecode_user_id = $user_id;
-        $file->path = request()->post('path');
+        $file->path = request()->get('path');
     }
 
-    $file->content = request()->post('content');
+    $file->content = request()->get('content');
     $file->save();
 
     return array('status' => 'complete');
 
 });
 
-Route::post('/livecode/reset', function () {
+Route::get('/livecode/reset', function () {
 
-    $check = LivecodeUser::where('github', request()->post('github'))->count();
+    $check = LivecodeUser::where('github', request()->get('github'))->count();
 
     if($check > 0)
     {
-        $user = LivecodeUser::where('github', request()->post('github'))->first();
+        $user = LivecodeUser::where('github', request()->get('github'))->first();
         $user->count ++;
         $user->save();
 
