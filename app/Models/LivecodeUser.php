@@ -10,6 +10,7 @@ class LivecodeUser extends Model
 
     protected $fillable = [
         'github',
+        'display',
         'count',
     ];
 
@@ -17,7 +18,7 @@ class LivecodeUser extends Model
 
     public function files()
     {
-        return $this->hasMany(LivecodeFile::class, 'livecode_user_id');
+        return $this->hasMany(LivecodeFile::class);
     }
 
 }

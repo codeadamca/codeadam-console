@@ -14,8 +14,19 @@ class LivecodeFileController extends Controller
     public function list()
     {
 
+        $files = LivecodeFile::orderBy('updated_at')->get();
+
+        foreach($files as $key => $file)
+        {
+            $files[$key]['filename'] = 'test.html';
+            $files[$key]['filetype'] = 'html';
+          
+          echo($file->user()->id);
+        }
+
+      die();
         return view('livecodeFiles.list', [
-            'livecodeFiles' => LivecodeFile::orderBy('updated_at')->get()
+            'livecodeFiles' => $files
         ]);
 
     }
