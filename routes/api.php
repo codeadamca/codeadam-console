@@ -358,6 +358,18 @@ Route::get('/livecode/users', function () {
     foreach($users as $key => $user)
     {
         $users[$key]->files = $user->files()->count();
+        $users[$key]->image = 'https://avatars.githubusercontent.com/'.$user->github;
+      
+        if($user->files()->count() == 0)
+        {
+            $users[$key]->status = 'Inactive';
+        }
+        else
+        {
+            $file = $user->files()->orderBy('updated_at')->first(); 
+            $users[$key]->status = $file->updated_at->diffInHours() < 2 ? 'Now Coding' : $file->updated_at->diffForHumans();
+        }
+        
     }
 
     return $users;

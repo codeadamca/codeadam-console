@@ -6,7 +6,14 @@
 
     @include ('layout.title', ['title' => 'Manage LiveCode Users'])
 
-    @include ('layout.breadcrumbs', ['title' => 'Manage LiveCode Users'])
+    <div>
+        <div class="w3-twothird">
+            @include ('layout.breadcrumbs', ['title' => 'Manage LiveCode Users'])
+        </div>
+        <div class="w3-third w3-right-align w3-small ">
+            <a href="/livecode/users/files/list">Manage LiveCode Files</a>
+        </div>
+    </div>
     
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-dark-grey">
@@ -39,10 +46,6 @@
                     <br>
                     <small>
                         <a href="https://github.com/{{$livecodeUser->github}}">https://github.com/{{$livecodeUser->github}}</a>
-                        <br>
-                        @if ($livecodeUser->files->count())
-                            <a href="/livecode/users/files">View Files</a>
-                        @endif
                     </small>
                 </td>
                 <td class="w3-center">
@@ -55,7 +58,7 @@
                     {{$livecodeUser->updated_at->diffForHumans()}}
                 </td>
                 <td>
-                    <a href="/contributions/delete/{{$livecodeUser->id}}">
+                    <a href="/livecode/users/delete/{{$livecodeUser->id}}">
                         <i class="fas fa-trash-alt mute"></i>
                     </a>
                 </td>

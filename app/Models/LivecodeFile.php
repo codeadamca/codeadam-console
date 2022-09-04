@@ -11,9 +11,14 @@ class LivecodeFile extends Model
     protected $fillable = [
         'path',
         'content',
-        'user_id',
+        'livecode_user_id',
     ];
 
     protected $dates = ['created_at', 'updated_at'];
+  
+    public function user()
+    {
+        return $this->belongsTo(LivecodeUser::class, 'livecode_user_id');
+    }
     
 }

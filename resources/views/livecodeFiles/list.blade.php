@@ -43,13 +43,29 @@
                     {{$livecodeFile->filename}}
                 </td>
                 <td>
+<<<<<<< HEAD
                     {{$livecodeFile->user()->github}}
+=======
+                    @if ($livecodeFile->user)
+                        @if ($livecodeFile->user->github)
+                            <a href="https://github.com/{{$livecodeFile->user->github}}">{{$livecodeFile->user->github}}</a>
+                        @else
+                            {{$livecodeFile->user->display}}
+                        @endif
+                    @else
+                        anonymous
+                    @endif
+>>>>>>> 1e9992aa2f24ec8c66f887ad8e6e2ce089571bcf
                 </td>
                 <td>
                     {{$livecodeFile->updated_at->diffForHumans()}}
                 </td>
                 <td>
+<<<<<<< HEAD
                     <a href="/contributions/delete/{{$livecodeFile->id}}">
+=======
+                    <a href="/livecode/users/files/delete/{{$livecodeFile->id}}">
+>>>>>>> 1e9992aa2f24ec8c66f887ad8e6e2ce089571bcf
                         <i class="fas fa-trash-alt mute"></i>
                     </a>
                 </td>

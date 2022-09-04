@@ -8,7 +8,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\LivecodeUserController;
-// use App\Http\Controllers\LivecodeFileController;
+use App\Http\Controllers\LivecodeFileController;
 use App\Http\Controllers\MemeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProjectController;
@@ -167,5 +167,5 @@ Route::get('/contributions/delete/{contribution:id}', [ContributionController::c
 Route::get('/livecode/users/list', [LivecodeUserController::class, 'list'])->middleware('auth');
 Route::get('/livecode/users/delete/{contribution:id}', [LivecodeUserController::class, 'delete'])->where('livecodeUser', '[0-9]+')->middleware('auth');
 
-Route::get('/livecode/users/files/list', [LivecodeUsersController::class, 'list'])->middleware('auth');
-Route::get('/livecode/users/files/delete/{contribution:id}', [LivecodeUsersController::class, 'delete'])->where('livecodeFile', '[0-9]+')->middleware('auth');
+Route::get('/livecode/users/files/list', [LivecodeFileController::class, 'list'])->middleware('auth');
+Route::get('/livecode/users/files/delete/{contribution:id}', [LivecodeFileController::class, 'delete'])->where('livecodeFile', '[0-9]+')->middleware('auth');
