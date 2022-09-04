@@ -358,6 +358,8 @@ Route::get('/livecode/users', function () {
     foreach($users as $key => $user)
     {
         $users[$key]->files = $user->files()->count();
+        $users[$key]->image = 'https://avatars.githubusercontent.com/'.$user->github;
+        $users[$key]->file_updated_at = $user->files()->orderBy('updated_at')->first()->updated_at;
     }
 
     return $users;
