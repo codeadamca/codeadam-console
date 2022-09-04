@@ -359,7 +359,7 @@ Route::get('/livecode/users', function () {
     {
         $users[$key]->files = $user->files()->count();
         $users[$key]->image = 'https://avatars.githubusercontent.com/'.$user->github;
-        $users[$key]->file_updated_at = $user->files()->orderBy('updated_at')->first()->updated_at;
+        $users[$key]->active = $user->files()->orderBy('updated_at')->first()->updated_at->diffForHumans();;
     }
 
     return $users;
