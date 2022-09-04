@@ -20,11 +20,9 @@ class LivecodeFileController extends Controller
         {
             $files[$key]['filename'] = 'test.html';
             $files[$key]['filetype'] = 'html';
-          
-          echo($file->user()->id);
+            // $files[$key]['user'] = LivecodeUser::find($file['livecode_user_id']);
         }
 
-      die();
         return view('livecodeFiles.list', [
             'livecodeFiles' => $files
         ]);

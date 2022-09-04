@@ -43,13 +43,21 @@
                     {{$livecodeFile->filename}}
                 </td>
                 <td>
-                    {{$livecodeFile->user()->github}}
+                    @if ($livecodeFile->user)
+                        @if ($livecodeFile->user->github)
+                            <a href="https://github.com/{{$livecodeFile->user->github}}">{{$livecodeFile->user->github}}</a>
+                        @else
+                            {{$livecodeFile->user->display}}
+                        @endif
+                    @else
+                        anonymous
+                    @endif
                 </td>
                 <td>
                     {{$livecodeFile->updated_at->diffForHumans()}}
                 </td>
                 <td>
-                    <a href="/contributions/delete/{{$livecodeFile->id}}">
+                    <a href="/livecode/users/files/delete/{{$livecodeFile->id}}">
                         <i class="fas fa-trash-alt mute"></i>
                     </a>
                 </td>

@@ -18,7 +18,7 @@ class LivecodeFile extends Model
   
     public function user()
     {
-        return $this->belongsTo(LivecodeUser::class, 'livecode_user_id', 'id');
+        return $this->belongsTo(LivecodeUser::class, 'livecode_user_id');
     }
     
 }
