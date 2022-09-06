@@ -366,7 +366,7 @@ Route::get('/livecode/users', function () {
         }
         else
         {
-            $file = $user->files()->orderBy('updated_at')->first(); 
+            $file = $user->files()->orderBy('updated_at', 'DESC')->first(); 
             $users[$key]->status = $file->updated_at->diffInHours() < 2 ? 'Now Coding' : $file->updated_at->diffForHumans();
         }
         
