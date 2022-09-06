@@ -353,7 +353,7 @@ Route::post('/contributions/store', function () {
 
 Route::get('/livecode/users', function () {
 
-    $users = LivecodeUser::all();
+    $users = LivecodeUser::orderBy('github')->get();
 
     foreach($users as $key => $user)
     {
