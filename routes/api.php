@@ -385,6 +385,12 @@ Route::get('/livecode/code', function () {
       
         $user = LivecodeUser::where('github', request()->post('github'))->first();
         $files = LivecodeFile::where('livecode_user_id', $user->id)->get();
+      
+        foreach($files as $key => $file)
+        {
+            $files[$key]['content'] = htmlentities($file['content']);
+        }
+      
         return $files;
 
     }
