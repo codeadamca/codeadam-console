@@ -376,6 +376,25 @@ Route::get('/livecode/users', function () {
 
 });
 
+Route::get('/livecode/code', function () {
+  
+    $check = LivecodeUser::where('github', request()->get('github'))->count();
+  
+    if($check > 0)
+    {
+      
+        $user = LivecodeUser::where('github', request()->post('github'))->first();
+        $files = LivecodeFile::where('livecode_user_id', $user->id)->get();
+        return $files;
+
+    }
+    else
+    {
+        return array('status' => 'error');
+    }
+  
+});
+
 Route::post('/livecode/save', function () {
 
     if(!request()->exists('github') or 
