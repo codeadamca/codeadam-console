@@ -33,7 +33,7 @@
                 <td>
                     @if ($meme->image)
                         <div class="w3-center w3-light-grey w3-padding w3-border">
-                            <img src="{{asset('storage/'.$meme->image)}}" width="50">
+                            <img src="{{asset('storage/'.$meme->image)}}" width="250">
                         </div>
                     @endif
                 </td>
