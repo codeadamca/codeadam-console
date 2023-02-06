@@ -353,7 +353,9 @@ Route::post('/contributions/store', function () {
 
 Route::get('/livecode/users', function () {
 
-    $users = LivecodeUser::orderBy('github')->get();
+    $filter = \Carbon\Carbon::now()->subDays(21);
+
+    $users = LivecodeUser::where('updated_at', '>', $filter)->orderBy('github')->get();
 
     foreach($users as $key => $user)
     {
