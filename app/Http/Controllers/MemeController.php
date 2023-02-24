@@ -26,7 +26,7 @@ class MemeController extends Controller
     {
 
         return view('memes.add', [
-            'tags' => Tag::all()
+            'tags' => Tag::orderBy('title')->get(),
         ]);
 
     }
@@ -58,7 +58,7 @@ class MemeController extends Controller
 
         return view('memes.edit', [
             'meme' => $meme,
-            'tags' => Tag::all()
+            'tags' => Tag::orderBy('title')->get(),
         ]);
 
     }

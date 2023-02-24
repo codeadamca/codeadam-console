@@ -26,7 +26,7 @@ class AssignmentController extends Controller
     {
 
         return view('assignments.add', [
-            'assignment_topics' => Topic::all(),
+            'assignment_topics' => Topic::orderBy('title')->get(),
         ]);
 
     }
@@ -65,7 +65,7 @@ class AssignmentController extends Controller
 
         return view('assignments.edit', [
             'assignment' => $assignment,
-            'assignment_topics' => Topic::all(),
+            'assignment_topics' => Topic::orderBy('title')->get(),
         ]);
 
     }

@@ -25,7 +25,7 @@ class PageController extends Controller
     {
 
         return view('pages.add', [
-            'page_topics' => Topic::all(),
+            'page_topics' => Topic::orderBy('title')->get(),
         ]);
 
     }
@@ -67,7 +67,7 @@ class PageController extends Controller
 
         return view('pages.edit', [
             'page' => $page,
-            'page_topics' => Topic::all(),
+            'page_topics' => Topic::orderBy('title')->get(),
         ]);
 
     }

@@ -25,7 +25,7 @@ class ToolController extends Controller
     {
 
         return view('tools.add', [
-            'tool_types' => ToolType::all()
+            'tool_types' => ToolType::orderBy('title')->get(),
         ]);
 
     }
@@ -52,7 +52,7 @@ class ToolController extends Controller
 
         return view('tools.edit', [
             'tool' => $tool,
-            'tool_types' => ToolType::all()
+            'tool_types' => ToolType::orderBy('title')->get(),
         ]);
 
     }

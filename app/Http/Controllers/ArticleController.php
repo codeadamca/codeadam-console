@@ -26,7 +26,7 @@ class ArticleController extends Controller
 
         return view('articles.add', [
             'homes'=> Article::homes(),
-            'article_types' => ArticleType::all(),
+            'article_types' => ArticleType::orderBy('title')->get(),
         ]);
 
     }
@@ -61,7 +61,7 @@ class ArticleController extends Controller
         return view('articles.edit', [
             'article' => $article,
             'homes'=> Article::homes(),
-            'article_types' => ArticleType::all(),
+            'article_types' => ArticleType::orderBy('title')->get(),
         ]);
 
     }

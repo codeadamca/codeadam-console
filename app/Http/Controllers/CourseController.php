@@ -25,7 +25,7 @@ class CourseController extends Controller
     {
 
         return view('courses.add', [
-            'course_topics' => Topic::all(),
+            'course_topics' => Topic::orderBy('title')->get(),
         ]);
 
     }
@@ -62,7 +62,7 @@ class CourseController extends Controller
 
         return view('courses.edit', [
             'course' => $course,
-            'course_topics' => Topic::all(),
+            'course_topics' => Topic::orderBy('title')->get(),
         ]);
 
     }
