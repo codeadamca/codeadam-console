@@ -102,7 +102,8 @@ class AssignmentController extends Controller
 
     public function delete(Assignment $assignment)
     {
-        
+
+        $assignment->manyTopics()->detach();
         $assignment->delete();
 
         return redirect('/assignments/list')
