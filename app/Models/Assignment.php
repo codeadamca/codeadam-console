@@ -16,5 +16,10 @@ class Assignment extends Model
         'image',
     ];
 
+    public function manyTopics()
+    {
+        return $this->belongsToMany(Topic::class);
+    }
+    
     protected $dates = ['created_at', 'updated_at'];
 }

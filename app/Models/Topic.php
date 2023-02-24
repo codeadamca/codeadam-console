@@ -53,4 +53,9 @@ class Topic extends Model
         return $this->belongsToMany(Course::class);
     }
     
+    public function manyAssignments()
+    {
+        return $this->belongsToMany(Assignment::class);
+    }
+
 }
