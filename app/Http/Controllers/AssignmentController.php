@@ -24,7 +24,9 @@ class AssignmentController extends Controller
     public function addForm()
     {
 
-        return view('assignments.add');
+        return view('assignments.add', [
+            'course_topics' => Topic::all(),
+        ]);
 
     }
     
@@ -35,6 +37,7 @@ class AssignmentController extends Controller
             'title' => 'required',
             'url' => 'required|url',
             'github_id' => 'nullable',
+            'topics' => 'nullable',
         ]);
 
         $assignment = new Assignment();
@@ -42,6 +45,14 @@ class AssignmentController extends Controller
         $assignment->url = $attributes['url'];
         $assignment->github_id = $attributes['github_id'];
         $assignment->save();
+
+        if(isset($attributes['topics']))
+        {
+            foreach($attributes['topics'] as $topic)
+            {
+                $assignment->manyTopics()->attach($topic);
+            }        
+        }
 
         return redirect('/assignments/list')
             ->with('message', 'Assignment has been added!');
@@ -53,6 +64,7 @@ class AssignmentController extends Controller
 
         return view('assignments.edit', [
             'assignment' => $assignment,
+            'assignment_topics' => Topic::all(),
         ]);
 
     }
@@ -70,6 +82,16 @@ class AssignmentController extends Controller
         $assignment->url = $attributes['url'];
         $assignment->github_id = $attributes['github_id'];
         $assignment->save();
+
+        $assignment->manyTopics()->detach();
+
+        if(isset($attributes['topics']))
+        {
+            foreach($attributes['topics'] as $topic)
+            {
+                $assignment->manyTopics()->attach($topic);
+            }  
+        }
 
         return redirect('/assignments/list')
             ->with('message', 'Assignment has been edited!');
