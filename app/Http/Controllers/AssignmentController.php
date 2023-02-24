@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 use App\Models\Assignment;
+use App\Models\Topic;
 
 class AssignmentController extends Controller
 {
@@ -25,7 +26,7 @@ class AssignmentController extends Controller
     {
 
         return view('assignments.add', [
-            'course_topics' => Topic::all(),
+            'assignment_topics' => Topic::all(),
         ]);
 
     }
@@ -76,6 +77,7 @@ class AssignmentController extends Controller
             'title' => 'required',
             'url' => 'required|url',
             'github_id' => 'nullable',
+            'topics' => 'nullable',
         ]);
 
         $assignment->title = $attributes['title'];

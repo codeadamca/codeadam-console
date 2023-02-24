@@ -18,6 +18,8 @@
 
         @include ('layout.forms.text', ['name' => 'github_id', 'label' => 'GitHub ID', 'value' => $assignment->github_id])
 
+        @include ('layout.forms.select', ['name' => 'topics', 'label' => 'Related Topics', 'options' => $assignment_topics, 'type' => 'multiple', 'selected' => $assignment->manyTopics()->pluck('topic_id')->toArray()])
+
         @include ('layout.forms.button', ['label' => 'Edit Assignment'])
 
     </form>
