@@ -286,6 +286,12 @@ Route::get('/assignments', function () {
         if ($assignments[$key]->image)
         {
             $assignments[$key]->image = env('APP_URL') . 'storage/' . $assignments[$key]->image;
+
+            $assignments[$key]->topics = $assignment->manyTopics()->get();
+            foreach($assignments[$key]->topics as $key2 => $topic)
+            {
+                $assignments[$key]->topics[$key2]->image = env('APP_URL') . 'storage/' . $assignments[$key]->topics[$key2]->image;
+            }
         }
     }
 
