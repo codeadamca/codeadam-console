@@ -21,17 +21,17 @@ class Social extends Model
         'image',
     ];
 
-    public function homes()
+    public static function homes()
     {
         return ['Yes', 'No'];
     }
     
-    public function abouts()
+    public static function abouts()
     {
         return ['Yes', 'No'];
     }
 
-    public function headers()
+    public static function headers()
     {
         return ['Yes', 'No'];
     }

@@ -38,12 +38,12 @@ class Topic extends Model
         return $this->belongsToMany(Page::class);
     }
 
-    public function teachings()
+    public static function teachings()
     {
         return ['Yes', 'No'];
     }
     
-    public function backgrounds()
+    public static function backgrounds()
     {
         return ['Dark', 'Light'];
     }
