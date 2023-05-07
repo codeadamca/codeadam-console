@@ -7,6 +7,7 @@ use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\JournalController;
 use App\Http\Controllers\LivecodeUserController;
 use App\Http\Controllers\LivecodeFileController;
 use App\Http\Controllers\MemeController;
@@ -76,6 +77,16 @@ Route::post('/memes/tags/add', [TagController::class, 'add'])->middleware('auth'
 Route::get('/memes/tags/edit/{tag:id}', [TagController::class, 'editForm'])->where('tag', '[0-9]+')->middleware('auth');
 Route::post('/memes/tags/edit/{tag:id}', [TagController::class, 'edit'])->where('tag', '[0-9]+')->middleware('auth');
 Route::get('/memes/tags/delete/{tag:id}', [TagController::class, 'delete'])->where('tag', '[0-9]+')->middleware('auth');
+
+Route::get('/journals/list', [JournalController::class, 'list'])->middleware('auth');
+Route::get('/journals/add', [JournalController::class, 'addForm'])->middleware('auth');
+Route::post('/journals/add', [JournalController::class, 'add'])->middleware('auth');
+Route::get('/journals/edit/{journal:id}', [JournalController::class, 'editForm'])->where('journal', '[0-9]+')->middleware('auth');
+Route::post('/journals/edit/{journal:id}', [JournalController::class, 'edit'])->where('journal', '[0-9]+')->middleware('auth');
+Route::get('/journals/delete/{journal:id}', [JournalController::class, 'delete'])->where('journal', '[0-9]+')->middleware('auth');
+Route::get('/journals/delete/image/{mejournalme:id}', [JournalController::class, 'deleteImage'])->where('journal', '[0-9]+')->middleware('auth');
+Route::get('/journals/image/{journal:id}', [JournalController::class, 'imageForm'])->where('journal', '[0-9]+')->middleware('auth');
+Route::post('/journals/image/{journal:id}', [JournalController::class, 'image'])->where('journal', '[0-9]+')->middleware('auth');
 
 Route::get('/topics/list', [TopicController::class, 'list'])->middleware('auth');
 Route::get('/topics/add', [TopicController::class, 'addForm'])->middleware('auth');
