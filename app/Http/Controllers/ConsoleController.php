@@ -48,6 +48,7 @@ class ConsoleController extends Controller
             ['icon' => 'fas fa-image', 'text' => 'Memes', 'route' => '/memes/list'],
             ['icon' => 'fas fa-share-alt-square', 'text' => 'Social', 'route' => '/socials/list'],
             ['icon' => 'fas fa-graduation-cap', 'text' => 'Courses', 'route' => '/courses/list'],
+            ['icon' => 'fas fa-book', 'text' => 'Journals', 'route' => '/journals/list'],
 
             ['icon' => 'fas fa-code', 'text' => 'LiveCode', 'route' => '/livecode/users/list', 'colour' => 'blue'],
 
