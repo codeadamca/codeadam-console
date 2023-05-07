@@ -8,31 +8,21 @@
 
     @include ('layout.breadcrumbs', ['links' => ['Manage Articles' => '/articles/list'], 'title' => 'Add Article'])
 
-    <form method="post" action="/articles/add" novalidate class="w3-margin-bottom" autocomplete="off">
+    <form method="post" action="/journals/add" novalidate class="w3-margin-bottom" autocomplete="off">
 
         @csrf
 
-        @include ('layout.forms.text', ['name' => 'title'])
+        @include ('layout.forms.text', ['name' => 'name'])
 
-        @include ('layout.forms.textarea', ['name' => 'content'])
-
-        @include ('layout.forms.text', ['name' => 'instagram_id', 'label' => 'Instagram ID'])
-
-        @include ('layout.forms.text', ['name' => 'twitter_id', 'label' => 'Twitter ID'])
-
-        @include ('layout.forms.text', ['name' => 'soundcloud_id', 'label' => 'Soundcloud ID'])
+        @include ('layout.forms.textarea', ['name' => 'description'])
 
         @include ('layout.forms.text', ['name' => 'url', 'label' => 'URL'])
 
         @include ('layout.forms.text', ['name' => 'published_at', 'label' => 'Date', 'type' => 'date'])
 
-        @include ('layout.forms.select', ['name' => 'home', 'label' => 'Display on Home Page', 'options' => $homes])
+        @include ('layout.forms.select', ['name' => 'topics', 'label' => 'Related Topics', 'options' => $journal_topics, 'type' => 'multiple'])
 
-        @include ('layout.forms.textarea', ['name' => 'resources'])
-
-        @include ('layout.forms.select', ['name' => 'article_type_id', 'label' => 'Type', 'options' => $article_types, 'type' => 'table'])
-
-        @include ('layout.forms.button', ['label' => 'Add Article'])
+        @include ('layout.forms.button', ['label' => 'Add Journal'])
 
     </form>
 

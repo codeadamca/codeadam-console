@@ -40,6 +40,7 @@
                 <td>
                     {{$journal->name}}
                     <small>
+                        <br>
                         {{$journal->description}}
                         <br>
                         {{date('F jS, Y', strtotime($journal->published_at))}}

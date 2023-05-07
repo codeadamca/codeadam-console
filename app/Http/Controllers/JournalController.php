@@ -34,7 +34,7 @@ class JournalController extends Controller
     {
 
         $attributes = request()->validate([
-            'title' => 'required',
+            'name' => 'required',
             'description' => 'required',
             'url' => 'nullable|url',
             'published_at' => 'required',
