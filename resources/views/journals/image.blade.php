@@ -4,13 +4,13 @@
 
 <section class="w3-padding ca-container-small">
 
-    @include ('layout.title', ['title' => 'Article Image'])
+    @include ('layout.title', ['title' => 'Journal Image'])
 
-    @include ('layout.breadcrumbs', ['links' => ['Manage Articles' => '/articles/list'], 'title' => 'Article Image: '.$article->title])
+    @include ('layout.breadcrumbs', ['links' => ['Manage Journals' => '/journals/list'], 'title' => 'Journal Image: '.$journal->title])
 
-    @include ('layout.elements.image', ['image' => $article->image, 'width' => 400, 'id' => $article->id, 'type' => 'articles'])
+    @include ('layout.elements.image', ['image' => $journal->image, 'width' => 400, 'id' => $journal->id, 'type' => 'journals'])
 
-    <form method="post" action="/articles/image/{{$article->id}}" novalidate class="w3-margin-bottom" enctype="multipart/form-data" autocomplete="off">
+    <form method="post" action="/journals/image/{{$journal->id}}" novalidate class="w3-margin-bottom" enctype="multipart/form-data" autocomplete="off">
 
         @csrf
 

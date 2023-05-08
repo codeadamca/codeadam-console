@@ -37,12 +37,13 @@ class JournalController extends Controller
             'name' => 'required',
             'description' => 'required',
             'url' => 'nullable|url',
-            'published_at' => 'required',
+            'published_at' => 'required|date',
             'topics' => 'nullable',
         ]);
 
         $journal = new Journal();
-        $journal->create($attributes);
+        $journal = Journal::find($journal->create($attributes)->id);
+        $journal->manyTopics()->sync(request()->get('topics'));
 
         return redirect('/journals/list')
             ->with('message', 'Journal has been added!');
@@ -63,14 +64,15 @@ class JournalController extends Controller
     {
 
         $attributes = request()->validate([
-            'title' => 'required',
+            'name' => 'required',
             'description' => 'required',
             'url' => 'nullable|url',
-            'published_at' => 'required',
+            'published_at' => 'required|date',
             'topics' => 'nullable',
         ]);
 
         $journal->update($attributes);
+        $journal->manyTopics()->sync(request()->get('topics'));
 
         return redirect('/journals/list')
             ->with('message', 'Journal has been edited!');
@@ -80,8 +82,9 @@ class JournalController extends Controller
     public function delete(Journal $journal)
     {
         
-        Storage::delete($journal->image);
+        if($journal->image) Storage::delete($journal->image);
         
+        $journal->manyTopics()->detach();
         $journal->delete();
 
         return redirect('/journals/list')
@@ -95,6 +98,7 @@ class JournalController extends Controller
         return view('journals.image', [
             'journal' => $journal,
         ]);
+
     }
 
     public function image(Journal $journal)
@@ -104,21 +108,20 @@ class JournalController extends Controller
             'image' => 'required|image',
         ]);
 
-        Storage::delete($journal->image);
+        if($journal->image) Storage::delete($journal->image);
         
-        $path = request()->file('image')->store('journals');
-
-        $journal->image = $path;
+        $journal->image = request()->file('image')->store('journals');
         $journal->save();
         
         return redirect('/journals/list')
             ->with('message', 'Journal image has been edited!');
+
     }
 
     public function deleteImage(Journal $journal)
     {
 
-        Storage::delete($journal->image);
+        if($journal->image) Storage::delete($journal->image);
 
         $journal->image = "";
         $journal->save();
