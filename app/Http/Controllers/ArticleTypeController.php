@@ -35,8 +35,7 @@ class ArticleTypeController extends Controller
         ]);
 
         $articleType = new ArticleType();
-        $articleType->title = $attributes['title'];
-        $articleType->save();
+        $articleType->create($attributes);
 
         return redirect('/articles/types/list')
             ->with('message', 'Article Type has been added!');
@@ -59,8 +58,7 @@ class ArticleTypeController extends Controller
             'title' => 'required',
         ]);
 
-        $articleType->title = $attributes['title'];
-        $articleType->save();
+        $articleType->update($attributes);
 
         return redirect('/articles/types/list')
             ->with('message', 'Article Type has been edited!');

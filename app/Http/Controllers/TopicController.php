@@ -88,6 +88,10 @@ class TopicController extends Controller
         if($topic->image) Storage::delete($topic->image);
         if($topic->banner) Storage::delete($topic->banner);
         
+        $topic->manyAssignments()->detach();
+        $topic->manyJournals()->detach();
+        $topic->manyCourses()->detach();
+        $topic->manyPages()->detach();
         $topic->pages()->detach();
         $topic->delete();
 
@@ -98,9 +102,11 @@ class TopicController extends Controller
 
     public function imageForm(Topic $topic)
     {
+
         return view('topics.image', [
             'topic' => $topic,
         ]);
+
     }
 
     public function image(Topic $topic)
@@ -111,14 +117,13 @@ class TopicController extends Controller
         ]);
 
         if($topic->image) Storage::delete($topic->image);
-        
-        $path = request()->file('image')->store('topics');
 
-        $topic->image = $path;
+        $topic->image = request()->file('image')->store('topics');
         $topic->save();
         
         return redirect('/topics/list')
             ->with('message', 'Topic image has been edited!');
+
     }
 
     public function deleteImage(Topic $topic)
@@ -136,9 +141,11 @@ class TopicController extends Controller
 
     public function bannerForm(Topic $topic)
     {
+
         return view('topics.banner', [
             'topic' => $topic,
         ]);
+
     }
 
     public function banner(Topic $topic)
@@ -157,6 +164,7 @@ class TopicController extends Controller
         
         return redirect('/topics/list')
             ->with('message', 'Topic banner has been edited!');
+
     }
 
     public function deleteBanner(Topic $topic)
@@ -171,4 +179,5 @@ class TopicController extends Controller
             ->with('message', 'Topic banner has been deleted!');
 
     }
+    
 }

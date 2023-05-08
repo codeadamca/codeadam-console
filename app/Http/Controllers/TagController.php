@@ -35,8 +35,7 @@ class TagController extends Controller
         ]);
 
         $tag = new Tag();
-        $tag->title = $attributes['title'];
-        $tag->save();
+        $tag->create($attributes);
 
         return redirect('/memes/tags/list')
             ->with('message', 'Tag has been added!');
@@ -59,8 +58,7 @@ class TagController extends Controller
             'title' => 'required',
         ]);
 
-        $tag->title = $attributes['title'];
-        $tag->save();
+        $tag->update($attributes);
 
         return redirect('/memes/tags/list')
             ->with('message', 'Tag has been edited!');
@@ -77,4 +75,5 @@ class TagController extends Controller
             ->with('message', 'Tag has been deleted!');                
         
     }
+    
 }

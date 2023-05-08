@@ -43,14 +43,7 @@ class CourseController extends Controller
 
         $course = new Course();
         $course = Course::find($course->create($attributes)->id);
-
-        if(isset($attributes['topics']))
-        {
-            foreach($attributes['topics'] as $topic)
-            {
-                $course->manyTopics()->attach($topic);
-            }        
-        }
+        $course->manyTopics()->attach($attributes['topics']);
 
         return redirect('/courses/list')
             ->with('message', 'Course has been added!');
@@ -79,17 +72,8 @@ class CourseController extends Controller
         ]);
 
         $course->update($attributes);
-
-        $course->manyTopics()->detach();
-
-        if(isset($attributes['topics']))
-        {
-            foreach($attributes['topics'] as $topic)
-            {
-                $course->manyTopics()->attach($topic);
-            }  
-        }
-
+        $course->manyTopics()->sync($attributes['topics']);
+        
         return redirect('/courses/list')
             ->with('message', 'Course has been edited!');
 

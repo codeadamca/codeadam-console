@@ -96,9 +96,11 @@ class SocialController extends Controller
 
     public function imageForm(Social $social)
     {
+
         return view('socials.image', [
             'social' => $social,
         ]);
+
     }
 
     public function image(Social $social)
@@ -109,10 +111,8 @@ class SocialController extends Controller
         ]);
 
         if($social->image) Storage::delete($social->image);
-        
-        $path = request()->file('image')->store('socials');
 
-        $social->image = $path;
+        $social->image = request()->file('image')->store('socials');
         $social->save();
         
         return redirect('/socials/list')
@@ -131,4 +131,5 @@ class SocialController extends Controller
             ->with('message', 'Social image has been deleted!');
 
     }
+    
 }

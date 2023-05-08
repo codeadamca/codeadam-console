@@ -43,7 +43,7 @@ class JournalController extends Controller
 
         $journal = new Journal();
         $journal = Journal::find($journal->create($attributes)->id);
-        $journal->manyTopics()->sync(request()->get('topics'));
+        $journal->manyTopics()->attach(request()->get('topics'));
 
         return redirect('/journals/list')
             ->with('message', 'Journal has been added!');

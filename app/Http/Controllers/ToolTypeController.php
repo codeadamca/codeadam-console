@@ -35,8 +35,7 @@ class ToolTypeController extends Controller
         ]);
 
         $toolType = new ToolType();
-        $toolType->title = $attributes['title'];
-        $toolType->save();
+        $toolType->create($attributes);
 
         return redirect('/tools/types/list')
             ->with('message', 'Tool Type has been added!');
@@ -59,8 +58,7 @@ class ToolTypeController extends Controller
             'title' => 'required',
         ]);
 
-        $toolType->title = $attributes['title'];
-        $toolType->save();
+        $toolType->update($attributes);
 
         return redirect('/tools/types/list')
             ->with('message', 'Tool Type has been edited!');
@@ -76,4 +74,5 @@ class ToolTypeController extends Controller
             ->with('message', 'Tool Type has been deleted!');                
         
     }
+    
 }

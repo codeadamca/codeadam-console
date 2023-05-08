@@ -40,13 +40,8 @@ class MemeController extends Controller
         ]);
 
         $meme = new Meme();
-        $meme->title = $attributes['title'];
-        $meme->save();
-
-        foreach($attributes['tags'] as $tag)
-        {
-            $meme->manyTags()->attach($tag);
-        }
+        $meme = Meme::find($meme->create($attributes)->id);
+        $comemerse->manyTopics()->attach($attributes['tags']);
 
         return redirect('/memes/list')
             ->with('message', 'Meme has been added!');
@@ -71,15 +66,8 @@ class MemeController extends Controller
             'tags' => 'required',
         ]);
 
-        $meme->title = $attributes['title'];
-        $meme->save();
-
-        $meme->manyTags()->detach();
-
-        foreach($attributes['tags'] as $tag)
-        {
-            $meme->manyTags()->attach($tag);
-        }
+        $meme->update($attributes);
+        $meme->manyTags()->sync($attributes['tags']);
 
         return redirect('/memes/list')
             ->with('message', 'Meme has been edited!');
@@ -101,9 +89,11 @@ class MemeController extends Controller
 
     public function imageForm(Meme $meme)
     {
+
         return view('memes.image', [
             'meme' => $meme,
         ]);
+
     }
 
     public function image(Meme $meme)
@@ -114,10 +104,9 @@ class MemeController extends Controller
         ]);
 
         if($meme->image) Storage::delete($meme->image);
-        
-        $path = request()->file('image')->store('memes');
+    
 
-        $meme->image = $path;
+        $meme->image = request()->file('image')->store('memes');
         $meme->save();
         
         return redirect('/memes/list')

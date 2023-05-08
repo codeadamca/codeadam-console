@@ -48,14 +48,7 @@ class PageController extends Controller
 
         $page = new Page();
         $page = Page::find($page->create($attributes)->id);
-
-        if(isset($attributes['topics']))
-        {
-            foreach($attributes['topics'] as $topic)
-            {
-                $page->manyTopics()->attach($topic);
-            }        
-        }
+        $page->manyTopics()->attach($attributes['topics']);
 
         return redirect('/pages/list')
             ->with('message', 'Page has been added!');
@@ -92,16 +85,7 @@ class PageController extends Controller
         ]);
 
         $page->update($attributes);
-
-        $page->manyTopics()->detach();
-
-        if(isset($attributes['topics']))
-        {
-            foreach($attributes['topics'] as $topic)
-            {
-                $page->manyTopics()->attach($topic);
-            }  
-        }
+        $page->manyTopics()->sync($attributes['topics']);
 
         return redirect('/pages/list')
             ->with('message', 'Page has been edited!');
@@ -127,6 +111,7 @@ class PageController extends Controller
         return view('pages.image', [
             'page' => $page,
         ]);
+
     }
 
     public function image(Page $page)
@@ -137,14 +122,13 @@ class PageController extends Controller
         ]);
 
         if($page->image) Storage::delete($page->image);
-        
-        $path = request()->file('image')->store('pages');
 
-        $article->image = $path;
+        $article->image = request()->file('image')->store('pages');
         $article->save();
         
         return redirect('/pages/list')
             ->with('message', 'Page image has been edited!');
+
     }
 
     public function deleteImage(Page $page)

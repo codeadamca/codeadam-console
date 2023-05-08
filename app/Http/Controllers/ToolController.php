@@ -12,6 +12,7 @@ use App\Models\ToolType;
 
 class ToolController extends Controller
 {
+
     public function list()
     {
 
@@ -87,9 +88,11 @@ class ToolController extends Controller
 
     public function imageForm(Tool $tool)
     {
+
         return view('tools.image', [
             'tool' => $tool,
         ]);
+
     }
 
     public function image(Tool $tool)
@@ -100,14 +103,13 @@ class ToolController extends Controller
         ]);
 
         if($tool->image) Storage::delete($tool->image);
-        
-        $path = request()->file('image')->store('tools');
 
-        $tool->image = $path;
+        $tool->image = request()->file('image')->store('tools');
         $tool->save();
         
         return redirect('/tools/list')
             ->with('message', 'Tool image has been edited!');
+
     }
 
     public function deleteImage(Tool $tool)
@@ -122,4 +124,5 @@ class ToolController extends Controller
             ->with('message', 'Tool image has been deleted!');
 
     }
+    
 }

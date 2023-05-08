@@ -41,19 +41,10 @@ class AssignmentController extends Controller
             'topics' => 'nullable',
         ]);
 
-        $assignment = new Assignment();
-        $assignment->title = $attributes['title'];
-        $assignment->url = $attributes['url'];
-        $assignment->github_id = $attributes['github_id'];
-        $assignment->save();
 
-        if(isset($attributes['topics']))
-        {
-            foreach($attributes['topics'] as $topic)
-            {
-                $assignment->manyTopics()->attach($topic);
-            }        
-        }
+        $assignment = new Assignment();
+        $assignment = Assignment::find($assignment->create($attributes)->id);
+        $assignment->manyTopics()->attach($attributes['topics']);
 
         return redirect('/assignments/list')
             ->with('message', 'Assignment has been added!');
@@ -80,20 +71,8 @@ class AssignmentController extends Controller
             'topics' => 'nullable',
         ]);
 
-        $assignment->title = $attributes['title'];
-        $assignment->url = $attributes['url'];
-        $assignment->github_id = $attributes['github_id'];
-        $assignment->save();
-
-        $assignment->manyTopics()->detach();
-
-        if(isset($attributes['topics']))
-        {
-            foreach($attributes['topics'] as $topic)
-            {
-                $assignment->manyTopics()->attach($topic);
-            }  
-        }
+        $assignment->update($attributes);
+        $assignment->manyTopics()->sync($attributes['topics']);
 
         return redirect('/assignments/list')
             ->with('message', 'Assignment has been edited!');
@@ -113,9 +92,11 @@ class AssignmentController extends Controller
 
     public function imageForm(Assignment $assignment)
     {
+
         return view('assignments.image', [
             'assignment' => $assignment,
         ]);
+
     }
 
     public function image(Assignment $assignment)
@@ -127,13 +108,12 @@ class AssignmentController extends Controller
 
         if($assignment->image) Storage::delete($assignment->image);
         
-        $path = request()->file('image')->store('assignments');
-
-        $assignment->image = $path;
+        $assignment->image = request()->file('image')->store('assignments');
         $assignment->save();
         
         return redirect('/assignments/list')
             ->with('message', 'Assignment image has been edited!');
+            
     }
 
     public function deleteImage(Assignment $assignment)

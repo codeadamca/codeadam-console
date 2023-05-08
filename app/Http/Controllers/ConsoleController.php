@@ -10,17 +10,22 @@ class ConsoleController extends Controller
     
     public function logout()
     {
+
         auth()->logout();
         return redirect('/');
+
     }
 
     public function loginForm()
     {
+
         return view('login');
+
     }
 
     public function login()
     {
+
         $attributes = request()->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -34,10 +39,12 @@ class ConsoleController extends Controller
         return back()
             ->withInput()
             ->withErrors(['email' => 'Invalid email/password combination']);
+
     }
 
     public function dashboard()
     {
+
         $links = [
             ['icon' => 'fas fa-file', 'text' => 'Sample Assignments', 'route' => '/assignments/list'],
             ['icon' => 'fas fa-columns', 'text' => 'Topics', 'route' => '/topics/list'],
@@ -60,6 +67,7 @@ class ConsoleController extends Controller
         ];
 
         return view('dashboard', ['links' => $links]);
+        
     }
 
 }

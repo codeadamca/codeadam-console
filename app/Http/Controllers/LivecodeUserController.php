@@ -11,6 +11,7 @@ use App\Models\LivecodeUser;
 
 class LivecodeUserController extends Controller
 {
+    
     public function list()
     {
 
@@ -29,4 +30,5 @@ class LivecodeUserController extends Controller
             ->with('message', 'LiveCode User has been deleted!');                
         
     }
+
 }

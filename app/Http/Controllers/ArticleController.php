@@ -107,6 +107,7 @@ class ArticleController extends Controller
         return view('articles.image', [
             'article' => $article,
         ]);
+
     }
 
     public function image(Article $article)
@@ -118,13 +119,12 @@ class ArticleController extends Controller
 
         if($article->image) Storage::delete($article->image);
         
-        $path = request()->file('image')->store('articles');
-
-        $article->image = $path;
+        $article->image = request()->file('image')->store('articles');
         $article->save();
         
         return redirect('/articles/list')
             ->with('message', 'Article image has been edited!');
+
     }
 
     public function deleteImage(Article $article)
@@ -139,4 +139,5 @@ class ArticleController extends Controller
             ->with('message', 'Article image has been deleted!');
 
     }
+    
 }

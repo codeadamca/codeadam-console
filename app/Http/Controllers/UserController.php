@@ -38,11 +38,7 @@ class UserController extends Controller
         ]);
 
         $user = new User();
-        $user->first = $attributes['first'];
-        $user->last = $attributes['last'];
-        $user->email = $attributes['email'];
-        $user->password = $attributes['password'];
-        $user->save();
+        $user->create($attributes);
 
         return redirect('/users/list')
             ->with('message', 'User has been added!');
@@ -72,13 +68,12 @@ class UserController extends Controller
             'password' => 'nullable',
         ]);
 
-        $user->first = $attributes['first'];
-        $user->last = $attributes['last'];
-        $user->email = $attributes['email'];
-
+        $user->update($attributes);
+        
+        /*
         if($attributes['password']) $user->password = $attributes['password'];
-
         $user->save();
+        */
 
         return redirect('/users/list')
             ->with('message', 'User has been edited!');

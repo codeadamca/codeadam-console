@@ -36,10 +36,8 @@ class EvaluationController extends Controller
         ]);
 
         $evaluation = new Evaluation();
-        $evaluation->title = $attributes['title'];
-        $evaluation->content = $attributes['content'];
-        $evaluation->save();
-
+        $evaluation->create($attributes);
+        
         return redirect('/evaluations/list')
             ->with('message', 'Evaluation has been added!');
 
@@ -62,9 +60,7 @@ class EvaluationController extends Controller
             'content' => 'required',
         ]);
 
-        $evaluation->title = $attributes['title'];
-        $evaluation->content = $attributes['content'];
-        $evaluation->save();
+        $evaluation->update($attributes);
 
         return redirect('/evaluations/list')
             ->with('message', 'Evaluation has been edited!');
