@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ToolType extends Model
 {
-    use HasFactory;
 
     public $timestamps = false;
 
@@ -17,6 +16,9 @@ class ToolType extends Model
 
     public function tools()
     {
+
         return $this->hasMany(Tool::class, 'tool_type_id');
+
     }
+    
 }

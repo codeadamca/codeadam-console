@@ -9,7 +9,6 @@ use App\Models\ArticleType;
 
 class Article extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'title',
@@ -25,13 +24,20 @@ class Article extends Model
         'published_at',
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'published_at'];
+
     public function type()
     {
+        
         return $this->belongsTo(ArticleType::class, 'article_type_id');
+
     }
 
     public static function homes()
     {
+
         return ['Yes', 'No'];
+
     }
+
 }

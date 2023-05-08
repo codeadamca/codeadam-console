@@ -9,7 +9,6 @@ use App\Models\ToolType;
 
 class Tool extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'title',
@@ -18,8 +17,13 @@ class Tool extends Model
         'image',
     ];
 
+    protected $dates = ['created_at', 'updated_at'];
+
     public function type()
     {
+
         return $this->belongsTo(ToolType::class, 'tool_type_id');
+
     }
+
 }

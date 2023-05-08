@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'title',
@@ -22,14 +21,20 @@ class Page extends Model
         'published_at',
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'published_at'];
+    
     public function topic()
     {
+
         return $this->belongsTo(Topic::class);
+
     }
     
     public function manyTopics()
     {
+
         return $this->belongsToMany(Topic::class);
+        
     }
     
 }

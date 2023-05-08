@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assignment extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'title',
@@ -16,10 +15,13 @@ class Assignment extends Model
         'image',
     ];
 
+    protected $dates = ['created_at', 'updated_at'];
+
     public function manyTopics()
     {
+
         return $this->belongsToMany(Topic::class);
+
     }
-    
-    protected $dates = ['created_at', 'updated_at'];
+
 }

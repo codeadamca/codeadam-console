@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    use HasFactory;
 
     public $timestamps = false;
 
@@ -17,6 +16,9 @@ class Tag extends Model
 
     public function manyMemes()
     {
+
         return $this->belongsToMany(Meme::class);
+
     }
+    
 }

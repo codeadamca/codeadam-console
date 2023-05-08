@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Social extends Model
 {
-    use HasFactory;
 
     public $timestamps = false;
 
@@ -23,16 +22,23 @@ class Social extends Model
 
     public static function homes()
     {
+
         return ['Yes', 'No'];
+
     }
     
     public static function abouts()
     {
+
         return ['Yes', 'No'];
+
     }
 
     public static function headers()
     {
+
         return ['Yes', 'No'];
+
     }
+
 }

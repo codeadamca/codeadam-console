@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArticleType extends Model
 {
-    use HasFactory;
 
     public $timestamps = false;
 
@@ -17,6 +16,9 @@ class ArticleType extends Model
 
     public function articles()
     {
+
         return $this->hasMany(Article::class, 'article_type_id');
+
     }
+    
 }

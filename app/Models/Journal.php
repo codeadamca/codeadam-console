@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Journal extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -17,8 +16,13 @@ class Journal extends Model
         'published_at',
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'published_at'];
+
     public function manyTopics()
     {
+
         return $this->belongsToMany(Topic::class);
+
     }
+
 }

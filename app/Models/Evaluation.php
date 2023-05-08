@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluation extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'title',
         'content',
     ];
+
+    protected $dates = ['created_at', 'updated_at'];
+
 }

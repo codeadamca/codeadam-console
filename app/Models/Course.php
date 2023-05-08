@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -16,8 +15,13 @@ class Course extends Model
         'description',
     ];
 
+    protected $dates = ['created_at', 'updated_at'];
+
     public function manyTopics()
     {
+
         return $this->belongsToMany(Topic::class);
+
     }
+    
 }

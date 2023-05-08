@@ -44,8 +44,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'email_verified_at'];
+
     public function setPasswordAttribute($value)
     {
+
         $this->attributes['password'] = bcrypt($value);
+
     }
+
 }
