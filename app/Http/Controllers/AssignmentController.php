@@ -125,7 +125,7 @@ class AssignmentController extends Controller
             'image' => 'required|image',
         ]);
 
-        Storage::delete($assignment->image);
+        if($assignment->image) Storage::delete($assignment->image);
         
         $path = request()->file('image')->store('assignments');
 
@@ -139,7 +139,7 @@ class AssignmentController extends Controller
     public function deleteImage(Assignment $assignment)
     {
 
-        Storage::delete($assignment->image);
+        if($assignment->image) Storage::delete($assignment->image);
 
         $assignment->assignment = "";
         $assignment->save();

@@ -76,6 +76,8 @@ class ToolController extends Controller
     public function delete(Tool $tool)
     {
         
+        if($tool->image) Storage::delete($tool->image);
+        
         $tool->delete();
 
         return redirect('/tools/list')
@@ -97,7 +99,7 @@ class ToolController extends Controller
             'image' => 'required|image',
         ]);
 
-        Storage::delete($tool->image);
+        if($tool->image) Storage::delete($tool->image);
         
         $path = request()->file('image')->store('tools');
 
@@ -111,7 +113,7 @@ class ToolController extends Controller
     public function deleteImage(Tool $tool)
     {
 
-        Storage::delete($tool->image);
+        if($tool->image) Storage::delete($tool->image);
 
         $tool->image = "";
         $tool->save();

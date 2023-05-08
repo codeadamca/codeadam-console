@@ -89,6 +89,8 @@ class MemeController extends Controller
     public function delete(Meme $meme)
     {
         
+        if($meme->image) Storage::delete($meme->image);
+        
         $meme->manyTags()->detach();
         $meme->delete();
 
@@ -111,7 +113,7 @@ class MemeController extends Controller
             'image' => 'required|image',
         ]);
 
-        Storage::delete($meme->image);
+        if($meme->image) Storage::delete($meme->image);
         
         $path = request()->file('image')->store('memes');
 
@@ -125,7 +127,7 @@ class MemeController extends Controller
     public function deleteImage(Meme $meme)
     {
 
-        Storage::delete($meme->image);
+        if($meme->image) Storage::delete($meme->image);
 
         $meme->image = "";
         $meme->save();

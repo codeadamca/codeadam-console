@@ -85,8 +85,8 @@ class TopicController extends Controller
     public function delete(Topic $topic)
     {
         
-        Storage::delete($topic->image);
-        Storage::delete($topic->banner);
+        if($topic->image) Storage::delete($topic->image);
+        if($topic->banner) Storage::delete($topic->banner);
         
         $topic->pages()->detach();
         $topic->delete();
@@ -110,7 +110,7 @@ class TopicController extends Controller
             'image' => 'required|image',
         ]);
 
-        Storage::delete($topic->image);
+        if($topic->image) Storage::delete($topic->image);
         
         $path = request()->file('image')->store('topics');
 
@@ -124,7 +124,7 @@ class TopicController extends Controller
     public function deleteImage(Topic $topic)
     {
 
-        Storage::delete($topic->image);
+        if($topic->image) Storage::delete($topic->image);
 
         $topic->image = "";
         $topic->save();
@@ -148,7 +148,7 @@ class TopicController extends Controller
             'banner' => 'required|image',
         ]);
 
-        Storage::delete($topic->banner);
+        if($topic->banner) Storage::delete($topic->banner);
         
         $path = request()->file('banner')->store('topicBanners');
 
@@ -162,7 +162,7 @@ class TopicController extends Controller
     public function deleteBanner(Topic $topic)
     {
 
-        Storage::delete($topic->banner);
+        if($topic->banner) Storage::delete($topic->banner);
 
         $topic->banner = "";
         $topic->save();

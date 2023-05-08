@@ -111,7 +111,7 @@ class PageController extends Controller
     public function delete(Page $page)
     {
         
-        Storage::delete($page->image);
+        if($page->image) Storage::delete($page->image);
         
         $page->manyTopics()->detach();
         $page->delete();
@@ -136,7 +136,7 @@ class PageController extends Controller
             'image' => 'required|image',
         ]);
 
-        Storage::delete($page->image);
+        if($page->image) Storage::delete($page->image);
         
         $path = request()->file('image')->store('pages');
 
@@ -150,7 +150,7 @@ class PageController extends Controller
     public function deleteImage(Page $page)
     {
 
-        Storage::delete($page->image);
+        if($page->image) Storage::delete($page->image);
 
         $article->image = "";
         $article->save();

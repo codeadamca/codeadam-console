@@ -85,7 +85,7 @@ class SocialController extends Controller
     public function delete(Social $social)
     {
         
-        Storage::delete($social->image);
+        if($social->image) Storage::delete($social->image);
         
         $social->delete();
 
@@ -108,7 +108,7 @@ class SocialController extends Controller
             'image' => 'required|image',
         ]);
 
-        Storage::delete($social->image);
+        if($social->image) Storage::delete($social->image);
         
         $path = request()->file('image')->store('socials');
 
@@ -122,7 +122,7 @@ class SocialController extends Controller
     public function deleteImage(Social $social)
     {
 
-        Storage::delete($social->image);
+        if($social->image) Storage::delete($social->image);
 
         $social->image = "";
         $social->save();

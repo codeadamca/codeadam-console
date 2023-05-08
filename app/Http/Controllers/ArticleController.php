@@ -92,7 +92,7 @@ class ArticleController extends Controller
     public function delete(Article $article)
     {
         
-        Storage::delete($article->image);
+        if($article->image) Storage::delete($article->image);
         
         $article->delete();
 
@@ -116,7 +116,7 @@ class ArticleController extends Controller
             'image' => 'required|image',
         ]);
 
-        Storage::delete($article->image);
+        if($article->image) Storage::delete($article->image);
         
         $path = request()->file('image')->store('articles');
 
@@ -130,7 +130,7 @@ class ArticleController extends Controller
     public function deleteImage(Article $article)
     {
 
-        Storage::delete($article->image);
+        if($article->image) Storage::delete($article->image);
 
         $article->image = "";
         $article->save();
