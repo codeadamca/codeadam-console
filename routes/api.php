@@ -391,7 +391,7 @@ Route::get('/livecode/code', function () {
     if($check > 0)
     {
       
-        $user = LivecodeUser::where('github', request()->post('github'))->first();
+        $user = LivecodeUser::where('github', request()->get('github'))->first();
         $files = LivecodeFile::where('livecode_user_id', $user->id)->get();
       
         foreach($files as $key => $file)
