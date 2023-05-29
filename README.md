@@ -2,10 +2,12 @@
 
 This repository is a simple PHP CMS using Laravel used tp manage my personal portfolio.
 
-## Tutorial Requirements:
+***
 
-* [Visual Studio Code](https://code.visualstudio.com/) or [Brackets](http://brackets.io/) (or any code editor)
-* [Filezilla](https://filezilla-project.org/) (or any FTP program)
+## Repo Resources
+
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Filezilla](https://filezilla-project.org/)
 * [Laravel](https://laravel.com/)
 
 <a href="https://codeadam.ca">
