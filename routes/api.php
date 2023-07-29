@@ -20,6 +20,8 @@ use App\Models\Topic;
 
 use Carbon\Carbon;
 
+use Image;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -36,6 +38,24 @@ use Carbon\Carbon;
 | CodeAdam API Calls
 |--------------------------------------------------------------------------
 */
+
+Route::get('/image/{slug}', function ($slug) {
+  
+    $topic = Topic::where('slug', '=', $slug)->first();
+  
+    if($topic)
+    {
+      
+        $path = public_path().'/storage/'.$topic->image;      
+        return response()->file($path);
+          
+    }
+    else
+    {
+        return array('error' => 'Topic does not exist');
+    }
+  
+});
 
 Route::get('/articles/{filter?}/{value?}', function ($filter, $value) {
 
