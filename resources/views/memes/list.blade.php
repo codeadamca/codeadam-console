@@ -47,7 +47,9 @@
                     @endif
                 </td>
                 <td>
-                    {{$meme->displayed_at->diffForHumans()}}
+                    @if ($meme->displayed_at)
+                        {{\Carbon\Carbon::parse($meme->displayed_at)->diffForHumans()}}
+                    @endif
                 </td>
                 <td>
                     <a href="/memes/image/{{$meme->id}}">
